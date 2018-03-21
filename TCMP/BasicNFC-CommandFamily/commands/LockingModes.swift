@@ -1,5 +1,5 @@
 //
-//  TCMP.m
+//  LockingModes.swift
 //  TCMP
 //
 //  Created by David Shalaby on 2018-03-08.
@@ -21,8 +21,9 @@
  * limitations under the License.
  */
 
-#import "TCMP.h"
+import Foundation
 
-@implementation TCMP
-
-@end
+enum LockingMode : UInt8{
+    case DONT_LOCK_TAG = 0x00
+    case LOCK_TAG = 0x01
+}

@@ -1,5 +1,5 @@
 //
-//  TCMP.m
+//  TappySerialCommunicator.swift
 //  TCMP
 //
 //  Created by David Shalaby on 2018-03-08.
@@ -21,8 +21,16 @@
  * limitations under the License.
  */
 
-#import "TCMP.h"
+import Foundation
 
-@implementation TCMP
-
-@end
+protocol TappySerialCommunicator {
+    func setDataListener(receivedBytes listener : @escaping ([UInt8]) -> ())
+    func removeDataListener()
+    func setStatusListener(statusReceived listener : @escaping (TappyStatus) -> ())
+    func removeStatusListener()
+    func sendBytes(data : [UInt8])
+    func connect()
+    func disconnect()
+    func close()
+    func getDeviceDescription() -> String
+}

@@ -1,5 +1,5 @@
 //
-//  TCMP.m
+//  Tappy.swift
 //  TCMP
 //
 //  Created by David Shalaby on 2018-03-08.
@@ -21,8 +21,20 @@
  * limitations under the License.
  */
 
-#import "TCMP.h"
+import Foundation
 
-@implementation TCMP
-
-@end
+protocol Tappy{
+    func setResponseListener(listener : @escaping (TCMPMessage) -> ())
+    func removeResponseListener()
+    func setStatusListener(listner : @escaping (TappyStatus) -> ())
+    func removeStatusListener()
+    func setUnparsablePacketListener(listener : @escaping ([UInt8]) -> ())
+    func removeUnparsablePacketListener()
+    func removeAllListeners()
+    func connect()
+    func sendMessage(message : TCMPMessage)
+    func disconnect()
+    func close()
+    func getDeviceDescription() -> String
+    func getLatestStatus() -> TappyStatus
+}

@@ -1,5 +1,5 @@
 //
-//  TCMP.m
+//  ApplicationErrorMessage.swift
 //  TCMP
 //
 //  Created by David Shalaby on 2018-03-08.
@@ -21,8 +21,11 @@
  * limitations under the License.
  */
 
-#import "TCMP.h"
+import Foundation
 
-@implementation TCMP
-
-@end
+protocol TCMPApplicationErrorMessage{
+    var appErrorCode : UInt8 {get}
+    var internalErrorCode : UInt8 {get}
+    var readerStatusCode : UInt8 {get}
+    var errorDescription : String {get}
+}

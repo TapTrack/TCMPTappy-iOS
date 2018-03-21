@@ -1,5 +1,5 @@
 //
-//  TCMP.m
+//  MessageResolver.swift
 //  TCMP
 //
 //  Created by David Shalaby on 2018-03-08.
@@ -20,9 +20,9 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import Foundation
 
-#import "TCMP.h"
-
-@implementation TCMP
-
-@end
+protocol MessageResolver{
+     func resolveCommand(message : TCMPMessage) throws -> TCMPMessage
+     func resolveResponse(message : TCMPMessage) throws -> TCMPMessage
+}

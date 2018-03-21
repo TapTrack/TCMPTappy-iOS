@@ -1,6 +1,6 @@
 //
-//  TCMP.m
-//  TCMP
+//  TappyBleDevice.swift
+//  TappySDKExampleWithSDKSource
 //
 //  Created by David Shalaby on 2018-03-08.
 //  Copyright © 2018 Papyrus Electronics Inc d/b/a TapTrack. All rights reserved.
@@ -21,8 +21,14 @@
  * limitations under the License.
  */
 
-#import "TCMP.h"
+import Foundation
 
-@implementation TCMP
-
-@end
+public class TappyBleDevice {
+    var name : String
+    public var deviceId : UUID = UUID()
+    
+    init(name : String, deviceId : UUID){
+        self.name = name
+        self.deviceId = deviceId
+    }
+}

@@ -1,6 +1,6 @@
 //
-//  TCMP.m
-//  TCMP
+//  TappyBle.swift
+//  TapTrackReader
 //
 //  Created by David Shalaby on 2018-03-08.
 //  Copyright © 2018 Papyrus Electronics Inc d/b/a TapTrack. All rights reserved.
@@ -21,8 +21,24 @@
  * limitations under the License.
  */
 
-#import "TCMP.h"
 
-@implementation TCMP
+import Foundation
+import CoreBluetooth
 
-@end
+public class TappyBle : SerialTappy{
+    
+    public static func getTappyBle (centralManager : CBCentralManager, device : TappyBleDevice) -> TappyBle?{
+        if let bleCommunicator = TappyBleCommunicator.getTappyBleCommunicator(centralManager: centralManager, deviceId: device.deviceId){
+            return TappyBle(communicator: bleCommunicator)
+        }else{
+            return nil
+        }
+    }
+    
+   private init (communicator : TappyBleCommunicator){
+            super.init(communicator: communicator)
+    }
+    
+}
+
+

@@ -1,5 +1,5 @@
 //
-//  TCMP.m
+//  PollingModes.swift
 //  TCMP
 //
 //  Created by David Shalaby on 2018-03-08.
@@ -20,9 +20,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+import Foundation
 
-#import "TCMP.h"
+enum PollingMode : UInt8{
+        case pollForType1 = 0x01
+        case pollForGeneral = 0x02
+    }
 
-@implementation TCMP
 
-@end

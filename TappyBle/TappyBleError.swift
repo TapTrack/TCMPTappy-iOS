@@ -1,6 +1,6 @@
 //
-//  TCMP.m
-//  TCMP
+//  TappyBleError.swift
+//  TapTrackReader
 //
 //  Created by David Shalaby on 2018-03-08.
 //  Copyright © 2018 Papyrus Electronics Inc d/b/a TapTrack. All rights reserved.
@@ -21,8 +21,12 @@
  * limitations under the License.
  */
 
-#import "TCMP.h"
+import Foundation
 
-@implementation TCMP
-
-@end
+public enum TappyBleError : Error{
+    case rxCharNotAssigned
+    case txCharNotAssigned
+    case peripheralNotAssigned
+    case errorInstantiatingTappyBleCommunicator
+    case errorInstantiatingTappyBle
+}

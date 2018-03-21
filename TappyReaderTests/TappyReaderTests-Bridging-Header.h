@@ -1,7 +1,3 @@
-//
-//  TCMP.m
-//  TCMP
-//
 //  Created by David Shalaby on 2018-03-08.
 //  Copyright © 2018 Papyrus Electronics Inc d/b/a TapTrack. All rights reserved.
 //
@@ -20,9 +16,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+//
+//  Use this file to import your target's public headers that you would like to expose to Swift.
+//
 
-#import "TCMP.h"
-
-@implementation TCMP
-
-@end
