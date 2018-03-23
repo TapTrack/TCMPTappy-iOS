@@ -24,19 +24,21 @@ import Foundation
 
 
 public class NDEFFoundResponse : TCMPMessage{
-    var commandCode: UInt8{
+    public private(set) var commandCode: UInt8{
         get{
             return NDEFFoundResponse.getCommandCode()
         }
+        set{}
     }
-    var payload: [UInt8]{
+    public private(set) var payload: [UInt8]{
         get{
 
            return [tagType.getTagByteIndicator(),UInt8(tagCode.count)] + tagCode + ndefMessage
 
         }
+        set{}
     }
-    var commandFamily: [UInt8] = [0x00,0x01]
+    public private(set) var commandFamily: [UInt8] = [0x00,0x01]
     
     /*
      Right now it seems I can't find an appropriate NDEF library as a cocoapod or other open source lib in Swift that does
@@ -45,25 +47,25 @@ public class NDEFFoundResponse : TCMPMessage{
     */
 
     
-    var tagCode : [UInt8] = [0x00,0x00,0x00,0x00,0x00,0x00,0x00]
-    var tagType : TagTypes = TagTypes.TAG_UNKNOWN
-    var ndefMessage : [UInt8] = [0xD0] //empty NDEF record header/TNF
+    public private(set) var tagCode : [UInt8] = [0x00,0x00,0x00,0x00,0x00,0x00,0x00]
+    public private(set) var tagType : TagTypes = TagTypes.TAG_UNKNOWN
+    public private(set) var ndefMessage : [UInt8] = [0xD0] //empty NDEF record header/TNF
     
-    init(){}
+    public init(){}
     
-    init(tagCode : [UInt8], tagType : UInt8, ndefMessage : [UInt8]){
+    public init(tagCode : [UInt8], tagType : UInt8, ndefMessage : [UInt8]){
         self.tagCode = tagCode
         self.tagType = TagTypes.init(tagCodeByteIndicator: tagType)
         self.ndefMessage = ndefMessage
     }
     
-    init(tagCode : [UInt8], tagType : TagTypes, ndefMessage : [UInt8]){
+    public init(tagCode : [UInt8], tagType : TagTypes, ndefMessage : [UInt8]){
         self.tagCode = tagCode
         self.tagType = tagType
         self.ndefMessage = ndefMessage
     }
     
-    func parsePayload(payload: [UInt8]) throws {
+    public func parsePayload(payload: [UInt8]) throws {
         if (payload.count < 2){
             throw TCMPParsingError.payloadTooShort
         }else if(UInt(payload[1]) > payload.count+2){

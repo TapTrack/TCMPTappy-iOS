@@ -26,13 +26,15 @@ import Foundation
 public class WriteNDEFTextCommand : TCMPMessage
 {
    
-    var commandCode : UInt8{
+    public private(set) var commandCode : UInt8{
         get{
             return WriteNDEFTextCommand.getCommandCode()
         }
+        set{}
     }
-    let commandFamily : [UInt8] = [0x00,0x01]
-    var payload: [UInt8]{
+    
+    public private(set) var commandFamily : [UInt8] = [0x00,0x01]
+    public private(set) var payload: [UInt8]{
         get {
             var lockFlagByte: UInt8
             if(lockFlag == LockingMode.LOCK_TAG){
@@ -43,23 +45,22 @@ public class WriteNDEFTextCommand : TCMPMessage
             
             return [timeout,lockFlagByte] + text
         }
+        set{}
     }
     
-    private var timeout : UInt8 = 0
-    private var lockFlag : LockingMode = LockingMode.DONT_LOCK_TAG
-    private var text : [UInt8] = []
+    public private(set) var timeout : UInt8 = 0
+    public private(set) var lockFlag : LockingMode = LockingMode.DONT_LOCK_TAG
+    public private(set) var text : [UInt8] = []
     
-    init(){
-
-    }
+    public init(){}
     
-    init(timeout: UInt8, lockTag: LockingMode, text: String){
+    public init(timeout: UInt8, lockTag: LockingMode, text: String){
         self.timeout = timeout
         lockFlag = lockTag
         self.text = Array(text.utf8)
     }
     
-    func parsePayload(payload : [UInt8]) throws {
+    public func parsePayload(payload : [UInt8]) throws {
         if(payload.count >= 2){
             timeout = payload[0]
             

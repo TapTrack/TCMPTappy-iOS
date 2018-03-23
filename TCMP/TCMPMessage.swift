@@ -31,14 +31,14 @@ enum TCMPParsingError: Error {
     case notAllTagCodeBytesPresent
 }
 
-protocol TCMPMessage {
+public protocol TCMPMessage {
     var commandCode: UInt8 {get}
     var payload: [UInt8] {get}
     var commandFamily: [UInt8] {get}
     func parsePayload(payload : [UInt8]) throws
 }
 
-extension TCMPMessage{
+public extension TCMPMessage{
     func toByteArray() -> [UInt8]{
         let data : [UInt8] = payload
         let family : [UInt8] = commandFamily

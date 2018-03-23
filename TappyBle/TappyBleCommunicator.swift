@@ -26,8 +26,7 @@ import CoreBluetooth
 
 class TappyBleCommunicator : NSObject, CBPeripheralDelegate, CBCentralManagerDelegate, TappySerialCommunicator{
 
-    private var centralManager : CBCentralManager // = CBCentralManager()
-//    var tappyPeripheral : Set<CBPeripheral> = Set<CBPeripheral>()
+    private var centralManager : CBCentralManager
     private var tappyPeripheral : CBPeripheral
     private var backingSerialService : CBService?
     private var backingRxCharacteristic : CBCharacteristic?
@@ -42,7 +41,7 @@ class TappyBleCommunicator : NSObject, CBPeripheralDelegate, CBCentralManagerDel
     private var statusListener : (TappyStatus) -> () = {_ in func emptyTappyStatusListener(status : TappyStatus) -> (){}}
     private var packetsToSend: [[UInt8]] = [[UInt8]]()
     
-    internal init(centralManager : CBCentralManager, tappyPeripheral : CBPeripheral, tappyName : String)  {
+    private init(centralManager : CBCentralManager, tappyPeripheral : CBPeripheral, tappyName : String)  {
         self.centralManager = centralManager
         self.tappyPeripheral = tappyPeripheral
         bleDeviceUid = String(describing: tappyPeripheral.identifier)
@@ -117,11 +116,9 @@ class TappyBleCommunicator : NSObject, CBPeripheralDelegate, CBCentralManagerDel
             if let anError = error{
                 NSLog("TappyBleCommunicator: detected an error within the centralManager didDisconnectPeripheral method")
                 self.error = anError
-                changeStateAndNotify(newState: TappyStatus.STATUS_ERROR)
-                return
-            }else{
-                 changeStateAndNotify(newState: TappyStatus.STATUS_DISCONNECTED)
             }
+            changeStateAndNotify(newState: TappyStatus.STATUS_DISCONNECTED)
+            
         }
     }
     
@@ -262,7 +259,7 @@ class TappyBleCommunicator : NSObject, CBPeripheralDelegate, CBCentralManagerDel
     
     //MARK : TappySerialCommunicator
     
-    func sendBytes(data: [UInt8]) {
+    public func sendBytes(data: [UInt8]) {
         let numWholePackets : UInt = UInt(data.count/20)
         let numRemainingBytes : UInt = UInt(data.count % 20)
         var numWholePacketsAppended : UInt = 0
@@ -291,36 +288,36 @@ class TappyBleCommunicator : NSObject, CBPeripheralDelegate, CBCentralManagerDel
     }
     }
     
-    func connect() {
+    public func connect() {
         centralManager.connect(tappyPeripheral, options: nil)
         changeStateAndNotify(newState: TappyStatus.STATUS_CONNECTING)
     }
     
-    func disconnect() {
+    public func disconnect() {
                 centralManager.cancelPeripheralConnection(tappyPeripheral)
     }
     
-    func close() {
+    public func close() {
         disconnect()
     }
     
-    func setDataListener(receivedBytes listener: @escaping ([UInt8]) -> ()) {
+    public func setDataListener(receivedBytes listener: @escaping ([UInt8]) -> ()) {
         dataReceivedListener = listener
     }
     
-    func removeDataListener() {
+    public func removeDataListener() {
         dataReceivedListener = {_ in func emptyDataReceivedListener(data : [UInt8]) -> (){}}
     }
     
-    func setStatusListener(statusReceived listener: @escaping (TappyStatus) -> ()) {
+    public func setStatusListener(statusReceived listener: @escaping (TappyStatus) -> ()) {
         statusListener = listener
     }
     
-    func removeStatusListener() {
+   public func removeStatusListener() {
         statusListener =  {_ in func emptyStatusListener(status : TappyStatus) -> (){}}
     }
     
-    func getDeviceDescription() -> String {
+    public func getDeviceDescription() -> String {
         if let description = tappyPeripheral.name{
             return description
         }else{

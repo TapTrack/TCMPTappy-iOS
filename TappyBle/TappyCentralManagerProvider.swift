@@ -24,7 +24,7 @@
 import Foundation
 import CoreBluetooth
 
-class TappyCentralManagerProvider {
+public class TappyCentralManagerProvider {
     
     // MARK: - Properties
     

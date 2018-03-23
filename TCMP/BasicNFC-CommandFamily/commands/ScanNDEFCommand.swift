@@ -24,12 +24,15 @@
 import Foundation
 
 public class ScanNDEFCommand : TCMPMessage{
-    var commandCode: UInt8{
+    
+    public private(set) var commandCode: UInt8{
         get{
             return ScanNDEFCommand.getCommandCode()
         }
+        set{}
     }
-    var payload: [UInt8]{
+    
+    public private(set) var payload: [UInt8]{
         get{
             if(pollingMode == PollingMode.pollForType1){
                 return [timeout,0x01]
@@ -39,13 +42,22 @@ public class ScanNDEFCommand : TCMPMessage{
                 return []
             }
         }
+        set{}
     }
-    let commandFamily: [UInt8] = [0x00,0x01]
+    public private(set) var commandFamily: [UInt8] = [0x00,0x01]
     
-    var timeout : UInt8 = 0x00
-    var pollingMode : PollingMode = PollingMode.pollForGeneral
+    public private(set) var timeout : UInt8 = 0x00
+    public private(set) var pollingMode : PollingMode = PollingMode.pollForGeneral
     
-    func parsePayload(payload: [UInt8]) throws {
+    public init(){}
+    
+    public init(timeout : UInt8, pollingMode : PollingMode){
+        self.timeout = timeout
+        self.pollingMode = pollingMode
+    }
+    
+    
+    public func parsePayload(payload: [UInt8]) throws {
         if(payload.count >= 2){
             timeout = payload[0]
             switch (payload[1]){
@@ -61,7 +73,7 @@ public class ScanNDEFCommand : TCMPMessage{
         }
     }
     
-    static func getCommandCode() -> UInt8 {
+    public static func getCommandCode() -> UInt8 {
         return 0x04
     }
 }

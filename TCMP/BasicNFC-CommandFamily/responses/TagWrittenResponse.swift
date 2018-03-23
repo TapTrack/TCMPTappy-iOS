@@ -24,35 +24,39 @@
 import Foundation
 
 public class TagWrittenResponse : TCMPMessage{
-    var commandCode: UInt8 {
+    public private(set) var commandCode: UInt8 {
         get{
             return TagWrittenResponse.getCommandCode()
-        }}
+        }
+        set{}
+        
+    }
     
-    var payload: [UInt8] {
+    public private(set) var payload: [UInt8] {
         get{
             return [tagType.getTagByteIndicator()] + tagCode
         }
+        set{}
     }
 
-    var commandFamily: [UInt8] = [0x00,0x01]
-    var tagCode : [UInt8] = [0x00,0x00,0x00,0x00,0x00,0x00,0x00]
-    var tagType : TagTypes = TagTypes.TAG_UNKNOWN
+    public private(set) var commandFamily: [UInt8] = [0x00,0x01]
+    public private(set) var  tagCode : [UInt8] = [0x00,0x00,0x00,0x00,0x00,0x00,0x00]
+    public private(set) var  tagType : TagTypes = TagTypes.TAG_UNKNOWN
     
-    init(){}
+    public init(){}
     
-    init(tagCode : [UInt8], tagType: TagTypes){
+    public init(tagCode : [UInt8], tagType: TagTypes){
         self.tagCode = tagCode
         self.tagType = tagType
     }
 
-    func parsePayload(payload: [UInt8]) throws {
+    public func parsePayload(payload: [UInt8]) throws {
         if (payload.count > 1){
             tagType = TagTypes(tagCodeByteIndicator: payload[0])
             tagCode = Array(payload[1...payload.count-1])
         }
     }
-    static func getCommandCode() -> UInt8{
+    public static func getCommandCode() -> UInt8{
         return 0x05
     }
 

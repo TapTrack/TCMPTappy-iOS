@@ -26,9 +26,9 @@ import Foundation
 public class RawTCMPMesssage : TCMPMessage
 {
     
-    public var commandCode: UInt8
-    public var payload: [UInt8]
-    public var commandFamily: [UInt8]
+    public private(set) var commandCode: UInt8
+    public private(set) var payload: [UInt8]
+    public private(set) var commandFamily: [UInt8]
     
     init(commandCode: UInt8, commandFamily: [UInt8], payload: [UInt8] ){
         self.commandCode = commandCode;

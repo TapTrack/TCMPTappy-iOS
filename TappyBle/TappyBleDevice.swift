@@ -24,11 +24,15 @@
 import Foundation
 
 public class TappyBleDevice {
-    var name : String
+    var deviceName : String
     public var deviceId : UUID = UUID()
     
     init(name : String, deviceId : UUID){
-        self.name = name
+        self.deviceName = name
         self.deviceId = deviceId
+    }
+    
+    public func name() -> String{
+        return deviceName
     }
 }

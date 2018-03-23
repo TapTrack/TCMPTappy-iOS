@@ -23,7 +23,7 @@
 
 import Foundation
 
-enum TagTypes : UInt8{
+public enum TagTypes : UInt8{
     case TAG_UNKNOWN = 0x00
     case MIFARE_ULTRALIGHT = 0x01
     case NTAG203 = 0x02
@@ -47,7 +47,7 @@ enum TagTypes : UInt8{
     case NTAG_216 = 0x14
     case TAG_TYPE_NOT_RECOGNIZED = 0xFF
     
-    init(tagCodeByteIndicator : UInt8){
+    public init(tagCodeByteIndicator : UInt8){
         switch tagCodeByteIndicator {
         case 0x00:
             self = .TAG_UNKNOWN
@@ -96,7 +96,7 @@ enum TagTypes : UInt8{
         }
     }
 
-func getTagByteIndicator()  -> UInt8{
+public func getTagByteIndicator()  -> UInt8{
     switch (self) {
     case TagTypes.TAG_UNKNOWN:
         return 0x00

@@ -26,25 +26,29 @@ import Foundation
 
 public class BasicNfcApplicationErrorMessage : TCMPMessage, TCMPApplicationErrorMessage {
    
-    static func getCommandCode() -> UInt8 {
-        return 0x7F
+    public private(set) var commandCode: UInt8 {
+        get{
+            return BasicNfcApplicationErrorMessage.getCommandCode()
+        }
+        set{}
     }
-   
-    var commandCode: UInt8 = 0x7F
-    var payload: [UInt8] {
+   public private(set) var payload: [UInt8] {
         get {
             return [appErrorCode,internalErrorCode,readerStatusCode] + errorDescription.utf8
         }
+        set{}
     }
     
-    var commandFamily: [UInt8] = [0x00,0x01]
+   public private(set) var commandFamily: [UInt8] = [0x00,0x01]
     
-    var appErrorCode: UInt8 = 0x00
-    var internalErrorCode: UInt8 = 0x00
-    var readerStatusCode: UInt8 = 0x00
-    var errorDescription: String = ""
+   public private(set) var appErrorCode: UInt8 = 0x00
+   public private(set) var internalErrorCode: UInt8 = 0x00
+   public private(set) var readerStatusCode: UInt8 = 0x00
+   public private(set) var errorDescription: String = ""
     
-    func parsePayload(payload: [UInt8]) throws {
+    public init(){}
+    
+    public func parsePayload(payload: [UInt8]) throws {
         appErrorCode = payload[0]
         internalErrorCode = payload[1]
         readerStatusCode = payload[2]
@@ -52,5 +56,8 @@ public class BasicNfcApplicationErrorMessage : TCMPMessage, TCMPApplicationError
         errorDescription = String(data: errorDescriptionBytes, encoding: .utf8)!
     }
     
+    static func getCommandCode() -> UInt8 {
+        return 0x7F
+    }
 
 }

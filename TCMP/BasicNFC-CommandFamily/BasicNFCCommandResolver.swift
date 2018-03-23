@@ -24,7 +24,7 @@
 import Foundation
 
 public class BasicNFCCommandResolver : MessageResolver{
-    let FAMILY_ID : [UInt8] = [0x00,0x01]
+    public let FAMILY_ID : [UInt8] = [0x00,0x01]
     
     private func assertFamilyMatches(message: TCMPMessage) throws {
         if(message.commandFamily.count != 2 || message.commandFamily[0] != FAMILY_ID[0] || message.commandFamily[1] != FAMILY_ID[1]){
@@ -32,7 +32,7 @@ public class BasicNFCCommandResolver : MessageResolver{
         }
     }
     
-    func resolveCommand(message: TCMPMessage) throws -> TCMPMessage {
+   public func resolveCommand(message: TCMPMessage) throws -> TCMPMessage {
         try assertFamilyMatches(message: message)
         var parsedMessage : TCMPMessage
         
@@ -57,7 +57,7 @@ public class BasicNFCCommandResolver : MessageResolver{
         
     }
     
-    func resolveResponse(message: TCMPMessage) throws -> TCMPMessage {
+    public func resolveResponse(message: TCMPMessage) throws -> TCMPMessage {
         try assertFamilyMatches(message: message)
         var parsedMessage : TCMPMessage
         
