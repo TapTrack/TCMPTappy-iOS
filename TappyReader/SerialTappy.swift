@@ -132,6 +132,10 @@ public class SerialTappy : Tappy {
         return communicator.state
     }
     
+    public func getCommunicator() -> TappySerialCommunicator{
+        return communicator
+    }
+    
 }
 
 
