@@ -26,7 +26,7 @@ import XCTest
 
 
 class TestCommunicator : TappySerialCommunicator{
-    
+    var state: TappyStatus = TappyStatus.STATUS_CLOSED
     var bytesSent : [UInt8] = []
     var dataListener : ([UInt8]) -> ()
     var statusListener : (TappyStatus) -> ()

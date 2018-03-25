@@ -31,7 +31,7 @@ class TappyBleCommunicator : NSObject, CBPeripheralDelegate, CBCentralManagerDel
     private var backingSerialService : CBService?
     private var backingRxCharacteristic : CBCharacteristic?
     private var backingTxCharacteristic : CBCharacteristic?
-    private var state : TappyStatus = TappyStatus.STATUS_CLOSED
+    public private(set) var state : TappyStatus = TappyStatus.STATUS_CLOSED
     private var tappyName : String
     final var bleDeviceUid : String
     public var error : Error?

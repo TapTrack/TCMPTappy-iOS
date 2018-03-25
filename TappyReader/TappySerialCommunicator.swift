@@ -24,6 +24,7 @@
 import Foundation
 
 public protocol TappySerialCommunicator {
+    var state : TappyStatus {get}
     func setDataListener(receivedBytes listener : @escaping ([UInt8]) -> ())
     func removeDataListener()
     func setStatusListener(statusReceived listener : @escaping (TappyStatus) -> ())

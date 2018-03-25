@@ -23,19 +23,13 @@
 import Foundation
 
 public class SerialTappy : Tappy {
-    public var state : TappyStatus = TappyStatus.STATUS_CLOSED
     
-    var communicator : TappySerialCommunicator?
+    var communicator : TappySerialCommunicator
     var receiveBuffer : [UInt8] = []
-    var statusListener : (TappyStatus) -> ()
-    var responseListener : (TCMPMessage) -> ()
-    var unparsableListener : ([UInt8]) -> ()
+    var statusListener : (TappyStatus) -> () = {_ in func emptyStatusListener(status: TappyStatus) -> (){}}
+    var responseListener : (TCMPMessage) -> () = {_ in func emptyResponseListener(message: TCMPMessage) -> (){}}
+    var unparsableListener : ([UInt8]) -> () = {_ in func emptyUnparsablePacketListener(packet : [UInt8]) -> (){}}
     
-    public init() {
-        responseListener = {_ in func emptyResponseListener(message: TCMPMessage) -> (){}}
-        statusListener = {_ in func emptyStatusListener(status: TappyStatus) -> (){}}
-        unparsableListener = {_ in func emptyUnparsablePacketListener(packet : [UInt8]) -> (){}}
-    }
     
     public init(communicator : TappySerialCommunicator){
         responseListener = {_ in func emptyResponseListener(message: TCMPMessage) -> (){}}
@@ -78,8 +72,8 @@ public class SerialTappy : Tappy {
             }
         }
     }
-
-   public func setResponseListener(listener: @escaping (TCMPMessage) -> ()) {
+    
+    public func setResponseListener(listener: @escaping (TCMPMessage) -> ()) {
         responseListener = listener
     }
     
@@ -102,55 +96,40 @@ public class SerialTappy : Tappy {
     public func removeUnparsablePacketListener() {
         unparsableListener = {_ in func emptyUnparsablePacketListener(packet : [UInt8]) -> (){}}
     }
-
+    
     public func removeAllListeners() {
         removeResponseListener()
         removeUnparsablePacketListener()
         removeUnparsablePacketListener()
     }
     
-    private func notifyListenerOfStatus(status : TappyStatus/*, affectedTappy: SerialTappy*/){
+    private func notifyListenerOfStatus(status : TappyStatus){
         statusListener(status)
     }
     
     public func connect(){
-        if let comm = communicator{
-            comm.connect()
-        }
+        communicator.connect()
         
     }
     
     public func sendMessage(message: TCMPMessage) {
-        if let comm = communicator{
-            comm.sendBytes(data: TCMPUtils.hdlcEncodePacket(packet: message.toByteArray()))
-        }
+        communicator.sendBytes(data: TCMPUtils.hdlcEncodePacket(packet: message.toByteArray()))
     }
     
     public func disconnect() {
-        if let comm = communicator{
-            comm.disconnect()
-        }
-        
+        communicator.disconnect()
     }
     
     public func close() {
-        if let comm = communicator{
-            comm.close()
-        }
-        
+        communicator.close()
     }
     
     public func getDeviceDescription() -> String {
-        if let comm = communicator{
-            return comm.getDeviceDescription();
-        }else{
-            return ""
-        }
-        
+        return communicator.getDeviceDescription();
     }
     
     public func getLatestStatus() -> TappyStatus {
-        return state
+        return communicator.state
     }
     
 }

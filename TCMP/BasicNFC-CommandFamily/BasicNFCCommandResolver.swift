@@ -26,6 +26,8 @@ import Foundation
 public class BasicNFCCommandResolver : MessageResolver{
     public let FAMILY_ID : [UInt8] = [0x00,0x01]
     
+    public init(){}
+    
     private func assertFamilyMatches(message: TCMPMessage) throws {
         if(message.commandFamily.count != 2 || message.commandFamily[0] != FAMILY_ID[0] || message.commandFamily[1] != FAMILY_ID[1]){
             throw TCMPParsingError.resolverError(errorDescription: "Specified message is for a different command family")

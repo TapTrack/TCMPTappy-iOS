@@ -46,7 +46,7 @@ public class TappyCentralManagerProvider {
     
     // MARK: - Accessors
     
-    class func shared() -> TappyCentralManagerProvider {
+    public class func shared() -> TappyCentralManagerProvider {
         return sharedTappyCentralManagerProvider
     }
     
