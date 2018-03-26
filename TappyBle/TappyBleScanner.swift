@@ -67,6 +67,7 @@ public class TappyBleScanner : NSObject, CBCentralManagerDelegate{
     
     public func stopScan(){
         centralManager.stopScan()
+        changeStateAndNotify(newState: TappyBleScannerStatus.STATUS_POWERED_ON) 
     }
     
     private func changeStateAndNotify(newState: TappyBleScannerStatus){

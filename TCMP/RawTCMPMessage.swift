@@ -30,13 +30,13 @@ public class RawTCMPMesssage : TCMPMessage
     public private(set) var payload: [UInt8]
     public private(set) var commandFamily: [UInt8]
     
-    init(commandCode: UInt8, commandFamily: [UInt8], payload: [UInt8] ){
+    public init(commandCode: UInt8, commandFamily: [UInt8], payload: [UInt8] ){
         self.commandCode = commandCode;
         self.commandFamily = commandFamily
         self.payload = payload	
     }
     
-    init(message: [UInt8]) throws {
+    public init(message: [UInt8]) throws {
         do{
             if(try TCMPUtils.validate(data: message)){
                 commandFamily = [message[3], message[4]]

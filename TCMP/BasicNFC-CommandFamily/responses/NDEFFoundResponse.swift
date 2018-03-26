@@ -73,7 +73,7 @@ public class NDEFFoundResponse : TCMPMessage{
         }else{
             tagType = TagTypes.init(tagCodeByteIndicator: payload[0])
             let numTagCodeBytes : UInt8 = payload[1]
-            let tagCodeBytes = payload[2...2+Int(numTagCodeBytes)]
+            let tagCodeBytes = payload[2...2+Int(numTagCodeBytes)-1]
             tagCode = Array(tagCodeBytes)
             let ndefMessageBytes = payload[2+Int(numTagCodeBytes)...payload.count-1]
             ndefMessage = Array(ndefMessageBytes)
