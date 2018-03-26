@@ -23,7 +23,7 @@
 
 import Foundation
 import CoreBluetooth
-
+@objc
 class TappyBleCommunicator : NSObject, CBPeripheralDelegate, CBCentralManagerDelegate, TappySerialCommunicator{
 
     private var centralManager : CBCentralManager
@@ -31,16 +31,18 @@ class TappyBleCommunicator : NSObject, CBPeripheralDelegate, CBCentralManagerDel
     private var backingSerialService : CBService?
     private var backingRxCharacteristic : CBCharacteristic?
     private var backingTxCharacteristic : CBCharacteristic?
+    
     public private(set) var state : TappyStatus = TappyStatus.STATUS_CLOSED
     private var tappyName : String
     final var bleDeviceUid : String
+    @objc
     public var error : Error?
     
     
     private var dataReceivedListener : ([UInt8]) -> () = {_ in func emptyDataReceivedListener(data : [UInt8]) -> (){}}
     private var statusListener : (TappyStatus) -> () = {_ in func emptyTappyStatusListener(status : TappyStatus) -> (){}}
     private var packetsToSend: [[UInt8]] = [[UInt8]]()
-    
+    @objc
     private init(centralManager : CBCentralManager, tappyPeripheral : CBPeripheral, tappyName : String)  {
         self.centralManager = centralManager
         self.tappyPeripheral = tappyPeripheral
@@ -50,7 +52,7 @@ class TappyBleCommunicator : NSObject, CBPeripheralDelegate, CBCentralManagerDel
         self.tappyPeripheral.delegate = self
         self.centralManager.delegate = self
     }
-    
+    @objc
     public static func getTappyBleCommunicator(centralManager : CBCentralManager, deviceId : UUID) -> TappyBleCommunicator? {
         let peripherals : [CBPeripheral] = centralManager.retrievePeripherals(withIdentifiers: [deviceId])
         if peripherals.count != 0 {
@@ -70,7 +72,7 @@ class TappyBleCommunicator : NSObject, CBPeripheralDelegate, CBCentralManagerDel
     
     
     // MARK: CBCentralManagerDelegate
-    
+    @objc
     public func centralManagerDidUpdateState(_ central: CBCentralManager) {
         if (central == centralManager){
             NSLog("TappyBleCommunicator: CBCM did update state")
@@ -80,7 +82,7 @@ class TappyBleCommunicator : NSObject, CBPeripheralDelegate, CBCentralManagerDel
             NSLog("TappyBleCommunicator: Unrecognized CBCM did update state")
         }
     }
-    
+    @objc
     public func centralManager(_ central: CBCentralManager, didConnect peripheral: CBPeripheral) {
         if(centralManager == central && tappyPeripheral == peripheral){
             if let anError = error{
@@ -96,7 +98,7 @@ class TappyBleCommunicator : NSObject, CBPeripheralDelegate, CBCentralManagerDel
             NSLog("TappyBleCommunicator: CB Central Manager connected to an unrecognized peripheral.")
         }
     }
-    
+    @objc
     public func centralManager(_ central: CBCentralManager, didFailToConnect peripheral: CBPeripheral, error: Error?) {
         if(centralManager == central && tappyPeripheral == peripheral){
              NSLog(String(format: "TappyBleCommunicator: failed to connect to peripheral %@", arguments:  [tappyName]))
@@ -109,7 +111,7 @@ class TappyBleCommunicator : NSObject, CBPeripheralDelegate, CBCentralManagerDel
             }
         }
     }
-    
+    @objc
     public func centralManager(_ central: CBCentralManager, didDisconnectPeripheral peripheral: CBPeripheral, error: Error?) {
         if(centralManager == central && tappyPeripheral == peripheral){
             NSLog(String(format: "TappyBleCommunicator: disconnected from peripheral %@", arguments:  [tappyName]))
@@ -124,7 +126,7 @@ class TappyBleCommunicator : NSObject, CBPeripheralDelegate, CBCentralManagerDel
     
     
     //MARK : CBPeripheralDelegate
-    
+    @objc
     public func peripheral(_ peripheral: CBPeripheral, didDiscoverServices error: Error?) {
            if(tappyPeripheral == peripheral){
             if let anError = error{
@@ -150,7 +152,7 @@ class TappyBleCommunicator : NSObject, CBPeripheralDelegate, CBCentralManagerDel
             }
         }
     }
-    
+    @objc
     public func peripheral(_ peripheral: CBPeripheral, didDiscoverCharacteristicsFor service: CBService, error: Error?){
         if(tappyPeripheral == peripheral){
              NSLog(String(format: "TappyBleCommunicator: CB Central Manager discovered characteristics for %@", arguments:  [tappyName]))
@@ -213,7 +215,7 @@ class TappyBleCommunicator : NSObject, CBPeripheralDelegate, CBCentralManagerDel
             changeStateAndNotify(newState: TappyStatus.STATUS_NOT_READY_TO_CONNECT)
         }
     }
-    
+    @objc
     public func peripheral(_ peripheral: CBPeripheral, didUpdateValueFor characteristic: CBCharacteristic, error: Error?) {
            if(tappyPeripheral == peripheral){
             NSLog(String(format: "TappyBleCommunicator: updated characteristic value for %@", arguments: [tappyName]))
@@ -226,7 +228,7 @@ class TappyBleCommunicator : NSObject, CBPeripheralDelegate, CBCentralManagerDel
             charactersticRead(tappyCharacteristic : characteristic)
         }
     }
-    
+    @objc
     private func charactersticRead(tappyCharacteristic : CBCharacteristic){
         if(tappyCharacteristic.uuid == TappyBleDeviceDefinition.getTxCharacteristicUuid()){
             if let value = tappyCharacteristic.value{
@@ -235,7 +237,7 @@ class TappyBleCommunicator : NSObject, CBPeripheralDelegate, CBCentralManagerDel
             }
         }
     }
-    
+    @objc
     public func peripheral(_ peripheral: CBPeripheral, didWriteValueFor characteristic: CBCharacteristic, error: Error?) {
            if(tappyPeripheral == peripheral){
             NSLog(String(format: "TappyBleCommunicator: didWriteValueFor for %@", arguments: [tappyName]))
@@ -258,7 +260,7 @@ class TappyBleCommunicator : NSObject, CBPeripheralDelegate, CBCentralManagerDel
     
     
     //MARK : TappySerialCommunicator
-    
+    @objc
     public func sendBytes(data: [UInt8]) {
         let numWholePackets : UInt = UInt(data.count/20)
         let numRemainingBytes : UInt = UInt(data.count % 20)
@@ -287,36 +289,36 @@ class TappyBleCommunicator : NSObject, CBPeripheralDelegate, CBCentralManagerDel
                     tappyPeripheral.writeValue(Data(packetsToSend[0]), for: rxChar, type: CBCharacteristicWriteType.withResponse)
     }
     }
-    
+    @objc
     public func connect() {
         centralManager.connect(tappyPeripheral, options: nil)
         changeStateAndNotify(newState: TappyStatus.STATUS_CONNECTING)
     }
-    
+    @objc
     public func disconnect() {
                 centralManager.cancelPeripheralConnection(tappyPeripheral)
     }
-    
+    @objc
     public func close() {
         disconnect()
     }
-    
+    @objc
     public func setDataListener(receivedBytes listener: @escaping ([UInt8]) -> ()) {
         dataReceivedListener = listener
     }
-    
+    @objc
     public func removeDataListener() {
         dataReceivedListener = {_ in func emptyDataReceivedListener(data : [UInt8]) -> (){}}
     }
-    
+    // throws error when putting @objc here - something cannot be represented in Obj-C
     public func setStatusListener(statusReceived listener: @escaping (TappyStatus) -> ()) {
         statusListener = listener
     }
-    
+   @objc
    public func removeStatusListener() {
         statusListener =  {_ in func emptyStatusListener(status : TappyStatus) -> (){}}
     }
-    
+    @objc
     public func getDeviceDescription() -> String {
         if let description = tappyPeripheral.name{
             return description
@@ -327,12 +329,11 @@ class TappyBleCommunicator : NSObject, CBPeripheralDelegate, CBCentralManagerDel
     
     
     //MARK: TappyBleCommunicator
-    
     private func changeStateAndNotify(newState: TappyStatus){
         state = newState
         statusListener(newState)
     }
-    
+    @objc
     private func resolveState(){
         if(centralManager.state == .poweredOff){
             NSLog("TappyBleCommunicator: BLE is powered off")
