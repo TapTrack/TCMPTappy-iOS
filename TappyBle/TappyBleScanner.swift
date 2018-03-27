@@ -23,25 +23,25 @@
 
 import Foundation
 import CoreBluetooth
-
+@objc
 public class TappyBleScanner : NSObject, CBCentralManagerDelegate{
     
     private var centralManager : CBCentralManager
     private var tappyFoundListener : (TappyBleDevice) -> () = {_ in func emptyTappyFoundListener(tappy: TappyBleDevice) -> (){}}
     public var statusListener : (TappyBleScannerStatus) -> () = {_ in func emptyStatusListener(status: TappyBleScannerStatus) -> (){}}
     private var state : TappyBleScannerStatus = TappyBleScannerStatus.STATUS_CLOSED
-    
+    @objc
     public init(centralManager : CBCentralManager){
         self.centralManager = centralManager
         super.init()
         centralManager.delegate = self
     }
-    
+    @objc
     public func centralManagerDidUpdateState(_ central: CBCentralManager) {
         resolveState()
         changeStateAndNotify(newState: state)
     }
-    
+    @objc
     public func centralManager(_ central: CBCentralManager, didDiscover peripheral: CBPeripheral, advertisementData: [String : Any], rssi RSSI: NSNumber) {
         if(central == centralManager){
             NSLog("TappyBleScanner: Discovered a peripheral, validating name... ")
@@ -83,7 +83,7 @@ public class TappyBleScanner : NSObject, CBCentralManagerDelegate{
     public func removeTappyFoundListener(){
         tappyFoundListener = {_ in func emptyTappyFoundListener(tappy: TappyBleDevice) -> (){}} 
     }
-    
+
     public func setStatusListener(statusReceived listener: @escaping (TappyBleScannerStatus) -> ()) {
         statusListener = listener
     }
