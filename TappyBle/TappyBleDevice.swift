@@ -23,15 +23,17 @@
 
 import Foundation
 
-public class TappyBleDevice {
+@objc
+public class TappyBleDevice : NSObject {
     var deviceName : String
-    public var deviceId : UUID = UUID()
+    @objc public var deviceId : UUID = UUID()
     
     init(name : String, deviceId : UUID){
         self.deviceName = name
         self.deviceId = deviceId
     }
     
+    @objc
     public func name() -> String{
         return deviceName
     }

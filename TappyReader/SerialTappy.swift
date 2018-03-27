@@ -22,7 +22,7 @@
  */
 import Foundation
 
-public class SerialTappy : Tappy {
+public class SerialTappy : NSObject, Tappy {
     
     var communicator : TappySerialCommunicator
     var receiveBuffer : [UInt8] = []
@@ -36,6 +36,7 @@ public class SerialTappy : Tappy {
         statusListener = {_ in func emptyStatusListener(status: TappyStatus) -> (){}}
         unparsableListener = {_ in func emptyUnparsablePacketListener(packet : [UInt8]) -> (){}}
         self.communicator = communicator
+        super.init()
         communicator.setDataListener(receivedBytes: receiveBytes)
         communicator.setStatusListener(statusReceived: notifyListenerOfStatus)
     }

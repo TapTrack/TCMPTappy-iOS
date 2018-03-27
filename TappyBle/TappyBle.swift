@@ -25,8 +25,10 @@
 import Foundation
 import CoreBluetooth
 
+@objc
 public class TappyBle : SerialTappy{
     
+    @objc
     public static func getTappyBle (centralManager : CBCentralManager, device : TappyBleDevice) -> TappyBle?{
         if let bleCommunicator = TappyBleCommunicator.getTappyBleCommunicator(centralManager: centralManager, deviceId: device.deviceId){
             return TappyBle(communicator: bleCommunicator)
