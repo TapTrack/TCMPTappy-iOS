@@ -23,15 +23,15 @@
 
 import Foundation
 
-public enum TappyStatus {
-    case STATUS_DISCONNECTED
-    case STATUS_CONNECTING
-    case STATUS_READY
-    case STATUS_DISCONNECTING
-    case STATUS_CLOSED
-    case STATUS_ERROR
-    case STATUS_NOT_READY_TO_CONNECT
-    case STATUS_COMMUNICATOR_ERROR
+public enum TappyStatus : Int {
+    case STATUS_DISCONNECTED = 1
+    case STATUS_CONNECTING = 2
+    case STATUS_READY = 3
+    case STATUS_DISCONNECTING = 4
+    case STATUS_CLOSED = 5
+    case STATUS_ERROR = 6
+    case STATUS_NOT_READY_TO_CONNECT = 7
+    case STATUS_COMMUNICATOR_ERROR = 8
     
     func getString() -> String{
         switch self {

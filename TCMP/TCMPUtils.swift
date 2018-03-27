@@ -45,7 +45,7 @@ public class TCMPUtils {
         private let packets : [[UInt8]]
         private var remainder : [UInt8]
         
-        init(bytes : [UInt8], packets : [[UInt8]], remainder : [UInt8]){
+        public init(bytes : [UInt8], packets : [[UInt8]], remainder : [UInt8]){
             self.bytes = bytes
             self.packets = packets
             self.remainder = remainder

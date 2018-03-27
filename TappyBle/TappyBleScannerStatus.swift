@@ -23,15 +23,15 @@
 
 import Foundation
 
-public enum TappyBleScannerStatus {
-    case STATUS_CLOSED
-    case STATUS_SCANNING
-    case STATUS_POWERED_OFF
-    case STATUS_POWERED_ON
-    case STATUS_RESETTING
-    case STATUS_NOT_AUTHORIZED
-    case STATUS_NOT_SUPPORTED
-    case STATUS_UNKNOWN
+public enum TappyBleScannerStatus : Int {
+    case STATUS_CLOSED = 1
+    case STATUS_SCANNING = 2
+    case STATUS_POWERED_OFF = 3
+    case STATUS_POWERED_ON = 4
+    case STATUS_RESETTING = 5
+    case STATUS_NOT_AUTHORIZED = 6
+    case STATUS_NOT_SUPPORTED = 7
+    case STATUS_UNKNOWN = 8
     
     func getString() -> String{
         switch self {
