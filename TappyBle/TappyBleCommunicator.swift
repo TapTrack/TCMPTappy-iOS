@@ -42,7 +42,7 @@ class TappyBleCommunicator : NSObject, CBPeripheralDelegate, CBCentralManagerDel
     private var dataReceivedListener : ([UInt8]) -> () = {_ in func emptyDataReceivedListener(data : [UInt8]) -> (){}}
     private var statusListener : (TappyStatus) -> () = {_ in func emptyTappyStatusListener(status : TappyStatus) -> (){}}
     private var packetsToSend: [[UInt8]] = [[UInt8]]()
-    @objc
+    
     private init(centralManager : CBCentralManager, tappyPeripheral : CBPeripheral, tappyName : String)  {
         self.centralManager = centralManager
         self.tappyPeripheral = tappyPeripheral
@@ -228,7 +228,7 @@ class TappyBleCommunicator : NSObject, CBPeripheralDelegate, CBCentralManagerDel
             charactersticRead(tappyCharacteristic : characteristic)
         }
     }
-    @objc
+    
     private func charactersticRead(tappyCharacteristic : CBCharacteristic){
         if(tappyCharacteristic.uuid == TappyBleDeviceDefinition.getTxCharacteristicUuid()){
             if let value = tappyCharacteristic.value{
@@ -333,7 +333,7 @@ class TappyBleCommunicator : NSObject, CBPeripheralDelegate, CBCentralManagerDel
         state = newState
         statusListener(newState)
     }
-    @objc
+    
     private func resolveState(){
         if(centralManager.state == .poweredOff){
             NSLog("TappyBleCommunicator: BLE is powered off")
