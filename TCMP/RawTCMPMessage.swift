@@ -22,21 +22,21 @@
  */
 
 import Foundation
-
-public class RawTCMPMesssage : TCMPMessage
+@objc
+public class RawTCMPMesssage : NSObject, TCMPMessage
 {
     
-    public private(set) var commandCode: UInt8
-    public private(set) var payload: [UInt8]
-    public private(set) var commandFamily: [UInt8]
+    @objc public private(set) var commandCode: UInt8
+    @objc public private(set) var payload: [UInt8]
+    @objc public private(set) var commandFamily: [UInt8]
     
-    public init(commandCode: UInt8, commandFamily: [UInt8], payload: [UInt8] ){
+    @objc public init(commandCode: UInt8, commandFamily: [UInt8], payload: [UInt8] ){
         self.commandCode = commandCode;
         self.commandFamily = commandFamily
         self.payload = payload	
     }
     
-    public init(message: [UInt8]) throws {
+    @objc public init(message: [UInt8]) throws {
         do{
             if(try TCMPUtils.validate(data: message)){
                 commandFamily = [message[3], message[4]]
@@ -55,7 +55,7 @@ public class RawTCMPMesssage : TCMPMessage
         }
     }
     
-    public func parsePayload(payload : [UInt8]) throws {
+    @objc public func parsePayload(payload : [UInt8]) throws {
         self.payload = payload
     }
 }

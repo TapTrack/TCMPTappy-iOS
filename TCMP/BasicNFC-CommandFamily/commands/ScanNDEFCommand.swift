@@ -22,16 +22,16 @@
  */
 
 import Foundation
-
-public class ScanNDEFCommand : TCMPMessage{
-    
+@objc
+public class ScanNDEFCommand : NSObject, TCMPMessage{
+    @objc
     public private(set) var commandCode: UInt8{
         get{
             return ScanNDEFCommand.getCommandCode()
         }
         set{}
     }
-    
+    @objc
     public private(set) var payload: [UInt8]{
         get{
             if(pollingMode == PollingMode.pollForType1){
@@ -44,19 +44,22 @@ public class ScanNDEFCommand : TCMPMessage{
         }
         set{}
     }
+    @objc
     public private(set) var commandFamily: [UInt8] = [0x00,0x01]
-    
+
+    @objc    
     public private(set) var timeout : UInt8 = 0x00
     public private(set) var pollingMode : PollingMode = PollingMode.pollForGeneral
     
-    public init(){}
+    @objc
+    public override init(){}
     
     public init(timeout : UInt8, pollingMode : PollingMode){
         self.timeout = timeout
         self.pollingMode = pollingMode
     }
     
-    
+    @objc
     public func parsePayload(payload: [UInt8]) throws {
         if(payload.count >= 2){
             timeout = payload[0]
@@ -72,7 +75,7 @@ public class ScanNDEFCommand : TCMPMessage{
             throw TCMPParsingError.payloadTooShort
         }
     }
-    
+    @objc
     public static func getCommandCode() -> UInt8 {
         return 0x04
     }

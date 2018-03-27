@@ -22,19 +22,19 @@
  */
 
 import Foundation
-
-public class WriteNDEFTextCommand : TCMPMessage
+@objc
+public class WriteNDEFTextCommand : NSObject, TCMPMessage
 {
-   
-    public private(set) var commandCode : UInt8{
+    
+    @objc public private(set) var commandCode : UInt8{
         get{
             return WriteNDEFTextCommand.getCommandCode()
         }
         set{}
     }
     
-    public private(set) var commandFamily : [UInt8] = [0x00,0x01]
-    public private(set) var payload: [UInt8]{
+    @objc public private(set) var commandFamily : [UInt8] = [0x00,0x01]
+    @objc public private(set) var payload: [UInt8]{
         get {
             var lockFlagByte: UInt8
             if(lockFlag == LockingMode.LOCK_TAG){
@@ -48,11 +48,11 @@ public class WriteNDEFTextCommand : TCMPMessage
         set{}
     }
     
-    public private(set) var timeout : UInt8 = 0
+    @objc public private(set) var timeout : UInt8 = 0
     public private(set) var lockFlag : LockingMode = LockingMode.DONT_LOCK_TAG
-    public private(set) var text : [UInt8] = []
+    @objc public private(set) var text : [UInt8] = []
     
-    public init(){}
+    public override init(){}
     
     public init(timeout: UInt8, lockTag: LockingMode, text: String){
         self.timeout = timeout
@@ -60,7 +60,7 @@ public class WriteNDEFTextCommand : TCMPMessage
         self.text = Array(text.utf8)
     }
     
-    public func parsePayload(payload : [UInt8]) throws {
+    @objc public func parsePayload(payload : [UInt8]) throws {
         if(payload.count >= 2){
             timeout = payload[0]
             
@@ -81,7 +81,7 @@ public class WriteNDEFTextCommand : TCMPMessage
         }
     }
     
-    static func getCommandCode() -> UInt8{
+    @objc static func getCommandCode() -> UInt8{
         return 0x06
     }
     

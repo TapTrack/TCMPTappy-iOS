@@ -30,7 +30,7 @@ enum TCMPParsingError: Error {
     case invalidTagTypeByte
     case notAllTagCodeBytesPresent
 }
-
+@objc
 public protocol TCMPMessage {
     var commandCode: UInt8 {get}
     var payload: [UInt8] {get}

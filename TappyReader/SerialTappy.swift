@@ -21,14 +21,14 @@
  * limitations under the License.
  */
 import Foundation
-
+@objc
 public class SerialTappy : NSObject, Tappy {
     
     var communicator : TappySerialCommunicator
-    var receiveBuffer : [UInt8] = []
+    @objc var receiveBuffer : [UInt8] = []
     var statusListener : (TappyStatus) -> () = {_ in func emptyStatusListener(status: TappyStatus) -> (){}}
-    var responseListener : (TCMPMessage) -> () = {_ in func emptyResponseListener(message: TCMPMessage) -> (){}}
-    var unparsableListener : ([UInt8]) -> () = {_ in func emptyUnparsablePacketListener(packet : [UInt8]) -> (){}}
+    @objc var responseListener : (TCMPMessage) -> () = {_ in func emptyResponseListener(message: TCMPMessage) -> (){}}
+    @objc var unparsableListener : ([UInt8]) -> () = {_ in func emptyUnparsablePacketListener(packet : [UInt8]) -> (){}}
     
     
     public init(communicator : TappySerialCommunicator){
@@ -41,7 +41,7 @@ public class SerialTappy : NSObject, Tappy {
         communicator.setStatusListener(statusReceived: notifyListenerOfStatus)
     }
     
-    public func receiveBytes(data : [UInt8]){
+    @objc public func receiveBytes(data : [UInt8]){
         var commands : [[UInt8]] = [[]]
         receiveBuffer.append(contentsOf: data)
         if(TCMPUtils.containsHdlcEndpoint(packet: data)){
@@ -74,11 +74,11 @@ public class SerialTappy : NSObject, Tappy {
         }
     }
     
-    public func setResponseListener(listener: @escaping (TCMPMessage) -> ()) {
+    @objc public func setResponseListener(listener: @escaping (TCMPMessage) -> ()) {
         responseListener = listener
     }
     
-    public func removeResponseListener() {
+    @objc public func removeResponseListener() {
         responseListener = {_ in func emptyResponseListener(message: TCMPMessage) -> (){}}
     }
     
@@ -86,19 +86,19 @@ public class SerialTappy : NSObject, Tappy {
         statusListener = listner
     }
     
-    public func removeStatusListener() {
+    @objc public func removeStatusListener() {
         statusListener = {_ in func emptyStatusListener(status: TappyStatus) -> (){}}
     }
     
-    public func setUnparsablePacketListener(listener: @escaping ([UInt8]) -> ()) {
+    @objc public func setUnparsablePacketListener(listener: @escaping ([UInt8]) -> ()) {
         unparsableListener = listener
     }
     
-    public func removeUnparsablePacketListener() {
+    @objc public func removeUnparsablePacketListener() {
         unparsableListener = {_ in func emptyUnparsablePacketListener(packet : [UInt8]) -> (){}}
     }
     
-    public func removeAllListeners() {
+    @objc public func removeAllListeners() {
         removeResponseListener()
         removeUnparsablePacketListener()
         removeUnparsablePacketListener()
@@ -108,24 +108,24 @@ public class SerialTappy : NSObject, Tappy {
         statusListener(status)
     }
     
-    public func connect(){
+    @objc public func connect(){
         communicator.connect()
         
     }
     
-    public func sendMessage(message: TCMPMessage) {
+    @objc public func sendMessage(message: TCMPMessage) {
         communicator.sendBytes(data: TCMPUtils.hdlcEncodePacket(packet: message.toByteArray()))
     }
     
-    public func disconnect() {
+    @objc public func disconnect() {
         communicator.disconnect()
     }
     
-    public func close() {
+    @objc public func close() {
         communicator.close()
     }
     
-    public func getDeviceDescription() -> String {
+    @objc public func getDeviceDescription() -> String {
         return communicator.getDeviceDescription();
     }
     

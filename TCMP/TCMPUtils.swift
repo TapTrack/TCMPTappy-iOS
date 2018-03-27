@@ -21,8 +21,8 @@
  * limitations under the License.
  */
 import Foundation
-
-public class TCMPUtils {
+@objc
+public class TCMPUtils: NSObject {
     
     enum TCMPValidationError: Error {
         case LCSError(receivedLCS: UInt8?, calculatedLCS: UInt8?)
@@ -40,26 +40,26 @@ public class TCMPUtils {
         case invalidStartOrEndOfFrame
     }
     
-    public class HDLCParseResult{
+    @objc public class HDLCParseResult: NSObject{
         private var bytes : [UInt8]
         private let packets : [[UInt8]]
         private var remainder : [UInt8]
         
-        public init(bytes : [UInt8], packets : [[UInt8]], remainder : [UInt8]){
+        @objc public init(bytes : [UInt8], packets : [[UInt8]], remainder : [UInt8]){
             self.bytes = bytes
             self.packets = packets
             self.remainder = remainder
         }
         
-        public func getBytes() ->[UInt8]{
+        @objc public func getBytes() ->[UInt8]{
             return bytes
         }
         
-        public func getPackets() -> [[UInt8]] {
+        @objc public func getPackets() -> [[UInt8]] {
             return packets
         }
         
-        public func getRemainder() -> [UInt8] {
+        @objc public func getRemainder() -> [UInt8] {
             return remainder
         }
         
@@ -87,6 +87,8 @@ public class TCMPUtils {
         }
     }
     
+    // cannot add @objc here: "Throwing method cannot be marked objc b/c it returns a value of type 'Bool'; 
+    // return Void or a type that bridges to an Objective-C class'"
     static public func validate(data: [UInt8]) throws -> Bool {
         
             if (data.count >= 8) {
@@ -152,7 +154,7 @@ public class TCMPUtils {
     ///
     /// - Parameter data: <#data description#>
     /// - Returns: <#return value description#>
-    static public func calculateCRC(data: [UInt8]) -> [UInt8]{
+    @objc static public func calculateCRC(data: [UInt8]) -> [UInt8]{
         
         var crc : UInt16 = 0x6363
         for i in 0..<data.count {
@@ -163,7 +165,7 @@ public class TCMPUtils {
         
     }
     
-    static private func update_crc16(crc : UInt16, b : UInt8) -> UInt16 {
+    @objc static private func update_crc16(crc : UInt16, b : UInt8) -> UInt16 {
         //var i: Int
         var v: UInt16 = 0x0000
         var tcrc : UInt16 = 0x0000
@@ -175,7 +177,7 @@ public class TCMPUtils {
         return UInt16(((crc >> 8) ^ tcrc) & 0xffff)
     }
     
-    static private func shortToByteArray(value : UInt16) -> [UInt8] {
+    @objc static private func shortToByteArray(value : UInt16) -> [UInt8] {
         
         let elem1 : UInt8 = UInt8(truncatingIfNeeded: value >> 8)
         let elem2 : UInt8 = UInt8(truncatingIfNeeded: value)
@@ -184,7 +186,7 @@ public class TCMPUtils {
         return data
     }
     
-    static public func containsHdlcEndpoint(packet : [UInt8]) -> Bool{
+    @objc static public func containsHdlcEndpoint(packet : [UInt8]) -> Bool{
         for byte in packet {
             if (byte == 0x7E){
                 return true
@@ -193,7 +195,7 @@ public class TCMPUtils {
         return false
     }
     
-    static public func hdlcEncodePacket(packet : [UInt8]) -> [UInt8] {
+    @objc static public func hdlcEncodePacket(packet : [UInt8]) -> [UInt8] {
         let encodedPacket : [UInt8] = hdlcEncodeData(data: packet)
         var resultingPacket : [UInt8] = []
         
@@ -225,7 +227,7 @@ public class TCMPUtils {
         }
     }
     
-    static public func hdlcDecodePacket(frame: [UInt8]) throws -> [UInt8]{
+    @objc static public func hdlcDecodePacket(frame: [UInt8]) throws -> [UInt8]{
         
        if(frame.count == 0){
            return []

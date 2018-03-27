@@ -23,32 +23,32 @@
 
 import Foundation
 
-
-public class BasicNfcApplicationErrorMessage : TCMPMessage, TCMPApplicationErrorMessage {
+@objc
+public class BasicNfcApplicationErrorMessage : NSObject, TCMPMessage, TCMPApplicationErrorMessage {
    
-    public private(set) var commandCode: UInt8 {
+    @objc public private(set) var commandCode: UInt8 {
         get{
             return BasicNfcApplicationErrorMessage.getCommandCode()
         }
         set{}
     }
-   public private(set) var payload: [UInt8] {
+   @objc public private(set) var payload: [UInt8] {
         get {
             return [appErrorCode,internalErrorCode,readerStatusCode] + errorDescription.utf8
         }
         set{}
     }
     
-   public private(set) var commandFamily: [UInt8] = [0x00,0x01]
+   @objc public private(set) var commandFamily: [UInt8] = [0x00,0x01]
     
-   public private(set) var appErrorCode: UInt8 = 0x00
-   public private(set) var internalErrorCode: UInt8 = 0x00
-   public private(set) var readerStatusCode: UInt8 = 0x00
-   public private(set) var errorDescription: String = ""
+   @objc public private(set) var appErrorCode: UInt8 = 0x00
+   @objc public private(set) var internalErrorCode: UInt8 = 0x00
+   @objc public private(set) var readerStatusCode: UInt8 = 0x00
+   @objc public private(set) var errorDescription: String = ""
     
-    public init(){}
+   public override init(){}
     
-    public func parsePayload(payload: [UInt8]) throws {
+   @objc public func parsePayload(payload: [UInt8]) throws {
         appErrorCode = payload[0]
         internalErrorCode = payload[1]
         readerStatusCode = payload[2]
@@ -56,7 +56,7 @@ public class BasicNfcApplicationErrorMessage : TCMPMessage, TCMPApplicationError
         errorDescription = String(data: errorDescriptionBytes, encoding: .utf8)!
     }
     
-    static func getCommandCode() -> UInt8 {
+    @objc static func getCommandCode() -> UInt8 {
         return 0x7F
     }
 
