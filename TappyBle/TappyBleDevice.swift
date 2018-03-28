@@ -28,7 +28,7 @@ public class TappyBleDevice : NSObject {
     var deviceName : String
     @objc public var deviceId : UUID = UUID()
     
-    init(name : String, deviceId : UUID){
+    @objc init(name : String, deviceId : UUID){
         self.deviceName = name
         self.deviceId = deviceId
     }

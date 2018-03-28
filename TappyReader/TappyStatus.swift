@@ -23,7 +23,7 @@
 
 import Foundation
 
-public enum TappyStatus : Int {
+@objc public enum TappyStatus : Int {
     case STATUS_DISCONNECTED = 1
     case STATUS_CONNECTING = 2
     case STATUS_READY = 3

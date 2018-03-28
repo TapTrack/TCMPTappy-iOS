@@ -56,7 +56,7 @@ public class TappyBleScanner : NSObject, CBCentralManagerDelegate{
         }
     }
     
-    public func startScan() -> Bool{
+    @objc public func startScan() -> Bool{
         if state == TappyBleScannerStatus.STATUS_POWERED_ON{
             centralManager.scanForPeripherals(withServices: [TappyBleDeviceDefinition.getSerialServiceUuid()], options: nil)
             changeStateAndNotify(newState: TappyBleScannerStatus.STATUS_SCANNING)
@@ -65,7 +65,7 @@ public class TappyBleScanner : NSObject, CBCentralManagerDelegate{
         return false
     }
     
-    public func stopScan(){
+    @objc public func stopScan(){
         centralManager.stopScan()
         resolveState()
         changeStateAndNotify(newState: state)
@@ -76,19 +76,19 @@ public class TappyBleScanner : NSObject, CBCentralManagerDelegate{
        statusListener(newState)
     }
     
-    public func setTappyFoundListener(listener : @escaping (TappyBleDevice) -> ()){
+    @objc public func setTappyFoundListener(listener : @escaping (TappyBleDevice) -> ()){
         tappyFoundListener = listener
     }
     
-    public func removeTappyFoundListener(){
+    @objc public func removeTappyFoundListener(){
         tappyFoundListener = {_ in func emptyTappyFoundListener(tappy: TappyBleDevice) -> (){}} 
     }
 
-    public func setStatusListener(statusReceived listener: @escaping (TappyBleScannerStatus) -> ()) {
+    @objc public func setStatusListener(statusReceived listener: @escaping (TappyBleScannerStatus) -> ()) {
         statusListener = listener
     }
     
-    public func removeStatusListener() {
+    @objc public func removeStatusListener() {
         statusListener =  {_ in func emptyStatusListener(status: TappyBleScannerStatus) -> (){}}
     }
     

@@ -21,7 +21,7 @@
  * limitations under the License.
  */
 import Foundation
-
+@objc
 protocol MessageResolver{
      func resolveCommand(message : TCMPMessage) throws -> TCMPMessage
      func resolveResponse(message : TCMPMessage) throws -> TCMPMessage

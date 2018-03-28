@@ -22,7 +22,7 @@
  */
 
 import Foundation
-
+@objc
 public enum TappyBleScannerStatus : Int {
     case STATUS_CLOSED = 1
     case STATUS_SCANNING = 2

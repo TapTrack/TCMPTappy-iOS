@@ -23,8 +23,8 @@
 
 import Foundation
 import CoreBluetooth
-
-public class TappyCentralManagerProvider {
+@objc
+public class TappyCentralManagerProvider : NSObject {
     
     // MARK: - Properties
     
@@ -35,7 +35,7 @@ public class TappyCentralManagerProvider {
     }()
     
     // MARK: -
-    
+    @objc
     public var centralManager : CBCentralManager
     
     // Initialization
@@ -45,7 +45,7 @@ public class TappyCentralManagerProvider {
     }
     
     // MARK: - Accessors
-    
+    @objc
     public class func shared() -> TappyCentralManagerProvider {
         return sharedTappyCentralManagerProvider
     }

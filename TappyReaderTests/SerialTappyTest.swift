@@ -24,36 +24,36 @@
 import XCTest
 @testable import TapTrackReader
 
-
-class TestCommunicator : TappySerialCommunicator{
-    var state: TappyStatus = TappyStatus.STATUS_CLOSED
-    var bytesSent : [UInt8] = []
-    var dataListener : ([UInt8]) -> ()
+@objc
+class TestCommunicator : NSObject, TappySerialCommunicator{
+    @objc var state: TappyStatus = TappyStatus.STATUS_CLOSED
+    @objc var bytesSent : [UInt8] = []
+    @objc var dataListener : ([UInt8]) -> ()
     var statusListener : (TappyStatus) -> ()
     
-    init(){
+    @objc override init(){
         bytesSent = []
         dataListener = {_ in func emptyDataListener(data : [UInt8]) -> (){}}
         statusListener = {_ in func emptyStatusListener(status :TappyStatus) -> (){}}//{_ in func emptyStatusListener(status: TappyBleCommunicatorStatus) -> (){}}
     }
 
-    func setDataListener(receivedBytes listener : @escaping ([UInt8]) -> ()){
+    @objc func setDataListener(receivedBytes listener : @escaping ([UInt8]) -> ()){
         dataListener = listener
     }
-    func removeDataListener(){
+    @objc func removeDataListener(){
       dataListener = {_ in func emptyDataListener(data : [UInt8]) -> (){}}
     }
-    func setStatusListener(statusReceived listener: @escaping (TappyStatus) -> ()) {
+    @objc func setStatusListener(statusReceived listener: @escaping (TappyStatus) -> ()) {
         statusListener = listener
     }
     
-    func removeStatusListener(){
+    @objc func removeStatusListener(){
         statusListener = {_ in func emptyStatusListener(status: TappyStatus) -> (){}}
     }
-    func getStatus() -> TappyStatus{
+    @objc func getStatus() -> TappyStatus{
         return TappyStatus.STATUS_READY
     }
-    func sendBytes(data : [UInt8]) {
+    @objc func sendBytes(data : [UInt8]) {
      //   NSLog(format: "TestCommunicator is sending bytes %@", arguments : data)
         NSLog("TestCommunicator is sending bytes %@", data)
         bytesSent.append(contentsOf: data)
@@ -75,7 +75,7 @@ class TestCommunicator : TappySerialCommunicator{
     func initialize() {
         return
     }
-    
+    @objc
     func getDeviceDescription() -> String{
         return "Non Physical Test Communicator"
     }
@@ -83,19 +83,19 @@ class TestCommunicator : TappySerialCommunicator{
     
 }
 
-class TappyReaderTests: XCTestCase {
+@objc class TappyReaderTests: XCTestCase {
     
-    override func setUp() {
+    @objc override func setUp() {
         super.setUp()
         // Put setup code here. This method is called before the invocation of each test method in the class
     }
     
-    override func tearDown() {
+    @objc override func tearDown() {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
         super.tearDown()
     }
     
-    func testMessageComposition() {
+    @objc func testMessageComposition() {
         //1. Given
         let testCommunicator : TestCommunicator = TestCommunicator.init()
         let serialTappyUnderTest : SerialTappy = SerialTappy.init(communicator: testCommunicator)
@@ -108,7 +108,7 @@ class TappyReaderTests: XCTestCase {
         
     }
     
-    func testBasicBufferingAndFrameResolution(){
+    @objc func testBasicBufferingAndFrameResolution(){
         var testCommunicator : TestCommunicator = TestCommunicator.init()
         var serialTappyUnderTest : SerialTappy = SerialTappy.init(communicator: testCommunicator)
         var validHDLCFrame : [UInt8] = [0x7E,0x00,0x08,0xF8,0xFA,0x03,0xFE,0x7D,0x5D,0x7D,0x5E,0x33,0xC1,0xEE,0x7E]
@@ -123,7 +123,7 @@ class TappyReaderTests: XCTestCase {
         serialTappyUnderTest.receiveBytes(data: validHDLCFrame)
     }
     
-    func testLongFrame(){
+    @objc func testLongFrame(){
         var testCommunicator : TestCommunicator = TestCommunicator.init()
         var serialTappyUnderTest : SerialTappy = SerialTappy.init(communicator: testCommunicator)
         var longFrame : [UInt8] = [
@@ -198,7 +198,7 @@ class TappyReaderTests: XCTestCase {
         
     }
     
-    func testPerformanceExample() {
+    @objc func testPerformanceExample() {
         // This is an example of a performance test case.
         self.measure {
             // Put the code you want to measure the time of here.

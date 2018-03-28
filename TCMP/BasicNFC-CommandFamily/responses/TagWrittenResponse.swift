@@ -23,8 +23,8 @@
 
 import Foundation
 
-public class TagWrittenResponse : TCMPMessage{
-    public private(set) var commandCode: UInt8 {
+@objc public class TagWrittenResponse : NSObject, TCMPMessage{
+    @objc public private(set) var commandCode: UInt8 {
         get{
             return TagWrittenResponse.getCommandCode()
         }
@@ -32,31 +32,31 @@ public class TagWrittenResponse : TCMPMessage{
         
     }
     
-    public private(set) var payload: [UInt8] {
+    @objc public private(set) var payload: [UInt8] {
         get{
             return [tagType.getTagByteIndicator()] + tagCode
         }
         set{}
     }
 
-    public private(set) var commandFamily: [UInt8] = [0x00,0x01]
-    public private(set) var  tagCode : [UInt8] = [0x00,0x00,0x00,0x00,0x00,0x00,0x00]
     @objc public private(set) var  tagType : TagTypes = TagTypes.TAG_UNKNOWN
-    
-    public init(){}
+    @objc public private(set) var commandFamily: [UInt8] = [0x00,0x01]
+    @objc public private(set) var  tagCode : [UInt8] = [0x00,0x00,0x00,0x00,0x00,0x00,0x00]
+
+    @objc public override init(){}
     
     public init(tagCode : [UInt8], tagType: TagTypes){
         self.tagCode = tagCode
         self.tagType = tagType
     }
 
-    public func parsePayload(payload: [UInt8]) throws {
+    @objc public func parsePayload(payload: [UInt8]) throws {
         if (payload.count > 1){
             tagType = TagTypes(tagCodeByteIndicator: payload[0])
             tagCode = Array(payload[1...payload.count-1])
         }
     }
-    public static func getCommandCode() -> UInt8{
+    @objc public static func getCommandCode() -> UInt8{
         return 0x05
     }
 
