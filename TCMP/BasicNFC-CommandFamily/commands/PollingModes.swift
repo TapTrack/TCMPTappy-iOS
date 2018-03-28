@@ -22,7 +22,7 @@
  */
 import Foundation
 
-public enum PollingMode : UInt8{
+@objc public enum PollingMode : UInt8{
         case pollForType1 = 0x01
         case pollForGeneral = 0x02
     }

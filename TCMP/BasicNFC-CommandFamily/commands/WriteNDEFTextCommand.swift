@@ -49,7 +49,7 @@ public class WriteNDEFTextCommand : TCMPMessage
     }
     
     public private(set) var timeout : UInt8 = 0
-    public private(set) var lockFlag : LockingMode = LockingMode.DONT_LOCK_TAG
+    @objc public private(set) var lockFlag : LockingMode = LockingMode.DONT_LOCK_TAG
     public private(set) var text : [UInt8] = []
     
     public init(){}

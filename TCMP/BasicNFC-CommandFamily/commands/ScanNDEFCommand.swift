@@ -47,7 +47,7 @@ public class ScanNDEFCommand : TCMPMessage{
     public private(set) var commandFamily: [UInt8] = [0x00,0x01]
     
     public private(set) var timeout : UInt8 = 0x00
-    public private(set) var pollingMode : PollingMode = PollingMode.pollForGeneral
+    @objc public private(set) var pollingMode : PollingMode = PollingMode.pollForGeneral
     
     public init(){}
     

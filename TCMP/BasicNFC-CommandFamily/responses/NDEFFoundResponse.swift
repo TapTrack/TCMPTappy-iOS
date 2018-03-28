@@ -48,7 +48,7 @@ public class NDEFFoundResponse : TCMPMessage{
 
     
     public private(set) var tagCode : [UInt8] = [0x00,0x00,0x00,0x00,0x00,0x00,0x00]
-    public private(set) var tagType : TagTypes = TagTypes.TAG_UNKNOWN
+    @objc public private(set) var tagType : TagTypes = TagTypes.TAG_UNKNOWN
     public private(set) var ndefMessage : [UInt8] = [0xD0] //empty NDEF record header/TNF
     
     public init(){}

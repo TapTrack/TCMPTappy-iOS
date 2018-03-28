@@ -41,7 +41,7 @@ public class TagWrittenResponse : TCMPMessage{
 
     public private(set) var commandFamily: [UInt8] = [0x00,0x01]
     public private(set) var  tagCode : [UInt8] = [0x00,0x00,0x00,0x00,0x00,0x00,0x00]
-    public private(set) var  tagType : TagTypes = TagTypes.TAG_UNKNOWN
+    @objc public private(set) var  tagType : TagTypes = TagTypes.TAG_UNKNOWN
     
     public init(){}
     
