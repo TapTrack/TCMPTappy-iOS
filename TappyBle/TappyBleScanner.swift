@@ -71,6 +71,10 @@ public class TappyBleScanner : NSObject, CBCentralManagerDelegate{
         changeStateAndNotify(newState: state)
     }
     
+    @objc public func getState() -> TappyBleScannerStatus {
+        return state
+    }
+
     private func changeStateAndNotify(newState: TappyBleScannerStatus){
         state = newState
        statusListener(newState)
