@@ -39,10 +39,10 @@ import Foundation
         set{}
     }
 
+    @objc public private(set) var  tagType : TagTypes = TagTypes.TAG_UNKNOWN
     @objc public private(set) var commandFamily: [UInt8] = [0x00,0x01]
     @objc public private(set) var  tagCode : [UInt8] = [0x00,0x00,0x00,0x00,0x00,0x00,0x00]
-    public private(set) var  tagType : TagTypes = TagTypes.TAG_UNKNOWN
-    
+
     @objc public override init(){}
     
     public init(tagCode : [UInt8], tagType: TagTypes){

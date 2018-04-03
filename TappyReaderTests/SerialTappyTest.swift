@@ -31,7 +31,7 @@ class TestCommunicator : NSObject, TappySerialCommunicator{
     @objc var dataListener : ([UInt8]) -> ()
     var statusListener : (TappyStatus) -> ()
     
-    @objc init(){
+    @objc override init(){
         bytesSent = []
         dataListener = {_ in func emptyDataListener(data : [UInt8]) -> (){}}
         statusListener = {_ in func emptyStatusListener(status :TappyStatus) -> (){}}//{_ in func emptyStatusListener(status: TappyBleCommunicatorStatus) -> (){}}
@@ -83,7 +83,7 @@ class TestCommunicator : NSObject, TappySerialCommunicator{
     
 }
 
-@objc class TappyReaderTests: NSObject, XCTestCase {
+@objc class TappyReaderTests: XCTestCase {
     
     @objc override func setUp() {
         super.setUp()

@@ -23,7 +23,7 @@
 
 import Foundation
 
-public enum LockingMode : UInt8{
+@objc public enum LockingMode : UInt8{
     case DONT_LOCK_TAG = 0x00
     case LOCK_TAG = 0x01
 }

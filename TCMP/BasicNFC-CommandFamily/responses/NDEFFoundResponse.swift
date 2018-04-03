@@ -46,9 +46,8 @@ public class NDEFFoundResponse : NSObject, TCMPMessage{
      I will make the ndefMessage field a byte array without validation for now TODO: Write an NDEF library in Swift without CoreNFC dependency
     */
 
-    
+    @objc public private(set) var tagType : TagTypes = TagTypes.TAG_UNKNOWN
     @objc public private(set) var tagCode : [UInt8] = [0x00,0x00,0x00,0x00,0x00,0x00,0x00]
-    public private(set) var tagType : TagTypes = TagTypes.TAG_UNKNOWN
     @objc public private(set) var ndefMessage : [UInt8] = [0xD0] //empty NDEF record header/TNF
     
     public override init(){}
@@ -59,12 +58,12 @@ public class NDEFFoundResponse : NSObject, TCMPMessage{
         self.ndefMessage = ndefMessage
     }
     
-    public init(tagCode : [UInt8], tagType : TagTypes, ndefMessage : [UInt8]){
-        self.tagCode = tagCode
-        self.tagType = tagType
-        self.ndefMessage = ndefMessage
-    }
-    
+//    public init(tagCode : [UInt8], tagType : TagTypes, ndefMessage : [UInt8]){
+//        self.tagCode = tagCode
+//        self.tagType = tagType
+//        self.ndefMessage = ndefMessage
+//    }
+//
     @objc public func parsePayload(payload: [UInt8]) throws {
         if (payload.count < 2){
             throw TCMPParsingError.payloadTooShort

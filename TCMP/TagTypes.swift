@@ -23,7 +23,7 @@
 
 import Foundation
 
-public enum TagTypes : UInt8{
+@objc public enum TagTypes : Int{
     case TAG_UNKNOWN = 0x00
     case MIFARE_ULTRALIGHT = 0x01
     case NTAG203 = 0x02

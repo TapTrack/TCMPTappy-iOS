@@ -43,16 +43,12 @@ public class StreamNDEFCommand : NSObject, TCMPMessage {
             }
         }
     }
-    @objc
-    public private(set) var commandFamily: [UInt8] = [0x00,0x01]
-    @objc
-    public private(set) var timeout : UInt8 = 0x00
-    // can't add objc here b/c PollingMode not Int enum
-    public private(set) var pollingMode : PollingMode = PollingMode.pollForGeneral
     
-    // swift compiler yells w/o override here
-    @objc
-    public override init(){}
+   
+    @objc public private(set) var commandFamily: [UInt8] = [0x00,0x01]
+    @objc public private(set) var timeout : UInt8 = 0x00
+    @objc public private(set) var pollingMode : PollingMode = PollingMode.pollForGeneral
+    @objc public override init(){}
 
     
     public init(timeout : UInt8, pollingMode : PollingMode){
