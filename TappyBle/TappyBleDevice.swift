@@ -25,7 +25,7 @@ import Foundation
 
 @objc
 public class TappyBleDevice : NSObject {
-    var deviceName : String
+    @objc public var deviceName : String
     @objc public var deviceId : UUID = UUID()
     
     @objc init(name : String, deviceId : UUID){
