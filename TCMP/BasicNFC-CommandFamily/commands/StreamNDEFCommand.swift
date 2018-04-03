@@ -51,7 +51,7 @@ public class StreamNDEFCommand : NSObject, TCMPMessage {
     @objc public override init(){}
 
     
-    public init(timeout : UInt8, pollingMode : PollingMode){
+    @objc public init(timeout : UInt8, pollingMode : PollingMode){
         self.timeout = timeout
         self.pollingMode = pollingMode
     }

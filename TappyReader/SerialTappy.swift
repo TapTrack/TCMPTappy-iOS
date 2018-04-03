@@ -82,7 +82,7 @@ public class SerialTappy : NSObject, Tappy {
         responseListener = {_ in func emptyResponseListener(message: TCMPMessage) -> (){}}
     }
     
-    public func setStatusListener(listner: @escaping (TappyStatus) -> ()) {
+    @objc public func setStatusListener(listner: @escaping (TappyStatus) -> ()) {
         statusListener = listner
     }
     
@@ -129,7 +129,7 @@ public class SerialTappy : NSObject, Tappy {
         return communicator.getDeviceDescription();
     }
     
-    public func getLatestStatus() -> TappyStatus {
+    @objc public func getLatestStatus() -> TappyStatus {
         return communicator.state
     }
     

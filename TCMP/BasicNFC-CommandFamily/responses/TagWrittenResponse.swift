@@ -45,7 +45,7 @@ import Foundation
 
     @objc public override init(){}
     
-    public init(tagCode : [UInt8], tagType: TagTypes){
+   @objc public init(tagCode : [UInt8], tagType: TagTypes){
         self.tagCode = tagCode
         self.tagType = tagType
     }
