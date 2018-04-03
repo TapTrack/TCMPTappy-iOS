@@ -27,8 +27,8 @@ import CoreBluetooth
 public class TappyBleScanner : NSObject, CBCentralManagerDelegate{
     
     private var centralManager : CBCentralManager
-    private var tappyFoundListener : (TappyBleDevice) -> () = {_ in func emptyTappyFoundListener(tappy: TappyBleDevice) -> (){}}
-    public var statusListener : (TappyBleScannerStatus) -> () = {_ in func emptyStatusListener(status: TappyBleScannerStatus) -> (){}}
+    @objc public var tappyFoundListener : (TappyBleDevice) -> () = {_ in func emptyTappyFoundListener(tappy: TappyBleDevice) -> (){}}
+    @objc public var statusListener : (TappyBleScannerStatus) -> () = {_ in func emptyStatusListener(status: TappyBleScannerStatus) -> (){}}
     private var state : TappyBleScannerStatus = TappyBleScannerStatus.STATUS_CLOSED
     @objc
     public init(centralManager : CBCentralManager){
