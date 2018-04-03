@@ -129,7 +129,7 @@ public class SerialTappy : NSObject, Tappy {
         return communicator.getDeviceDescription();
     }
     
-    public func getLatestStatus() -> TappyStatus {
+    @objc public func getLatestStatus() -> TappyStatus {
         return communicator.state
     }
     
