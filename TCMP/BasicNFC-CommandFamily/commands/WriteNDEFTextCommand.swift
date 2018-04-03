@@ -54,7 +54,7 @@ public class WriteNDEFTextCommand : NSObject, TCMPMessage
     
     public override init(){}
     
-    public init(timeout: UInt8, lockTag: LockingMode, text: String){
+    @objc public init(timeout: UInt8, lockTag: LockingMode, text: String){
         self.timeout = timeout
         lockFlag = lockTag
         self.text = Array(text.utf8)
