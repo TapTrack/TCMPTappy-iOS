@@ -60,19 +60,19 @@ class TestCommunicator : NSObject, TappySerialCommunicator{
         return
     }
     
-    @objc func connect() {
+    func connect() {
         return
     }
     
-    @objc func disconnect() {
+    func disconnect() {
         return
     }
     
-    @objc func close() {
+    func close() {
         return
     }
     
-    @objc func initialize() {
+    func initialize() {
         return
     }
     @objc
