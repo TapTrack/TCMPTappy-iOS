@@ -28,7 +28,7 @@ import Foundation
     
     @objc public override init(){}
     
-    private func assertFamilyMatches(message: TCMPMessage) throws {
+    @objc private func assertFamilyMatches(message: TCMPMessage) throws {
         if(message.commandFamily.count != 2 || message.commandFamily[0] != FAMILY_ID[0] || message.commandFamily[1] != FAMILY_ID[1]){
             throw TCMPParsingError.resolverError(errorDescription: "Specified message is for a different command family")
         }
@@ -76,5 +76,14 @@ import Foundation
         
         try parsedMessage.parsePayload(payload: message.payload)
         return parsedMessage
+    }
+    
+    @objc public func getNdefTextPayload(ndefResponse : NDEFFoundResponse) -> String? {
+        if ndefResponse.ndefMessage.count > 7 {
+            let ndefTextBytes = Data(ndefResponse.ndefMessage[7...ndefResponse.ndefMessage.count-1])
+            return String(data: ndefTextBytes, encoding: .utf8)!
+        }else{
+            return nil
+        }
     }
 }

@@ -24,26 +24,25 @@
 import Foundation
 import CoreBluetooth
 @objc
-class TappyBleCommunicator : NSObject, CBPeripheralDelegate, CBCentralManagerDelegate, TappySerialCommunicator{
+public class TappyBleCommunicator : NSObject, CBPeripheralDelegate, CBCentralManagerDelegate, TappySerialCommunicator{
 
-    private var centralManager : CBCentralManager
-    private var tappyPeripheral : CBPeripheral
-    private var backingSerialService : CBService?
-    private var backingRxCharacteristic : CBCharacteristic?
-    private var backingTxCharacteristic : CBCharacteristic?
+    @objc private var centralManager : CBCentralManager
+    @objc private var tappyPeripheral : CBPeripheral
+    @objc private var backingSerialService : CBService?
+    @objc private var backingRxCharacteristic : CBCharacteristic?
+    @objc private var backingTxCharacteristic : CBCharacteristic?
     
-    public private(set) var state : TappyStatus = TappyStatus.STATUS_CLOSED
-    private var tappyName : String
-    final var bleDeviceUid : String
-    @objc
-    public var error : Error?
+    @objc public private(set) var state : TappyStatus = TappyStatus.STATUS_CLOSED
+    @objc private var tappyName : String
+    @objc final var bleDeviceUid : String
+    @objc public var error : Error?
     
     
-    private var dataReceivedListener : ([UInt8]) -> () = {_ in func emptyDataReceivedListener(data : [UInt8]) -> (){}}
-    private var statusListener : (TappyStatus) -> () = {_ in func emptyTappyStatusListener(status : TappyStatus) -> (){}}
-    private var packetsToSend: [[UInt8]] = [[UInt8]]()
+    @objc private var dataReceivedListener : ([UInt8]) -> () = {_ in func emptyDataReceivedListener(data : [UInt8]) -> (){}}
+    @objc private var statusListener : (TappyStatus) -> () = {_ in func emptyTappyStatusListener(status : TappyStatus) -> (){}}
+    @objc private var packetsToSend: [[UInt8]] = [[UInt8]]()
     
-    private init(centralManager : CBCentralManager, tappyPeripheral : CBPeripheral, tappyName : String)  {
+    @objc private init(centralManager : CBCentralManager, tappyPeripheral : CBPeripheral, tappyName : String)  {
         self.centralManager = centralManager
         self.tappyPeripheral = tappyPeripheral
         bleDeviceUid = String(describing: tappyPeripheral.identifier)
@@ -229,7 +228,7 @@ class TappyBleCommunicator : NSObject, CBPeripheralDelegate, CBCentralManagerDel
         }
     }
     
-    private func charactersticRead(tappyCharacteristic : CBCharacteristic){
+    @objc private func charactersticRead(tappyCharacteristic : CBCharacteristic){
         if(tappyCharacteristic.uuid == TappyBleDeviceDefinition.getTxCharacteristicUuid()){
             if let value = tappyCharacteristic.value{
                 NSLog(String(format: "TappyBleCommunicator: Tx characteristic read for %@", arguments: [tappyName]))
@@ -311,7 +310,7 @@ class TappyBleCommunicator : NSObject, CBPeripheralDelegate, CBCentralManagerDel
         dataReceivedListener = {_ in func emptyDataReceivedListener(data : [UInt8]) -> (){}}
     }
     // throws error when putting @objc here - something cannot be represented in Obj-C
-    public func setStatusListener(statusReceived listener: @escaping (TappyStatus) -> ()) {
+    @objc public func setStatusListener(statusReceived listener: @escaping (TappyStatus) -> ()) {
         statusListener = listener
     }
    @objc
@@ -329,12 +328,12 @@ class TappyBleCommunicator : NSObject, CBPeripheralDelegate, CBCentralManagerDel
     
     
     //MARK: TappyBleCommunicator
-    private func changeStateAndNotify(newState: TappyStatus){
+    @objc private func changeStateAndNotify(newState: TappyStatus){
         state = newState
         statusListener(newState)
     }
     
-    private func resolveState(){
+    @objc private func resolveState(){
         if(centralManager.state == .poweredOff){
             NSLog("TappyBleCommunicator: BLE is powered off")
             state = TappyStatus.STATUS_NOT_READY_TO_CONNECT

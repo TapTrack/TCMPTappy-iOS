@@ -24,7 +24,7 @@
 import Foundation
 import CoreBluetooth
 
- public class TappyBleDeviceDefinition: NSObject {
+ @objc public class TappyBleDeviceDefinition: NSObject {
     
         @objc static public func getSerialServiceUuid() -> CBUUID{
             let SERVICE_TRUCONNECT_UUID: CBUUID = CBUUID(string: "175f8f23-a570-49bd-9627-815a6a27de2a")

@@ -52,7 +52,7 @@ public class WriteNDEFTextCommand : NSObject, TCMPMessage
     @objc public private(set) var timeout : UInt8 = 0
     @objc public private(set) var text : [UInt8] = []
     
-    public override init(){}
+    @objc public override init(){}
     
     @objc public init(timeout: UInt8, lockTag: LockingMode, text: String){
         self.timeout = timeout

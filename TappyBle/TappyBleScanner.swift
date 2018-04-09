@@ -26,10 +26,10 @@ import CoreBluetooth
 @objc
 public class TappyBleScanner : NSObject, CBCentralManagerDelegate{
     
-    private var centralManager : CBCentralManager
-    @objc public var tappyFoundListener : (TappyBleDevice) -> () = {_ in func emptyTappyFoundListener(tappy: TappyBleDevice) -> (){}}
+    @objc public var centralManager : CBCentralManager
+    @objc public var tappyFoundListener : (TappyBleDevice, String) -> () = {_,_  in func emptyTappyFoundListener(tappy: TappyBleDevice, name: String) -> (){}}
     @objc public var statusListener : (TappyBleScannerStatus) -> () = {_ in func emptyStatusListener(status: TappyBleScannerStatus) -> (){}}
-    private var state : TappyBleScannerStatus = TappyBleScannerStatus.STATUS_CLOSED
+    @objc public var state : TappyBleScannerStatus = TappyBleScannerStatus.STATUS_CLOSED
     @objc
     public init(centralManager : CBCentralManager){
         self.centralManager = centralManager
@@ -47,7 +47,10 @@ public class TappyBleScanner : NSObject, CBCentralManagerDelegate{
             NSLog("TappyBleScanner: Discovered a peripheral, validating name... ")
             if(TappyBleDeviceDefinition.isTappyDeviceName(device: peripheral)){
                 NSLog(String(format: "TappyBleScanner: peripheral %@ has a valid name, passing to tappyFoundListener", arguments: [peripheral.name!]))
-                tappyFoundListener(TappyBleDevice(name: peripheral.name!, deviceId: peripheral.identifier))
+                let tappy: TappyBleDevice = TappyBleDevice(name: peripheral.name!, deviceId: peripheral.identifier)
+                NSLog(String(format: "Passing tappy into listener w/ name: %@", arguments: [tappy.name()]))
+                NSLog(String(format: "Device id: %@", arguments:[tappy.deviceId.description]))
+                tappyFoundListener(tappy, tappy.name())
             }else{
                 NSLog("TappyBleScanner: peripheral has invalid name, not a TappyBLE")
             }
@@ -57,6 +60,7 @@ public class TappyBleScanner : NSObject, CBCentralManagerDelegate{
     }
     
     @objc public func startScan() -> Bool{
+        NSLog("StartScan~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
         if state == TappyBleScannerStatus.STATUS_POWERED_ON{
             centralManager.scanForPeripherals(withServices: [TappyBleDeviceDefinition.getSerialServiceUuid()], options: nil)
             changeStateAndNotify(newState: TappyBleScannerStatus.STATUS_SCANNING)
@@ -71,21 +75,17 @@ public class TappyBleScanner : NSObject, CBCentralManagerDelegate{
         changeStateAndNotify(newState: state)
     }
     
-    @objc public func getState() -> TappyBleScannerStatus {
-        return state
-    }
-
-    private func changeStateAndNotify(newState: TappyBleScannerStatus){
+    @objc private func changeStateAndNotify(newState: TappyBleScannerStatus){
         state = newState
        statusListener(newState)
     }
     
-    @objc public func setTappyFoundListener(listener : @escaping (TappyBleDevice) -> ()){
+    @objc public func setTappyFoundListener(listener : @escaping (TappyBleDevice, String) -> ()){
         tappyFoundListener = listener
     }
     
     @objc public func removeTappyFoundListener(){
-        tappyFoundListener = {_ in func emptyTappyFoundListener(tappy: TappyBleDevice) -> (){}} 
+        tappyFoundListener = {_,_  in func emptyTappyFoundListener(tappy: TappyBleDevice, name: String) -> (){}}
     }
 
     @objc public func setStatusListener(statusReceived listener: @escaping (TappyBleScannerStatus) -> ()) {
@@ -97,7 +97,7 @@ public class TappyBleScanner : NSObject, CBCentralManagerDelegate{
     }
     
     
-    private func resolveState(){
+    @objc private func resolveState(){
         if(centralManager.state == .poweredOff){
             NSLog("TappyBleScanner: BLE is powered off")
             state = TappyBleScannerStatus.STATUS_POWERED_OFF

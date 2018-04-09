@@ -23,7 +23,7 @@
 import Foundation
 
 
-public class NDEFFoundResponse : NSObject, TCMPMessage{
+@objc public class NDEFFoundResponse : NSObject, TCMPMessage{
     @objc public private(set) var commandCode: UInt8{
         get{
             return NDEFFoundResponse.getCommandCode()
@@ -50,7 +50,7 @@ public class NDEFFoundResponse : NSObject, TCMPMessage{
     @objc public private(set) var tagCode : [UInt8] = [0x00,0x00,0x00,0x00,0x00,0x00,0x00]
     @objc public private(set) var ndefMessage : [UInt8] = [0xD0] //empty NDEF record header/TNF
     
-    public override init(){}
+    @objc public override init(){}
     
     @objc public init(tagCode : [UInt8], tagType : UInt8, ndefMessage : [UInt8]){
         self.tagCode = tagCode

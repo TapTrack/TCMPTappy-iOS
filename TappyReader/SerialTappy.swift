@@ -24,15 +24,15 @@ import Foundation
 @objc
 public class SerialTappy : NSObject, Tappy {
     
-    var communicator : TappySerialCommunicator
+    @objc var communicator : TappySerialCommunicator
     @objc var receiveBuffer : [UInt8] = []
-    var statusListener : (TappyStatus) -> () = {_ in func emptyStatusListener(status: TappyStatus) -> (){}}
-    @objc var responseListener : (TCMPMessage) -> () = {_ in func emptyResponseListener(message: TCMPMessage) -> (){}}
+    @objc var statusListener : (TappyStatus) -> () = {_ in func emptyStatusListener(status: TappyStatus) -> (){}}
+    @objc var responseListener : (TCMPMessage, String) -> () = {_,_ in func emptyResponseListener(message: TCMPMessage, data: String) -> (){}}
     @objc var unparsableListener : ([UInt8]) -> () = {_ in func emptyUnparsablePacketListener(packet : [UInt8]) -> (){}}
     
     
-    public init(communicator : TappySerialCommunicator){
-        responseListener = {_ in func emptyResponseListener(message: TCMPMessage) -> (){}}
+    @objc public init(communicator : TappySerialCommunicator){
+        responseListener = {_,_ in func emptyResponseListener(message: TCMPMessage, data: String) -> (){}}
         statusListener = {_ in func emptyStatusListener(status: TappyStatus) -> (){}}
         unparsableListener = {_ in func emptyUnparsablePacketListener(packet : [UInt8]) -> (){}}
         self.communicator = communicator
@@ -42,6 +42,7 @@ public class SerialTappy : NSObject, Tappy {
     }
     
     @objc public func receiveBytes(data : [UInt8]){
+        NSLog("Receiving Bytes");
         var commands : [[UInt8]] = [[]]
         receiveBuffer.append(contentsOf: data)
         if(TCMPUtils.containsHdlcEndpoint(packet: data)){
@@ -61,7 +62,38 @@ public class SerialTappy : NSObject, Tappy {
                 if(decodedPacket.count != 0){
                     do{
                         let message : RawTCMPMesssage = try RawTCMPMesssage(message: decodedPacket)
-                        responseListener(message)
+                        // need to resolve the message first
+                        let basicNFCResolver: BasicNFCCommandResolver = BasicNFCCommandResolver()
+                        let resolvedResponse = try basicNFCResolver.resolveResponse(message: message)
+                        // var jsonObject: [String: Any] = [:]
+                        if (resolvedResponse is NDEFFoundResponse) {
+                            NSLog("It's an NDEFFoundResponse")
+                            // now get the payload
+                            let tagReadResponse : NDEFFoundResponse = NDEFFoundResponse()
+                            try tagReadResponse.parsePayload(payload: resolvedResponse.payload) //no need to handle exception here since the resolver would not have returned otherwise
+                            let ndefText = basicNFCResolver.getNdefTextPayload(ndefResponse: tagReadResponse)
+                            NSLog(String(format: "Text: %@", arguments: [ndefText!]))
+                            // cast it
+                            let ndefResponse = resolvedResponse as! NDEFFoundResponse
+                            // now create a JSON object here
+                            NSLog("Begin JSON attempt")
+                            let jsonObject : [String: Any] = [
+                                "ndefText": ndefText as! String,
+                                "payload": ndefResponse.payload,
+                                "tagCode": ndefResponse.tagCode,
+                                "commandCode": ndefResponse.commandCode,
+                                "commandFamily": ndefResponse.commandFamily
+                            ]
+                            NSLog(String(format: "Description: %@", arguments: [jsonObject.description]))
+                            let jsonData = try JSONSerialization.data(withJSONObject: jsonObject, options: [])
+                            let jsonString = String(data: jsonData, encoding: String.Encoding.ascii)!
+                            NSLog(String(format: "Passing back JSON string: %@", arguments: [jsonString]))
+                            responseListener(message, jsonString)
+
+                        } else {
+                            responseListener(message, "{}")
+                        }
+                        
                     }catch{
                         unparsableListener(hdlcPacket)
                     }
@@ -74,12 +106,12 @@ public class SerialTappy : NSObject, Tappy {
         }
     }
     
-    @objc public func setResponseListener(listener: @escaping (TCMPMessage) -> ()) {
+    @objc public func setResponseListener(listener: @escaping (TCMPMessage, String) -> ()) {
         responseListener = listener
     }
     
     @objc public func removeResponseListener() {
-        responseListener = {_ in func emptyResponseListener(message: TCMPMessage) -> (){}}
+        responseListener = {_,_ in func emptyResponseListener(message: TCMPMessage, data: String) -> (){}}
     }
     
     @objc public func setStatusListener(listner: @escaping (TappyStatus) -> ()) {
@@ -104,7 +136,7 @@ public class SerialTappy : NSObject, Tappy {
         removeUnparsablePacketListener()
     }
     
-    private func notifyListenerOfStatus(status : TappyStatus){
+    @objc private func notifyListenerOfStatus(status : TappyStatus){
         statusListener(status)
     }
     
@@ -133,7 +165,7 @@ public class SerialTappy : NSObject, Tappy {
         return communicator.state
     }
     
-    public func getCommunicator() -> TappySerialCommunicator{
+    @objc public func getCommunicator() -> TappySerialCommunicator{
         return communicator
     }
     

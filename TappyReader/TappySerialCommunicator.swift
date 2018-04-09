@@ -23,15 +23,15 @@
 
 import Foundation
 
-public protocol TappySerialCommunicator {
-    var state : TappyStatus {get}
-    func setDataListener(receivedBytes listener : @escaping ([UInt8]) -> ())
-    func removeDataListener()
-    func setStatusListener(statusReceived listener : @escaping (TappyStatus) -> ())
-    func removeStatusListener()
-    func sendBytes(data : [UInt8])
-    func connect()
-    func disconnect()
-    func close()
-    func getDeviceDescription() -> String
+@objc public protocol TappySerialCommunicator {
+    @objc var state : TappyStatus {get}
+    @objc func setDataListener(receivedBytes listener : @escaping ([UInt8]) -> ())
+    @objc func removeDataListener()
+    @objc func setStatusListener(statusReceived listener : @escaping (TappyStatus) -> ())
+    @objc func removeStatusListener()
+    @objc func sendBytes(data : [UInt8])
+    @objc func connect()
+    @objc func disconnect()
+    @objc func close()
+    @objc func getDeviceDescription() -> String
 }
