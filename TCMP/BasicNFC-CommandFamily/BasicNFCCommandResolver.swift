@@ -91,6 +91,7 @@ import Foundation
                 let jsonString = String(data: jsonData, encoding: String.Encoding.ascii)!
                 return jsonString
             } catch {
+                NSLog("Caught error, returning nil")
                 return nil
             }
         } else{

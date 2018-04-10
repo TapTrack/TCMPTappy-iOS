@@ -40,7 +40,6 @@ public protocol TCMPMessage {
 
 public extension TCMPMessage{
     func toByteArray() -> [UInt8]{
-        NSLog("To byte array!!!!!")
         let data : [UInt8] = payload
         let family : [UInt8] = commandFamily
         let code = commandCode
@@ -55,8 +54,6 @@ public extension TCMPMessage{
         
         frame = [l1,l2,lcs] + family + [code] + data
         packet = frame + TCMPUtils.calculateCRC(data: frame)
-        NSLog("TCMP Message packet:")
-        print(packet)
         return packet
     }
 }

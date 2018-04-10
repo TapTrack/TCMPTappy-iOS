@@ -23,14 +23,14 @@
 
 import Foundation
 
-@objc public class TappyBleDevice : NSObject {
-    @objc public var deviceName : String
+@objc
+public class TappyBleDevice : NSObject {
+    var deviceName : String
     @objc public var deviceId : UUID = UUID()
     
     @objc init(name : String, deviceId : UUID){
         self.deviceName = name
         self.deviceId = deviceId
-        NSLog(String(format: "Device name passed in as: %@", arguments: [self.deviceName]))
     }
     
     @objc public func name() -> String{

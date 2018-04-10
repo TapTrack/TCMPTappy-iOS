@@ -202,8 +202,7 @@ public class TCMPUtils: NSObject {
         resultingPacket.append(0x7E)
         resultingPacket.append(contentsOf: encodedPacket)
         resultingPacket.append(0x7E)
-        NSLog("Final packet")
-        print(resultingPacket)
+        
         return resultingPacket
     }
     

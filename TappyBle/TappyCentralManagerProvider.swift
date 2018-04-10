@@ -28,7 +28,7 @@ public class TappyCentralManagerProvider : NSObject {
     
     // MARK: - Properties
     
-    @objc private static var sharedTappyCentralManagerProvider: TappyCentralManagerProvider = {
+    private static var sharedTappyCentralManagerProvider: TappyCentralManagerProvider = {
         let centralManager : CBCentralManager = CBCentralManager()
         let tappyCentralManagerProvider : TappyCentralManagerProvider = TappyCentralManagerProvider(centralManager: centralManager)
         return tappyCentralManagerProvider
@@ -40,7 +40,7 @@ public class TappyCentralManagerProvider : NSObject {
     
     // Initialization
     
-    @objc private init(centralManager: CBCentralManager) {
+    private init(centralManager: CBCentralManager) {
         self.centralManager = centralManager
     }
     

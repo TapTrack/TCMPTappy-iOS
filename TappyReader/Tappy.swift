@@ -23,8 +23,8 @@
 
 import Foundation
 
-@objc protocol Tappy {
-    func setResponseListener(listener : @escaping (TCMPMessage, String) -> ())
+protocol Tappy {
+    func setResponseListener(listener : @escaping (TCMPMessage) -> ())
     func removeResponseListener()
     func setStatusListener(listner : @escaping (TappyStatus) -> ())
     func removeStatusListener()
