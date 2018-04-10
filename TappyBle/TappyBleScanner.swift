@@ -28,6 +28,7 @@ public class TappyBleScanner : NSObject, CBCentralManagerDelegate{
     
     private var centralManager : CBCentralManager
     private var tappyFoundListener : (TappyBleDevice) -> () = {_ in func emptyTappyFoundListener(tappy: TappyBleDevice) -> (){}}
+    private var tappyFoundListenerJSON : (TappyBleDevice, String) -> () = {_,_  in func emptyTappyFoundListenerJSON(tappy: TappyBleDevice, name: String) -> (){}}
     @objc public var statusListener : (TappyBleScannerStatus) -> () = {_ in func emptyStatusListener(status: TappyBleScannerStatus) -> (){}}
     private var state : TappyBleScannerStatus = TappyBleScannerStatus.STATUS_CLOSED
     
@@ -48,7 +49,19 @@ public class TappyBleScanner : NSObject, CBCentralManagerDelegate{
             NSLog("TappyBleScanner: Discovered a peripheral, validating name... ")
             if(TappyBleDeviceDefinition.isTappyDeviceName(device: peripheral)){
                 NSLog(String(format: "TappyBleScanner: peripheral %@ has a valid name, passing to tappyFoundListener", arguments: [peripheral.name!]))
-                tappyFoundListener(TappyBleDevice(name: peripheral.name!, deviceId: peripheral.identifier))
+                let tappy: TappyBleDevice = TappyBleDevice(name: peripheral.name!, deviceId: peripheral.identifier)
+                tappyFoundListener(tappy)
+                let tappyJSONObj : [String: Any] = [
+                    "deviceName": tappy.name(),
+                    "deviceId": tappy.deviceId.description
+                ]
+                do {
+                    let jsonData = try JSONSerialization.data(withJSONObject: tappyJSONObj, options: [])
+                    let jsonString = String(data: jsonData, encoding: String.Encoding.ascii)!
+                    tappyFoundListenerJSON(tappy, jsonString)
+                } catch {
+                    NSLog("Error creating JSON object")
+                }
             }else{
                 NSLog("TappyBleScanner: peripheral has invalid name, not a TappyBLE")
             }
@@ -86,8 +99,14 @@ public class TappyBleScanner : NSObject, CBCentralManagerDelegate{
         tappyFoundListener = listener
     }
     
+    @objc public func setTappyFoundListenerJSON(listener : @escaping (TappyBleDevice, String) -> ()){
+        tappyFoundListenerJSON = listener
+    }
+
+    
     @objc public func removeTappyFoundListener(){
-        tappyFoundListener = {_ in func emptyTappyFoundListener(tappy: TappyBleDevice) -> (){}} 
+        tappyFoundListener = {_ in func emptyTappyFoundListener(tappy: TappyBleDevice) -> (){}}
+        tappyFoundListenerJSON = {_,_  in func emptyTappyFoundListenerJSON(tappy: TappyBleDevice, name: String) -> (){}}
     }
 
     @objc public func setStatusListener(statusReceived listener: @escaping (TappyBleScannerStatus) -> ()) {
