@@ -309,7 +309,7 @@ public class TappyBleCommunicator : NSObject, CBPeripheralDelegate, CBCentralMan
     public func removeDataListener() {
         dataReceivedListener = {_ in func emptyDataReceivedListener(data : [UInt8]) -> (){}}
     }
-    // throws error when putting @objc here - something cannot be represented in Obj-C
+
     @objc public func setStatusListener(statusReceived listener: @escaping (TappyStatus) -> ()) {
         statusListener = listener
     }

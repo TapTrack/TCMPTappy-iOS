@@ -86,4 +86,26 @@ import Foundation
             return nil
         }
     }
+
+    @objc public func getNdefTextPayloadJSON(ndefResponse : NDEFFoundResponse) -> String? {
+        if ndefResponse.ndefMessage.count > 7 {
+            // return the full block
+            let ndefTextBytes = Data(ndefResponse.ndefMessage[1...ndefResponse.ndefMessage.count-1])
+            let jsonObject : [String: Any] = [
+                "tagCode": ndefResponse.tagCode,
+                "ndef": String(data: ndefTextBytes, encoding: .utf8)!
+            ]
+            do {
+                let jsonData = try JSONSerialization.data(withJSONObject: jsonObject, options: [])
+                let jsonString = String(data: jsonData, encoding: String.Encoding.ascii)!
+                return jsonString
+            } catch {
+                NSLog("Caught error, returning nil")
+                return nil
+            }
+        } else{
+            return nil
+        }
+    }
+
 }

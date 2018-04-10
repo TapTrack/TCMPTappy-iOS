@@ -1,6 +1,6 @@
 //
 //  StopCommand.swift
-//  TCMP
+//  TapTrackReader (TCMP)
 //
 //  Created by Frank Hackenburg on 2018-04-09.
 //  Copyright © 2018 Papyrus Electronics Inc d/b/a TapTrack. All rights reserved.
@@ -49,6 +49,3 @@ public class StopCommand : NSObject, TCMPMessage {
         return 0x00
     }
 }
-
-
-
