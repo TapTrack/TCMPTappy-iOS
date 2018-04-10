@@ -1,8 +1,8 @@
 //
-//  TappyBleDevice.swift
-//  TappySDKExampleWithSDKSource
+//  StopCommand.swift
+//  TapTrackReader (TCMP)
 //
-//  Created by David Shalaby on 2018-03-08.
+//  Created by Frank Hackenburg on 2018-04-09.
 //  Copyright © 2018 Papyrus Electronics Inc d/b/a TapTrack. All rights reserved.
 //
 /*
@@ -22,18 +22,30 @@
  */
 
 import Foundation
-
 @objc
-public class TappyBleDevice : NSObject {
-    var deviceName : String
-    @objc public var deviceId : UUID = UUID()
-    
-    @objc init(name : String, deviceId : UUID){
-        self.deviceName = name
-        self.deviceId = deviceId
+public class StopCommand : NSObject, TCMPMessage {
+    @objc
+    public private(set) var commandCode: UInt8{
+        get{
+            return StopCommand.getCommandCode()
+        }
+        set{}
+    }
+    @objc
+    public var payload: [UInt8]{
+        get{
+            return []
+        }
     }
     
-    @objc public func name() -> String{
-        return deviceName
+    
+    @objc public private(set) var commandFamily: [UInt8] = [0x00,0x01]
+    @objc public override init(){}
+    
+    @objc
+    public func parsePayload(payload: [UInt8]) throws {}
+    @objc
+    public static func getCommandCode() -> UInt8 {
+        return 0x00
     }
 }

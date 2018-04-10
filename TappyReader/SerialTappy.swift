@@ -133,7 +133,7 @@ public class SerialTappy : NSObject, Tappy {
         return communicator.state
     }
     
-    public func getCommunicator() -> TappySerialCommunicator{
+    @objc public func getCommunicator() -> TappySerialCommunicator{
         return communicator
     }
     

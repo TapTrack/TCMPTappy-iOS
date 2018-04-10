@@ -24,7 +24,7 @@
 import Foundation
 import CoreBluetooth
 @objc
-class TappyBleCommunicator : NSObject, CBPeripheralDelegate, CBCentralManagerDelegate, TappySerialCommunicator{
+public class TappyBleCommunicator : NSObject, CBPeripheralDelegate, CBCentralManagerDelegate, TappySerialCommunicator{
 
     private var centralManager : CBCentralManager
     private var tappyPeripheral : CBPeripheral
@@ -310,8 +310,8 @@ class TappyBleCommunicator : NSObject, CBPeripheralDelegate, CBCentralManagerDel
     public func removeDataListener() {
         dataReceivedListener = {_ in func emptyDataReceivedListener(data : [UInt8]) -> (){}}
     }
-    // throws error when putting @objc here - something cannot be represented in Obj-C
-    public func setStatusListener(statusReceived listener: @escaping (TappyStatus) -> ()) {
+  
+    @objc public func setStatusListener(statusReceived listener: @escaping (TappyStatus) -> ()) {
         statusListener = listener
     }
    @objc
