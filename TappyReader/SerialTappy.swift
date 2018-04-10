@@ -28,11 +28,13 @@ public class SerialTappy : NSObject, Tappy {
     @objc var receiveBuffer : [UInt8] = []
     var statusListener : (TappyStatus) -> () = {_ in func emptyStatusListener(status: TappyStatus) -> (){}}
     @objc var responseListener : (TCMPMessage) -> () = {_ in func emptyResponseListener(message: TCMPMessage) -> (){}}
+    @objc var responseListenerJSON : (TCMPMessage, String) -> () = {_,_ in func emptyResponseListener(message: TCMPMessage, data: String) -> (){}}
     @objc var unparsableListener : ([UInt8]) -> () = {_ in func emptyUnparsablePacketListener(packet : [UInt8]) -> (){}}
     
     
     public init(communicator : TappySerialCommunicator){
         responseListener = {_ in func emptyResponseListener(message: TCMPMessage) -> (){}}
+        responseListenerJSON = {_,_ in func emptyResponseListener(message: TCMPMessage, data: String) -> (){}}
         statusListener = {_ in func emptyStatusListener(status: TappyStatus) -> (){}}
         unparsableListener = {_ in func emptyUnparsablePacketListener(packet : [UInt8]) -> (){}}
         self.communicator = communicator
@@ -62,6 +64,14 @@ public class SerialTappy : NSObject, Tappy {
                     do{
                         let message : RawTCMPMesssage = try RawTCMPMesssage(message: decodedPacket)
                         responseListener(message)
+                        let jsonObject : [String: Any] = [
+                            "payload": message.payload,
+                            "commandCode": message.commandCode,
+                            "commandFamily": message.commandFamily
+                        ]
+                        let jsonData = try JSONSerialization.data(withJSONObject: jsonObject, options: [])
+                        let jsonString = String(data: jsonData, encoding: String.Encoding.ascii)!
+                        responseListenerJSON(message, jsonString)
                     }catch{
                         unparsableListener(hdlcPacket)
                     }
@@ -78,8 +88,13 @@ public class SerialTappy : NSObject, Tappy {
         responseListener = listener
     }
     
+    @objc public func setResponseListenerJSON(listener: @escaping (TCMPMessage, String) -> ()) {
+        responseListenerJSON = listener
+    }
+    
     @objc public func removeResponseListener() {
         responseListener = {_ in func emptyResponseListener(message: TCMPMessage) -> (){}}
+        responseListenerJSON = {_,_ in func emptyResponseListener(message: TCMPMessage, data: String) -> (){}}
     }
     
     @objc public func setStatusListener(listner: @escaping (TappyStatus) -> ()) {
