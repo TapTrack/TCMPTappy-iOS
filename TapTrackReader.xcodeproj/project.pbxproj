@@ -40,11 +40,7 @@
 		6D6DAF302062EBE50064C8F5 /* TappyCentralManagerProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6DAF2C2062EBE50064C8F5 /* TappyCentralManagerProvider.swift */; };
 		6D6DAF312062EBE50064C8F5 /* TappyBleScannerStatus.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6DAF2D2062EBE50064C8F5 /* TappyBleScannerStatus.swift */; };
 		6D6DAF322062EBE50064C8F5 /* TappyBleScanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6DAF2E2062EBE50064C8F5 /* TappyBleScanner.swift */; };
-<<<<<<< HEAD
-		80027C32207C21DB000A03D0 /* StopCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 80027C31207C21DB000A03D0 /* StopCommand.swift */; };
-=======
 		6D77D59C207C3CCF00EA87D5 /* StopCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D77D59B207C3CCF00EA87D5 /* StopCommand.swift */; };
->>>>>>> f804e7d42ba5fd352d99590d4d2296176ff7a8c1
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,11 +114,7 @@
 		6D6DAF2C2062EBE50064C8F5 /* TappyCentralManagerProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TappyCentralManagerProvider.swift; sourceTree = "<group>"; };
 		6D6DAF2D2062EBE50064C8F5 /* TappyBleScannerStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TappyBleScannerStatus.swift; sourceTree = "<group>"; };
 		6D6DAF2E2062EBE50064C8F5 /* TappyBleScanner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TappyBleScanner.swift; sourceTree = "<group>"; };
-<<<<<<< HEAD
-		80027C31207C21DB000A03D0 /* StopCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopCommand.swift; sourceTree = "<group>"; };
-=======
 		6D77D59B207C3CCF00EA87D5 /* StopCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StopCommand.swift; sourceTree = "<group>"; };
->>>>>>> f804e7d42ba5fd352d99590d4d2296176ff7a8c1
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,11 +223,7 @@
 				6D0097A92052279E002C98D7 /* StreamNDEFCommand.swift */,
 				6D0097B320523D56002C98D7 /* PollingModes.swift */,
 				6D0097BB205345F6002C98D7 /* LockingModes.swift */,
-<<<<<<< HEAD
-				80027C31207C21DB000A03D0 /* StopCommand.swift */,
-=======
 				6D77D59B207C3CCF00EA87D5 /* StopCommand.swift */,
->>>>>>> f804e7d42ba5fd352d99590d4d2296176ff7a8c1
 			);
 			path = commands;
 			sourceTree = "<group>";
@@ -470,11 +458,7 @@
 				6D009748204F7553002C98D7 /* TCMP.m in Sources */,
 				6D0097B420523D56002C98D7 /* PollingModes.swift in Sources */,
 				6D0097E02054C640002C98D7 /* Tappy.swift in Sources */,
-<<<<<<< HEAD
-				80027C32207C21DB000A03D0 /* StopCommand.swift in Sources */,
-=======
 				6D77D59C207C3CCF00EA87D5 /* StopCommand.swift in Sources */,
->>>>>>> f804e7d42ba5fd352d99590d4d2296176ff7a8c1
 				6D0097AE205227E3002C98D7 /* ApplicationErrorMessage.swift in Sources */,
 				6D0097C020534796002C98D7 /* NDEFFoundResponse.swift in Sources */,
 				6D0097572051B87B002C98D7 /* TCMPMessage.swift in Sources */,
