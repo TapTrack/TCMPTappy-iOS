@@ -77,4 +77,5 @@ import Foundation
         try parsedMessage.parsePayload(payload: message.payload)
         return parsedMessage
     }
+    
 }
