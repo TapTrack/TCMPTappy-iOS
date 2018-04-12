@@ -14,4 +14,4 @@
 * Commands supported currently
   * Reading NDEF formatted tags
   * Writing NDEF text records
-  * Stop command
+  * Stop command	
