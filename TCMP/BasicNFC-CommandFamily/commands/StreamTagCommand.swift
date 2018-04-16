@@ -1,9 +1,9 @@
 //
-//  ScanNDEFCommand.swift
-//  TCMP
+//  StreamTagCommand.swift
+//  TapTrackReader
 //
-//  Created by David Shalaby on 2018-03-08.
-//  Copyright © 2018 Papyrus Electronics Inc d/b/a TapTrack. All rights reserved.
+//  Created by David Shalaby on 2018-04-15.
+//  Copyright © 2018 David Shalaby. All rights reserved.
 //
 /*
  * Copyright (c) 2018. Papyrus Electronics, Inc d/b/a TapTrack.
@@ -22,19 +22,17 @@
  */
 
 import Foundation
-@objc
-public class ScanNDEFCommand : NSObject, TCMPMessage{
+
+@objc public class StreamTagCommand : NSObject, TCMPMessage{
     
-    @objc
-    public private(set) var commandCode: UInt8{
+    @objc public private(set) var commandCode: UInt8{
         get{
-            return ScanNDEFCommand.getCommandCode()
+            return StreamTagCommand.getCommandCode()
         }
         set{}
     }
     
-    @objc
-    public private(set) var payload: [UInt8]{
+    @objc public private(set) var payload: [UInt8]{
         get{
             if(pollingMode == PollingMode.pollForType1){
                 return [timeout,0x01]
@@ -47,24 +45,20 @@ public class ScanNDEFCommand : NSObject, TCMPMessage{
         set{}
     }
     
-    @objc
-    public private(set) var commandFamily: [UInt8] = [0x00,0x01]
-
-    @objc
-    public private(set) var timeout : UInt8 = 0x00
+    @objc public private(set) var commandFamily: [UInt8] = [0x00,0x01]
     
     @objc public private(set) var pollingMode : PollingMode = PollingMode.pollForGeneral
     
-    @objc
-    public override init(){}
+    @objc public private(set) var timeout : UInt8 = 0x00
+    
+    @objc public override init(){}
     
     @objc public init(timeout : UInt8, pollingMode : PollingMode){
         self.timeout = timeout
         self.pollingMode = pollingMode
     }
     
-    @objc
-    public func parsePayload(payload: [UInt8]) throws {
+    @objc public func parsePayload(payload: [UInt8]) throws {
         if(payload.count >= 2){
             timeout = payload[0]
             switch (payload[1]){
@@ -80,8 +74,10 @@ public class ScanNDEFCommand : NSObject, TCMPMessage{
         }
     }
     
-    @objc
-    public static func getCommandCode() -> UInt8 {
-        return 0x04
+    @objc public static func getCommandCode() -> UInt8 {
+        return 0x01
     }
+    
+    
 }
+

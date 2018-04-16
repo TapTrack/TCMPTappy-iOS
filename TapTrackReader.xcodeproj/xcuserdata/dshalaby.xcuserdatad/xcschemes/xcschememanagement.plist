@@ -12,12 +12,12 @@
 		<key>TapTrackReader.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>0</integer>
+			<integer>1</integer>
 		</dict>
 		<key>TappyBleTest.xcscheme</key>
 		<dict>
 			<key>orderHint</key>
-			<integer>1</integer>
+			<integer>4</integer>
 		</dict>
 		<key>TappyReaderTests.xcscheme</key>
 		<dict>

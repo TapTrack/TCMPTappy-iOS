@@ -47,7 +47,7 @@ import Foundation
     case NTAG_216 = 0x14
     case TAG_TYPE_NOT_RECOGNIZED = 0xFF
     
-    public init(tagCodeByteIndicator : UInt8){
+public init(tagCodeByteIndicator : UInt8){
         switch tagCodeByteIndicator {
         case 0x00:
             self = .TAG_UNKNOWN
@@ -144,4 +144,54 @@ public func getTagByteIndicator()  -> UInt8{
         return 0xFF
     }
  }
+
+    public func getString() -> String{
+        switch (self) {
+        case TagTypes.TAG_UNKNOWN:
+            return "Tag Unknown"
+        case TagTypes.MIFARE_ULTRALIGHT:
+            return "Mifare Ultralight"
+        case TagTypes.NTAG203:
+            return  "NTAG203"
+        case TagTypes.MIFARE_ULTRALIGHT_C:
+            return  "Mifare Ultralight C"
+        case TagTypes.MIFARE_STD_CLASSIC_1K:
+            return  "Mifare Classic 1k"
+        case TagTypes.MIFARE_STD_CLASSIC_4K:
+            return  "Mifare Classic 4k"
+        case TagTypes.MIFARE_DESFIRE_EV1_2K:
+            return  "Mifare DESFire EV1 2k"
+        case TagTypes.TYPE_2_TAG:
+            return "NFC Forum Type 2 tag"
+        case TagTypes.MIFARE_PLUS_2K_CL2:
+            return "Mifare Plus 2k CL2"
+        case TagTypes.MIFARE_PLUS_4K_CL2:
+            return "Mifare Plus 4k CL2"
+        case TagTypes.MIFARE_MINI:
+            return "Mifare Mini"
+        case TagTypes.OTHER_TYPE4:
+            return "NFC Forum Type 4 tag"
+        case TagTypes.MIFARE_DESFIRE_EV1_4K:
+            return  "Mifare DESFire EV1 4k"
+        case TagTypes.MIFARE_DESFIRE_EV1_8K:
+            return  "Mifare DESFire EV1 8k"
+        case TagTypes.MIFARE_DESFIRE:
+            return "Mifare DESFire EV1, unspecified model and capacity"
+        case TagTypes.TOPAZ_512:
+            return "Topaz 512"
+        case TagTypes.NTAG_210:
+            return "NTAG210"
+        case TagTypes.NTAG_212:
+            return "NTAG212"
+        case TagTypes.NTAG_213:
+            return "NTAG213"
+        case TagTypes.NTAG_215:
+            return "NTAG215"
+        case TagTypes.NTAG_216:
+            return "NTAG216"
+        case TagTypes.TAG_TYPE_NOT_RECOGNIZED:
+            return "Tag Type Not Recognized"
+        }
+        
+    }
 }

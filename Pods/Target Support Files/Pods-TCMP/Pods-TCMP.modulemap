@@ -1,6 +1,0 @@
-framework module Pods_TCMP {
-  umbrella header "Pods-TCMP-umbrella.h"
-
-  export *
-  module * { export * }
-}

@@ -45,6 +45,12 @@ import Foundation
                 parsedMessage = ScanNDEFCommand()
             case StreamNDEFCommand.getCommandCode():
                 parsedMessage = StreamNDEFCommand()
+            case ScanTagCommand.getCommandCode():
+                parsedMessage = ScanTagCommand()
+            case StreamTagCommand.getCommandCode():
+                parsedMessage = StreamTagCommand()
+             case StopCommand.getCommandCode():
+                parsedMessage = StopCommand()
             default:
                 throw TCMPParsingError.resolverError(errorDescription: "Unrecognized Command Code")
         }
@@ -52,7 +58,7 @@ import Foundation
         do{
             try parsedMessage.parsePayload(payload: message.payload)
         }catch{
-            throw TCMPParsingError.resolverError(errorDescription: "Message failed to parse")
+            throw TCMPParsingError.resolverError(errorDescription: "Command Message failed to parse")
         }
         
         return parsedMessage
@@ -70,11 +76,18 @@ import Foundation
             parsedMessage = TagWrittenResponse()
         case NDEFFoundResponse.getCommandCode():
             parsedMessage = NDEFFoundResponse()
+        case TagFoundResponse.getCommandCode():
+            parsedMessage = TagFoundResponse()
         default:
             throw TCMPParsingError.resolverError(errorDescription: "Unrecognized Response Code")
         }
         
-        try parsedMessage.parsePayload(payload: message.payload)
+        do{
+            try parsedMessage.parsePayload(payload: message.payload)
+        }catch{
+            throw TCMPParsingError.resolverError(errorDescription: "Response Message failed to parse")
+        }
+        
         return parsedMessage
     }
     
