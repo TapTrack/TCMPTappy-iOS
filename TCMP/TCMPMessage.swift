@@ -23,7 +23,7 @@
 
 import Foundation
 
-enum TCMPParsingError: Error {
+public enum TCMPParsingError: Error {
     case payloadTooShort
     case resolverError(errorDescription : String)
     case invalidPollingMode

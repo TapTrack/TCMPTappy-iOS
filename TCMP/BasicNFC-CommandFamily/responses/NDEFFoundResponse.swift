@@ -72,7 +72,7 @@ import Foundation
     @objc public func parsePayload(payload: [UInt8]) throws {
         if (payload.count < 2){
             throw TCMPParsingError.payloadTooShort
-        }else if(UInt(payload[1]) > payload.count+2){
+        }else if(UInt(payload[1]) > UInt(payload.count) + 2){
             throw TCMPParsingError.notAllTagCodeBytesPresent
         }else{
             tagType = TagTypes.init(tagCodeByteIndicator: payload[0])

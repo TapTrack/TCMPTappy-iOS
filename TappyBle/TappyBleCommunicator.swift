@@ -249,7 +249,9 @@ public class TappyBleCommunicator : NSObject, CBPeripheralDelegate, CBCentralMan
             }
             if(characteristic.uuid == TappyBleDeviceDefinition.getRxCharacteristicUuid()){
                 NSLog(String(format: "TappyBleCommunicator: Rx characteristic written for %@", arguments: [tappyName]))
-                packetsToSend.removeFirst()
+                if packetsToSend.count > 0 {
+                    packetsToSend.removeFirst()
+                }
                 if(packetsToSend.count != 0){
                      NSLog(String(format: "TappyBleCommunicator: more data to write to Rx characteristic for %@", arguments: [tappyName]))
                         tappyPeripheral.writeValue(Data(packetsToSend[0]), for: characteristic, type: CBCharacteristicWriteType.withResponse)

@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		60BDE22862A9300EF6AE5A46 /* Pods_TCMP.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 541B0735BDE458D14AB6E8B7 /* Pods_TCMP.framework */; };
+		440DBCF922F3483200D1E5EA /* WriteNDEFUriCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440DBCF722F3483200D1E5EA /* WriteNDEFUriCommand.swift */; };
+		440DBCFA22F3483200D1E5EA /* WriteCustomNDEFCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440DBCF822F3483200D1E5EA /* WriteCustomNDEFCommand.swift */; };
 		6D009748204F7553002C98D7 /* TCMP.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D009747204F7553002C98D7 /* TCMP.m */; };
 		6D009749204F7553002C98D7 /* TCMP.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6D009746204F7553002C98D7 /* TCMP.h */; };
 		6D0097572051B87B002C98D7 /* TCMPMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D0097562051B87B002C98D7 /* TCMPMessage.swift */; };
@@ -77,9 +78,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		43941AE0DAC5589716A0C5C2 /* Pods-TCMP.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TCMP.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TCMP/Pods-TCMP.debug.xcconfig"; sourceTree = "<group>"; };
-		51D3EF4D5027D82C10646812 /* Pods-TCMP.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TCMP.release.xcconfig"; path = "Pods/Target Support Files/Pods-TCMP/Pods-TCMP.release.xcconfig"; sourceTree = "<group>"; };
-		541B0735BDE458D14AB6E8B7 /* Pods_TCMP.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TCMP.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		440DBCF722F3483200D1E5EA /* WriteNDEFUriCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteNDEFUriCommand.swift; sourceTree = "<group>"; };
+		440DBCF822F3483200D1E5EA /* WriteCustomNDEFCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteCustomNDEFCommand.swift; sourceTree = "<group>"; };
 		6D009743204F7553002C98D7 /* libTapTrackReader.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTapTrackReader.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D009746204F7553002C98D7 /* TCMP.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TCMP.h; sourceTree = "<group>"; };
 		6D009747204F7553002C98D7 /* TCMP.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TCMP.m; sourceTree = "<group>"; };
@@ -128,7 +128,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				60BDE22862A9300EF6AE5A46 /* Pods_TCMP.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -154,8 +153,6 @@
 		1407B012858101F47C82E6CC /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				43941AE0DAC5589716A0C5C2 /* Pods-TCMP.debug.xcconfig */,
-				51D3EF4D5027D82C10646812 /* Pods-TCMP.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -233,6 +230,8 @@
 				6D77D59B207C3CCF00EA87D5 /* StopCommand.swift */,
 				6DC95B7A208434CD000B6A20 /* ScanTagCommand.swift */,
 				6DC95B7C20843719000B6A20 /* StreamTagCommand.swift */,
+				440DBCF822F3483200D1E5EA /* WriteCustomNDEFCommand.swift */,
+				440DBCF722F3483200D1E5EA /* WriteNDEFUriCommand.swift */,
 			);
 			path = commands;
 			sourceTree = "<group>";
@@ -276,7 +275,6 @@
 		79376A56CCBD185278BFA398 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				541B0735BDE458D14AB6E8B7 /* Pods_TCMP.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -288,11 +286,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6D00974C204F7553002C98D7 /* Build configuration list for PBXNativeTarget "TapTrackReader" */;
 			buildPhases = (
-				63343C4BBFDC72B228D357AB /* [CP] Check Pods Manifest.lock */,
 				6D00973F204F7553002C98D7 /* Sources */,
 				6D009740204F7553002C98D7 /* Frameworks */,
 				6D009741204F7553002C98D7 /* CopyFiles */,
-				8AE48F653BB54D4CBC50C649 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -346,7 +342,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0920;
-				LastUpgradeCheck = 0920;
+				LastUpgradeCheck = 1010;
 				ORGANIZATIONNAME = "David Shalaby";
 				TargetAttributes = {
 					6D009742204F7553002C98D7 = {
@@ -401,42 +397,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		63343C4BBFDC72B228D357AB /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-TCMP-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		8AE48F653BB54D4CBC50C649 /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-TCMP/Pods-TCMP-resources.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		6D00973F204F7553002C98D7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -459,6 +419,8 @@
 				6D00979F205220BB002C98D7 /* MessageResolver.swift in Sources */,
 				6D0097B220523483002C98D7 /* BasicNfcApplicationErrorMessage.swift in Sources */,
 				6D544ABD20589C6E0004DE1C /* TappyBleCommunicator.swift in Sources */,
+				440DBCFA22F3483200D1E5EA /* WriteCustomNDEFCommand.swift in Sources */,
+				440DBCF922F3483200D1E5EA /* WriteNDEFUriCommand.swift in Sources */,
 				6D0097D82054BE50002C98D7 /* TappySerialCommunicator.swift in Sources */,
 				6D0097C620535958002C98D7 /* TagTypes.swift in Sources */,
 				6D0097AC2052279E002C98D7 /* StreamNDEFCommand.swift in Sources */,
@@ -522,6 +484,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -529,6 +492,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -556,10 +520,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
+				SWIFT_VERSION = 4.2;
 			};
 			name = Debug;
 		};
@@ -577,6 +542,7 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
@@ -584,6 +550,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
@@ -605,16 +572,17 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_VERSION = 4.2;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
 		6D00974D204F7553002C98D7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 43941AE0DAC5589716A0C5C2 /* Pods-TCMP.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -633,7 +601,6 @@
 		};
 		6D00974E204F7553002C98D7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 51D3EF4D5027D82C10646812 /* Pods-TCMP.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;

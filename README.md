@@ -14,5 +14,7 @@
 * Commands supported currently
   * Reading NDEF formatted tags
   * Writing NDEF text records
+  * Writing NDEF URI records
+  * Writing custom NDEF records
   * Detecting tag codes (both single tag scan and streaming tag scan)
   * Stop command	
