@@ -29,12 +29,15 @@ public enum TCMPParsingError: Error {
     case invalidPollingMode
     case invalidTagTypeByte
     case notAllTagCodeBytesPresent
+    case invalidPasswordProtectionMode
+    case invalidAutoPollScanMode
 }
-@objc
-public protocol TCMPMessage {
-    var commandCode: UInt8 {get}
-    var payload: [UInt8] {get}
+
+@objc public protocol TCMPMessage {
     var commandFamily: [UInt8] {get}
+    var commandCode: UInt8 {get}
+    
+    var payload: [UInt8] {get}
     func parsePayload(payload : [UInt8]) throws
 }
 

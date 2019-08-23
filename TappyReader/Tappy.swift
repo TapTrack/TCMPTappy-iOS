@@ -24,17 +24,21 @@
 import Foundation
 
 protocol Tappy {
-    func setResponseListener(listener : @escaping (TCMPMessage) -> ())
-    func removeResponseListener()
-    func setStatusListener(listner : @escaping (TappyStatus) -> ())
-    func removeStatusListener()
-    func setUnparsablePacketListener(listener : @escaping ([UInt8]) -> ())
-    func removeUnparsablePacketListener()
-    func removeAllListeners()
     func connect()
     func sendMessage(message : TCMPMessage)
     func disconnect()
     func close()
     func getDeviceDescription() -> String
     func getLatestStatus() -> TappyStatus
+    
+    func setResponseListener(listener : @escaping (TCMPMessage) -> ())
+    func removeResponseListener()
+    
+    func setStatusListener(listener : @escaping (TappyStatus) -> ())
+    func removeStatusListener()
+    
+    func setUnparsablePacketListener(listener : @escaping ([UInt8]) -> ())
+    func removeUnparsablePacketListener()
+    
+    func removeAllListeners()
 }

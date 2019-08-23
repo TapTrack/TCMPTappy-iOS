@@ -22,30 +22,25 @@
  */
 
 import Foundation
-@objc
-public class StopCommand : NSObject, TCMPMessage {
-    @objc
-    public private(set) var commandCode: UInt8{
-        get{
-            return StopCommand.getCommandCode()
-        }
-        set{}
-    }
-    @objc
-    public var payload: [UInt8]{
-        get{
+
+@objc public class StopCommand : NSObject, TCMPMessage {
+    
+    @objc public let commandFamily : [UInt8] = CommandFamily.basicNFC
+    
+    @objc public let commandCode : UInt8 = BasicNFCCommandCode.stop.rawValue
+    
+    @objc public var payload: [UInt8] {
+        get {
             return []
         }
     }
     
+    @objc public override init() {}
     
-    @objc public private(set) var commandFamily: [UInt8] = [0x00,0x01]
-    @objc public override init(){}
+    @objc public func parsePayload(payload: [UInt8]) throws {}
     
-    @objc
-    public func parsePayload(payload: [UInt8]) throws {}
-    @objc
-    public static func getCommandCode() -> UInt8 {
+    // Deprecated after version 0.1.12. Left here for legacy reasons.
+    @objc public static func getCommandCode() -> UInt8 {
         return 0x00
     }
 }

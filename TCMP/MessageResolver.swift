@@ -23,6 +23,6 @@
 import Foundation
 @objc
 protocol MessageResolver{
-     func resolveCommand(message : TCMPMessage) throws -> TCMPMessage
-     func resolveResponse(message : TCMPMessage) throws -> TCMPMessage
+     static func resolveCommand(message : TCMPMessage) throws -> TCMPMessage
+     static func resolveResponse(message : TCMPMessage) throws -> TCMPMessage
 }

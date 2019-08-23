@@ -22,20 +22,15 @@
  */
 
 import Foundation
-@objc
-public class ScanNDEFCommand : NSObject, TCMPMessage{
+
+@objc public class ScanNDEFCommand : NSObject, TCMPMessage {
+
+    @objc public let commandFamily : [UInt8] = CommandFamily.basicNFC
     
-    @objc
-    public private(set) var commandCode: UInt8{
-        get{
-            return ScanNDEFCommand.getCommandCode()
-        }
-        set{}
-    }
+    @objc public let commandCode: UInt8 = BasicNFCCommandCode.scanNDEFMessage.rawValue
     
-    @objc
-    public private(set) var payload: [UInt8]{
-        get{
+    @objc public var payload: [UInt8] {
+        get {
             if(pollingMode == PollingMode.pollForType1){
                 return [timeout,0x01]
             }else if(pollingMode == PollingMode.pollForGeneral){
@@ -44,27 +39,25 @@ public class ScanNDEFCommand : NSObject, TCMPMessage{
                 return []
             }
         }
-        set{}
     }
-    
-    @objc
-    public private(set) var commandFamily: [UInt8] = [0x00,0x01]
 
-    @objc
-    public private(set) var timeout : UInt8 = 0x00
+    @objc public private(set) var timeout : UInt8 = 0x00
     
     @objc public private(set) var pollingMode : PollingMode = PollingMode.pollForGeneral
     
-    @objc
-    public override init(){}
+    @objc public override init() {}
     
     @objc public init(timeout : UInt8, pollingMode : PollingMode){
         self.timeout = timeout
         self.pollingMode = pollingMode
     }
     
-    @objc
-    public func parsePayload(payload: [UInt8]) throws {
+    @objc public init(payload: [UInt8]) throws {
+        super.init()
+        try parsePayload(payload: payload)
+    }
+    
+    @objc public func parsePayload(payload: [UInt8]) throws {
         if(payload.count >= 2){
             timeout = payload[0]
             switch (payload[1]){
@@ -80,8 +73,8 @@ public class ScanNDEFCommand : NSObject, TCMPMessage{
         }
     }
     
-    @objc
-    public static func getCommandCode() -> UInt8 {
+    // Deprecated after version 0.1.12. Left here for legacy reasons.
+    @objc public static func getCommandCode() -> UInt8 {
         return 0x04
     }
 }

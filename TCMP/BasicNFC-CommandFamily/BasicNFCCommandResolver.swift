@@ -1,94 +1,138 @@
 //
 //  BasicNFCCommandResolver.swift
-//  TCMP
+//  TappyBLE
 //
-//  Created by David Shalaby on 2018-03-08.
-//  Copyright © 2018 Papyrus Electronics Inc d/b/a TapTrack. All rights reserved.
+//  Created by Alice Cai on 2019-08-09.
+//  Copyright © 2019 TapTrack. All rights reserved.
 //
-/*
- * Copyright (c) 2018. Papyrus Electronics, Inc d/b/a TapTrack.
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * you may obtain a copy of the License at
- *
- *        http://www.apache.org/licenses/LICENSE-2.0
- *
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
 
 import Foundation
 
-@objc public class BasicNFCCommandResolver : NSObject, MessageResolver{
-    @objc public let FAMILY_ID : [UInt8] = [0x00,0x01]
+@objc public final class BasicNFCCommandResolver: NSObject, MessageResolver {
     
-    @objc public override init(){}
-    
-    private func assertFamilyMatches(message: TCMPMessage) throws {
-        if(message.commandFamily.count != 2 || message.commandFamily[0] != FAMILY_ID[0] || message.commandFamily[1] != FAMILY_ID[1]){
-            throw TCMPParsingError.resolverError(errorDescription: "Specified message is for a different command family")
+    @objc private static func assertFamilyMatches(message: TCMPMessage) throws {
+        if message.commandFamily != CommandFamily.basicNFC {
+            throw TCMPParsingError.resolverError(errorDescription: "Specified message is for a different command family. Expected Basic NFC command family, got \(message.commandFamily).")
         }
     }
-   @objc 
-   public func resolveCommand(message: TCMPMessage) throws -> TCMPMessage {
+    
+    @objc public static func resolveCommand(message: TCMPMessage) throws -> TCMPMessage {
         try assertFamilyMatches(message: message)
-        var parsedMessage : TCMPMessage
+        var command: TCMPMessage
         
         switch message.commandCode {
-            case WriteNDEFTextCommand.getCommandCode():
-                parsedMessage = WriteNDEFTextCommand()
-            case ScanNDEFCommand.getCommandCode():
-                parsedMessage = ScanNDEFCommand()
-            case StreamNDEFCommand.getCommandCode():
-                parsedMessage = StreamNDEFCommand()
-            case ScanTagCommand.getCommandCode():
-                parsedMessage = ScanTagCommand()
-            case StreamTagCommand.getCommandCode():
-                parsedMessage = StreamTagCommand()
-             case StopCommand.getCommandCode():
-                parsedMessage = StopCommand()
-            default:
-                throw TCMPParsingError.resolverError(errorDescription: "Unrecognized Command Code")
-        }
-        
-        do{
-            try parsedMessage.parsePayload(payload: message.payload)
-        }catch{
-            throw TCMPParsingError.resolverError(errorDescription: "Command Message failed to parse")
-        }
-        
-        return parsedMessage
-        
-    }
-    @objc
-    public func resolveResponse(message: TCMPMessage) throws -> TCMPMessage {
-        try assertFamilyMatches(message: message)
-        var parsedMessage : TCMPMessage
-        
-        switch message.commandCode {
-        case BasicNfcApplicationErrorMessage.getCommandCode():
-            parsedMessage = BasicNfcApplicationErrorMessage()
-        case TagWrittenResponse.getCommandCode():
-            parsedMessage = TagWrittenResponse()
-        case NDEFFoundResponse.getCommandCode():
-            parsedMessage = NDEFFoundResponse()
-        case TagFoundResponse.getCommandCode():
-            parsedMessage = TagFoundResponse()
+        case BasicNFCCommandCode.stop.rawValue:
+            command = StopCommand()
+        case BasicNFCCommandCode.streamTag.rawValue:
+            command = try StreamTagCommand(payload: message.payload)
+        case BasicNFCCommandCode.scanTag.rawValue:
+            command = try ScanTagCommand(payload: message.payload)
+        case BasicNFCCommandCode.streamNDEFMessage.rawValue:
+            command = try StreamNDEFCommand(payload: message.payload)
+        case BasicNFCCommandCode.scanNDEFMessage.rawValue:
+            command = try ScanNDEFCommand(payload: message.payload)
+        case BasicNFCCommandCode.writeURIRecord.rawValue:
+            command = try WriteNDEFUriCommand(payload: message.payload)
+        case BasicNFCCommandCode.writeTextRecord.rawValue:
+            command = try WriteNDEFTextCommand(payload: message.payload)
+        case BasicNFCCommandCode.writeCustomMessage.rawValue:
+            command = try WriteCustomNDEFCommand(payload: message.payload)
+        case BasicNFCCommandCode.startAutoPolling.rawValue:
+            command = try AutoPollingCommand(payload: message.payload)
+        case BasicNFCCommandCode.emulateURIRecord.rawValue:
+            command = try EmulateURIRecordCommand(payload: message.payload)
+        case BasicNFCCommandCode.emulateTextRecord.rawValue:
+            command = try EmulateTextRecordCommand(payload: message.payload)
+        case BasicNFCCommandCode.emulateCustomNDEFRecord.rawValue:
+            command = try EmulateCustomNDEFRecordCommand(payload: message.payload)
         default:
-            throw TCMPParsingError.resolverError(errorDescription: "Unrecognized Response Code")
+            throw TCMPParsingError.resolverError(errorDescription: "Error occured in Basic NFC command resolver. Command code: \(message.commandCode)")
         }
         
-        do{
-            try parsedMessage.parsePayload(payload: message.payload)
-        }catch{
-            throw TCMPParsingError.resolverError(errorDescription: "Response Message failed to parse")
-        }
-        
-        return parsedMessage
+        return command
     }
     
+    @objc public static func resolveResponse(message: TCMPMessage) throws -> TCMPMessage {
+        try assertFamilyMatches(message: message)
+        var response: TCMPMessage
+        
+        switch message.commandCode {
+        case BasicNFCResponseCode.error.rawValue:
+            response = try BasicNfcApplicationErrorMessage(payload: message.payload)
+        case BasicNFCResponseCode.tagWritten.rawValue:
+            response = try TagWrittenResponse(payload: message.payload)
+        case BasicNFCResponseCode.ndefFound.rawValue:
+            response = try NDEFFoundResponse(payload: message.payload)
+        case BasicNFCResponseCode.tagFound.rawValue:
+            response = try TagFoundResponse(payload: message.payload)
+        case BasicNFCResponseCode.autoPollingTagEntry.rawValue:
+            response = try resolveAutoPollingTagEntry(message: message)
+        case BasicNFCResponseCode.autoPollingTagExit.rawValue:
+            response = try resolveAutoPollingTagExit(message: message)
+        case BasicNFCResponseCode.emulationSuccess.rawValue:
+            response = EmulationSuccessResponse()
+        case BasicNFCResponseCode.emulationStopped.rawValue:
+            response = try EmulationStoppedResponse(payload: message.payload)
+        default:
+            throw TCMPParsingError.resolverError(errorDescription: "Error occured in Basic NFC resolver. Response code: \(message.commandCode)")
+        }
+        
+        return response
+    }
+    
+    @objc public enum AutoPollingTagType: UInt8 {
+        case type2 = 0x00
+        case type1 = 0x01
+        case typeISO144414B = 0x02
+        case feliCa = 0x03
+        case type4A = 0x04
+        case unrecognized = 0x05
+    }
+    
+    @objc private static func resolveAutoPollingTagEntry(message: TCMPMessage) throws -> TCMPMessage {
+        let tagType: UInt8 = message.payload[0]
+        let tagMetadata: [UInt8] = Array(message.payload[1...])
+        var response: TCMPMessage
+        
+        switch tagType {
+        case AutoPollingTagType.type2.rawValue:
+            response = try Type2TagEntryResponse(tagMetadata: tagMetadata)
+        case AutoPollingTagType.type1.rawValue:
+            response = try Type1TagEntryResponse(tagMetadata: tagMetadata)
+        case AutoPollingTagType.typeISO144414B.rawValue:
+            response = try TypeISO14443BTagEntryResponse(tagMetadata: tagMetadata)
+        case AutoPollingTagType.feliCa.rawValue:
+            response = try FeliCaTagEntryResponse(tagMetadata: tagMetadata)
+        case AutoPollingTagType.type4A.rawValue:
+            response = try Type4ATagEntryResponse(tagMetadata: tagMetadata)
+        default:
+            response = UnrecognizedTagEntryResponse(tagMetadata: tagMetadata)
+        }
+        
+        return response
+    }
+    
+    @objc private static func resolveAutoPollingTagExit(message: TCMPMessage) throws -> TCMPMessage {
+        let tagType: UInt8 = message.payload[0]
+        let tagMetadata: [UInt8] = Array(message.payload[1...])
+        var response: TCMPMessage
+        
+        switch tagType {
+        case AutoPollingTagType.type2.rawValue:
+            response = try Type2TagExitResponse(tagMetadata: tagMetadata)
+        case AutoPollingTagType.type1.rawValue:
+            response = try Type1TagExitResponse(tagMetadata: tagMetadata)
+        case AutoPollingTagType.typeISO144414B.rawValue:
+            response = try TypeISO14443BTagExitResponse(tagMetadata: tagMetadata)
+        case AutoPollingTagType.feliCa.rawValue:
+            response = try FeliCaTagExitResponse(tagMetadata: tagMetadata)
+        case AutoPollingTagType.type4A.rawValue:
+            response = try Type4ATagExitResponse(tagMetadata: tagMetadata)
+        default:
+            response = UnrecognizedTagExitResponse(tagMetadata: tagMetadata)
+        }
+        
+        return response
+    }
 }
+

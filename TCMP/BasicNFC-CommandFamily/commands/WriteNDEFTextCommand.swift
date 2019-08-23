@@ -22,19 +22,14 @@
  */
 
 import Foundation
-@objc
-public class WriteNDEFTextCommand : NSObject, TCMPMessage
-{
+
+@objc public class WriteNDEFTextCommand : NSObject, TCMPMessage {
     
-    @objc public private(set) var commandCode : UInt8{
-        get{
-            return WriteNDEFTextCommand.getCommandCode()
-        }
-        set{}
-    }
+    @objc public let commandFamily : [UInt8] = CommandFamily.basicNFC
     
-    @objc public private(set) var commandFamily : [UInt8] = [0x00,0x01]
-    @objc public private(set) var payload: [UInt8]{
+    @objc public let commandCode: UInt8 = BasicNFCCommandCode.writeTextRecord.rawValue
+
+    @objc public var payload: [UInt8] {
         get {
             var lockFlagByte: UInt8
             if(lockFlag == LockingMode.LOCK_TAG){
@@ -45,19 +40,26 @@ public class WriteNDEFTextCommand : NSObject, TCMPMessage
             
             return [timeout,lockFlagByte] + text
         }
-        set{}
     }
     
     @objc public private(set) var lockFlag : LockingMode = LockingMode.DONT_LOCK_TAG
     @objc public private(set) var timeout : UInt8 = 0
     @objc public private(set) var text : [UInt8] = []
+
+
+    @objc public init(text: String) {
+        self.text = Array(text.utf8)
+    }
     
-   @objc public override init(){}
-    
-   @objc public init(timeout: UInt8, lockTag: LockingMode, text: String){
+    @objc public init(timeout: UInt8, lockTag: LockingMode, text: String){
         self.timeout = timeout
         lockFlag = lockTag
         self.text = Array(text.utf8)
+    }
+    
+    @objc public init(payload: [UInt8]) throws {
+        super.init()
+        try parsePayload(payload: payload)
     }
     
     @objc public func parsePayload(payload : [UInt8]) throws {
@@ -81,9 +83,9 @@ public class WriteNDEFTextCommand : NSObject, TCMPMessage
         }
     }
     
-    @objc static func getCommandCode() -> UInt8{
+    // Deprecated after version 0.1.12. Left here for legacy reasons.
+    @objc static func getCommandCode() -> UInt8 {
         return 0x06
     }
-    
     
 }

@@ -23,17 +23,14 @@
 
 import Foundation
 
-@objc public class ScanTagCommand : NSObject, TCMPMessage{
+@objc public class ScanTagCommand : NSObject, TCMPMessage {
     
-    @objc public private(set) var commandCode: UInt8{
-        get{
-            return ScanTagCommand.getCommandCode()
-        }
-        set{}
-    }
+    @objc public let commandFamily : [UInt8] = CommandFamily.basicNFC
     
-    @objc public private(set) var payload: [UInt8]{
-        get{
+    @objc public let commandCode : UInt8 = BasicNFCCommandCode.scanTag.rawValue
+    
+    @objc public var payload: [UInt8] {
+        get {
             if(pollingMode == PollingMode.pollForType1){
                 return [timeout,0x01]
             }else if(pollingMode == PollingMode.pollForGeneral){
@@ -42,20 +39,22 @@ import Foundation
                 return []
             }
         }
-        set{}
     }
-    
-    @objc public private(set) var commandFamily: [UInt8] = [0x00,0x01]
     
     @objc public private(set) var pollingMode : PollingMode = PollingMode.pollForGeneral
     
     @objc public private(set) var timeout : UInt8 = 0x00
     
-    @objc public override init(){}
+    @objc public override init() {}
     
     @objc public init(timeout : UInt8, pollingMode : PollingMode){
         self.timeout = timeout
         self.pollingMode = pollingMode
+    }
+    
+    @objc public init(payload: [UInt8]) throws {
+        super.init()
+        try parsePayload(payload: payload)
     }
     
     @objc public func parsePayload(payload: [UInt8]) throws {
@@ -74,9 +73,9 @@ import Foundation
         }
     }
     
+    // Deprecated after version 0.1.12. Left here for legacy reasons.
     @objc public static func getCommandCode() -> UInt8 {
         return 0x02
     }
-    
     
 }

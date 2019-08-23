@@ -97,8 +97,8 @@ public class SerialTappy : NSObject, Tappy {
         responseListenerJSON = {_,_ in func emptyResponseListener(message: TCMPMessage, data: String) -> (){}}
     }
     
-    @objc public func setStatusListener(listner: @escaping (TappyStatus) -> ()) {
-        statusListener = listner
+    @objc public func setStatusListener(listener: @escaping (TappyStatus) -> ()) {
+        statusListener = listener
     }
     
     @objc public func removeStatusListener() {

@@ -25,37 +25,23 @@ import Foundation
 
 @objc public class NDEFFoundResponse : NSObject, TCMPMessage{
     
-    @objc public private(set) var commandCode: UInt8{
-        get{
-            return NDEFFoundResponse.getCommandCode()
-        }
-        set{}
-    }
+    @objc public let commandFamily: [UInt8] = CommandFamily.basicNFC
     
-    @objc public private(set) var payload: [UInt8]{
-        get{
+    @objc public let commandCode: UInt8 = BasicNFCResponseCode.ndefFound.rawValue
+    
+    @objc public var payload: [UInt8] {
+        get {
 
            return [tagType.getTagByteIndicator(),UInt8(tagCode.count)] + tagCode + ndefMessage
 
         }
-        set{}
     }
-    
-    @objc public private(set) var commandFamily: [UInt8] = [0x00,0x01]
-    
-    /*
-     Right now it seems I can't find an appropriate NDEF library as a cocoapod or other open source lib in Swift that does
-     what I need without the CoreNFC dependency.  Since the target is lower versions of iOS (those that don't support CoreNFC)
-     I will make the ndefMessage field a byte array without validation for now TODO: Write an NDEF library in Swift without CoreNFC dependency
-    */
 
     @objc public private(set) var tagType : TagTypes = TagTypes.TAG_UNKNOWN
     
     @objc public private(set) var tagCode : [UInt8] = [0x00,0x00,0x00,0x00,0x00,0x00,0x00]
     
-    @objc public private(set) var ndefMessage : [UInt8] = [0xD0] //empty NDEF record header/TNF
-    
-    @objc public override init(){}
+    @objc public private(set) var ndefMessage : [UInt8] = [0xD0] // empty NDEF record header/TNF
     
     @objc public init(tagCode : [UInt8], tagType : UInt8, ndefMessage : [UInt8]){
         self.tagCode = tagCode
@@ -63,18 +49,17 @@ import Foundation
         self.ndefMessage = ndefMessage
     }
     
-//    public init(tagCode : [UInt8], tagType : TagTypes, ndefMessage : [UInt8]){
-//        self.tagCode = tagCode
-//        self.tagType = tagType
-//        self.ndefMessage = ndefMessage
-//    }
-//
+    @objc public init(payload: [UInt8]) throws {
+        super.init()
+        try parsePayload(payload: payload)
+    }
+    
     @objc public func parsePayload(payload: [UInt8]) throws {
         if (payload.count < 2){
             throw TCMPParsingError.payloadTooShort
-        }else if(UInt(payload[1]) > UInt(payload.count) + 2){
+        } else if(UInt(payload[1]) > UInt(payload.count) + 2) {
             throw TCMPParsingError.notAllTagCodeBytesPresent
-        }else{
+        } else {
             tagType = TagTypes.init(tagCodeByteIndicator: payload[0])
             let numTagCodeBytes : UInt8 = payload[1]
             let tagCodeBytes = payload[2...2+Int(numTagCodeBytes)-1]
@@ -84,6 +69,7 @@ import Foundation
         }
     }
     
+    // Deprecated after version 0.1.12. Left here for legacy reasons.
     @objc static func getCommandCode() -> UInt8 {
         return 0x02
     }

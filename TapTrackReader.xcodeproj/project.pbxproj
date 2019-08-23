@@ -7,6 +7,80 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0049F6A3230FA2D4002877A3 /* WriteCustomNdefWithPasswordCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F698230FA2D3002877A3 /* WriteCustomNdefWithPasswordCommand.swift */; };
+		0049F6A4230FA2D4002877A3 /* WriteNtag21xWithPasswordCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F699230FA2D3002877A3 /* WriteNtag21xWithPasswordCommand.swift */; };
+		0049F6A5230FA2D4002877A3 /* WriteUriNdefWithPasswordBytesCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F69A230FA2D3002877A3 /* WriteUriNdefWithPasswordBytesCommand.swift */; };
+		0049F6A6230FA2D4002877A3 /* WriteUriNdefWithPasswordCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F69B230FA2D3002877A3 /* WriteUriNdefWithPasswordCommand.swift */; };
+		0049F6A7230FA2D4002877A3 /* GetNtag21xCommandFamilyVersionCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F69C230FA2D3002877A3 /* GetNtag21xCommandFamilyVersionCommand.swift */; };
+		0049F6A8230FA2D4002877A3 /* WriteTextNdefWithPasswordCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F69D230FA2D3002877A3 /* WriteTextNdefWithPasswordCommand.swift */; };
+		0049F6A9230FA2D4002877A3 /* WriteCustomNdefWithPasswordBytesCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F69E230FA2D3002877A3 /* WriteCustomNdefWithPasswordBytesCommand.swift */; };
+		0049F6AA230FA2D4002877A3 /* WriteNtag21xWithPasswordBytesCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F69F230FA2D3002877A3 /* WriteNtag21xWithPasswordBytesCommand.swift */; };
+		0049F6AB230FA2D4002877A3 /* WriteTextNdefWithPasswordBytesCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F6A0230FA2D3002877A3 /* WriteTextNdefWithPasswordBytesCommand.swift */; };
+		0049F6AC230FA2D4002877A3 /* ReadNdefWithPasswordCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F6A1230FA2D3002877A3 /* ReadNdefWithPasswordCommand.swift */; };
+		0049F6AD230FA2D4002877A3 /* ReadNdefWithPasswordBytesCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F6A2230FA2D3002877A3 /* ReadNdefWithPasswordBytesCommand.swift */; };
+		0049F6B2230FA2DF002877A3 /* Ntag21xPollingTimeoutResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F6AE230FA2DF002877A3 /* Ntag21xPollingTimeoutResponse.swift */; };
+		0049F6B3230FA2DF002877A3 /* Ntag21xApplicationErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F6AF230FA2DF002877A3 /* Ntag21xApplicationErrorResponse.swift */; };
+		0049F6B4230FA2DF002877A3 /* Ntag21xWriteSuccessResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F6B0230FA2DF002877A3 /* Ntag21xWriteSuccessResponse.swift */; };
+		0049F6B5230FA2DF002877A3 /* Ntag21xReadSuccessResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F6B1230FA2DF002877A3 /* Ntag21xReadSuccessResponse.swift */; };
+		0049F6BB230FA2E8002877A3 /* GetType4CommandFamilyVersionCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F6B6230FA2E8002877A3 /* GetType4CommandFamilyVersionCommand.swift */; };
+		0049F6BC230FA2E8002877A3 /* DetectType4BTagWithAFICommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F6B7230FA2E8002877A3 /* DetectType4BTagWithAFICommand.swift */; };
+		0049F6BD230FA2E8002877A3 /* TransceiveAPDUCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F6B8230FA2E8002877A3 /* TransceiveAPDUCommand.swift */; };
+		0049F6BE230FA2E8002877A3 /* DetectType4BTagCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F6B9230FA2E8002877A3 /* DetectType4BTagCommand.swift */; };
+		0049F6BF230FA2E8002877A3 /* DetectType4ATagCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F6BA230FA2E8002877A3 /* DetectType4ATagCommand.swift */; };
+		0049F6C7230FA2F3002877A3 /* Type4BTagDetectedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F6C0230FA2F3002877A3 /* Type4BTagDetectedResponse.swift */; };
+		0049F6C8230FA2F3002877A3 /* TransceiveAPDUSuccessResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F6C1230FA2F3002877A3 /* TransceiveAPDUSuccessResponse.swift */; };
+		0049F6C9230FA2F3002877A3 /* DetectType4TimeoutResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F6C2230FA2F3002877A3 /* DetectType4TimeoutResponse.swift */; };
+		0049F6CA230FA2F3002877A3 /* Type4ApplicationErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F6C3230FA2F3002877A3 /* Type4ApplicationErrorResponse.swift */; };
+		0049F6CB230FA2F3002877A3 /* Type4ATagDetectedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F6C4230FA2F3002877A3 /* Type4ATagDetectedResponse.swift */; };
+		0049F6CC230FA2F3002877A3 /* GetType4CommandFamilyVersionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F6C5230FA2F3002877A3 /* GetType4CommandFamilyVersionResponse.swift */; };
+		0049F6CD230FA2F3002877A3 /* Type4PollingErrorDetectedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F6C6230FA2F3002877A3 /* Type4PollingErrorDetectedResponse.swift */; };
+		0049F6D4230FA2FE002877A3 /* SetConfigurationCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F6CE230FA2FD002877A3 /* SetConfigurationCommand.swift */; };
+		0049F6D5230FA2FE002877A3 /* OutputTestFramesCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F6CF230FA2FD002877A3 /* OutputTestFramesCommand.swift */; };
+		0049F6D6230FA2FE002877A3 /* GetFirmwareVersionCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F6D0230FA2FD002877A3 /* GetFirmwareVersionCommand.swift */; };
+		0049F6D7230FA2FE002877A3 /* GetHardwareVersionCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F6D1230FA2FD002877A3 /* GetHardwareVersionCommand.swift */; };
+		0049F6D8230FA2FE002877A3 /* PingCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F6D2230FA2FD002877A3 /* PingCommand.swift */; };
+		0049F6D9230FA2FE002877A3 /* GetBatteryLevelCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F6D3230FA2FE002877A3 /* GetBatteryLevelCommand.swift */; };
+		0049F6E2230FA306002877A3 /* OutputTestFramesResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F6DA230FA306002877A3 /* OutputTestFramesResponse.swift */; };
+		0049F6E3230FA306002877A3 /* GetBatteryLevelResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F6DB230FA306002877A3 /* GetBatteryLevelResponse.swift */; };
+		0049F6E4230FA306002877A3 /* SystemApplicationErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F6DC230FA306002877A3 /* SystemApplicationErrorResponse.swift */; };
+		0049F6E5230FA306002877A3 /* GetFirmwareVersionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F6DD230FA306002877A3 /* GetFirmwareVersionResponse.swift */; };
+		0049F6E6230FA306002877A3 /* SystemErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F6DE230FA306002877A3 /* SystemErrorResponse.swift */; };
+		0049F6E7230FA306002877A3 /* SetConfigurationResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F6DF230FA306002877A3 /* SetConfigurationResponse.swift */; };
+		0049F6E8230FA306002877A3 /* GetHardwareVersionReponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F6E0230FA306002877A3 /* GetHardwareVersionReponse.swift */; };
+		0049F6E9230FA306002877A3 /* PingResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F6E1230FA306002877A3 /* PingResponse.swift */; };
+		0049F6EE230FA312002877A3 /* AutoPollingCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F6EA230FA311002877A3 /* AutoPollingCommand.swift */; };
+		0049F6EF230FA312002877A3 /* EmulateURIRecordCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F6EB230FA311002877A3 /* EmulateURIRecordCommand.swift */; };
+		0049F6F0230FA312002877A3 /* EmulateTextRecordCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F6EC230FA312002877A3 /* EmulateTextRecordCommand.swift */; };
+		0049F6F1230FA312002877A3 /* EmulateCustomNDEFRecordCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F6ED230FA312002877A3 /* EmulateCustomNDEFRecordCommand.swift */; };
+		0049F705230FA329002877A3 /* Type4ATagExitResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F6F2230FA327002877A3 /* Type4ATagExitResponse.swift */; };
+		0049F706230FA329002877A3 /* TypeISO14443BTagEntryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F6F3230FA327002877A3 /* TypeISO14443BTagEntryResponse.swift */; };
+		0049F707230FA329002877A3 /* UnrecognizedTagExitResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F6F4230FA327002877A3 /* UnrecognizedTagExitResponse.swift */; };
+		0049F708230FA329002877A3 /* AutoPollingTypeISO14443BTagResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F6F5230FA327002877A3 /* AutoPollingTypeISO14443BTagResponse.swift */; };
+		0049F709230FA329002877A3 /* Type1TagEntryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F6F6230FA327002877A3 /* Type1TagEntryResponse.swift */; };
+		0049F70A230FA329002877A3 /* FeliCaTagExitResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F6F7230FA327002877A3 /* FeliCaTagExitResponse.swift */; };
+		0049F70B230FA329002877A3 /* AutoPollingType2TagResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F6F8230FA328002877A3 /* AutoPollingType2TagResponse.swift */; };
+		0049F70C230FA329002877A3 /* Type1TagExitResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F6F9230FA328002877A3 /* Type1TagExitResponse.swift */; };
+		0049F70D230FA329002877A3 /* AutoPollingFeliCaTagResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F6FA230FA328002877A3 /* AutoPollingFeliCaTagResponse.swift */; };
+		0049F70E230FA329002877A3 /* AutoPollingType1TagResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F6FB230FA328002877A3 /* AutoPollingType1TagResponse.swift */; };
+		0049F70F230FA329002877A3 /* EmulationSuccessResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F6FC230FA328002877A3 /* EmulationSuccessResponse.swift */; };
+		0049F710230FA329002877A3 /* TypeISO14443BTagExitResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F6FD230FA328002877A3 /* TypeISO14443BTagExitResponse.swift */; };
+		0049F711230FA329002877A3 /* Type2TagExitResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F6FE230FA328002877A3 /* Type2TagExitResponse.swift */; };
+		0049F712230FA329002877A3 /* AutoPollingType4ATagResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F6FF230FA328002877A3 /* AutoPollingType4ATagResponse.swift */; };
+		0049F713230FA329002877A3 /* FeliCaTagEntryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F700230FA328002877A3 /* FeliCaTagEntryResponse.swift */; };
+		0049F714230FA329002877A3 /* Type4ATagEntryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F701230FA329002877A3 /* Type4ATagEntryResponse.swift */; };
+		0049F715230FA329002877A3 /* EmulationStoppedResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F702230FA329002877A3 /* EmulationStoppedResponse.swift */; };
+		0049F716230FA329002877A3 /* UnrecognizedTagEntryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F703230FA329002877A3 /* UnrecognizedTagEntryResponse.swift */; };
+		0049F717230FA329002877A3 /* Type2TagEntryResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F704230FA329002877A3 /* Type2TagEntryResponse.swift */; };
+		0049F71A230FA39E002877A3 /* Type4CommandResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F718230FA39E002877A3 /* Type4CommandResolver.swift */; };
+		0049F71B230FA39E002877A3 /* Type4CommandFamilyConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F719230FA39E002877A3 /* Type4CommandFamilyConstants.swift */; };
+		0049F71E230FA3BA002877A3 /* Ntag21xCommandFamilyConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F71C230FA3BA002877A3 /* Ntag21xCommandFamilyConstants.swift */; };
+		0049F71F230FA3BA002877A3 /* Ntag21xCommandResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F71D230FA3BA002877A3 /* Ntag21xCommandResolver.swift */; };
+		0049F722230FA3C7002877A3 /* SystemCommandFamilyConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F720230FA3C7002877A3 /* SystemCommandFamilyConstants.swift */; };
+		0049F723230FA3C7002877A3 /* SystemCommandResolver.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F721230FA3C7002877A3 /* SystemCommandResolver.swift */; };
+		0049F725230FA3D8002877A3 /* BasicNFCCommandFamilyConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F724230FA3D8002877A3 /* BasicNFCCommandFamilyConstants.swift */; };
+		0049F728230FA3EB002877A3 /* CommandFamilyConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F726230FA3EB002877A3 /* CommandFamilyConstants.swift */; };
+		0049F729230FA3EB002877A3 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F727230FA3EB002877A3 /* Util.swift */; };
+		0049F72B230FA56A002877A3 /* GetNtag21xCommandFamilyVersionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F72A230FA56A002877A3 /* GetNtag21xCommandFamilyVersionResponse.swift */; };
 		440DBCF922F3483200D1E5EA /* WriteNDEFUriCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440DBCF722F3483200D1E5EA /* WriteNDEFUriCommand.swift */; };
 		440DBCFA22F3483200D1E5EA /* WriteCustomNDEFCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440DBCF822F3483200D1E5EA /* WriteCustomNDEFCommand.swift */; };
 		6D009748204F7553002C98D7 /* TCMP.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D009747204F7553002C98D7 /* TCMP.m */; };
@@ -78,6 +152,80 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		0049F698230FA2D3002877A3 /* WriteCustomNdefWithPasswordCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteCustomNdefWithPasswordCommand.swift; sourceTree = "<group>"; };
+		0049F699230FA2D3002877A3 /* WriteNtag21xWithPasswordCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteNtag21xWithPasswordCommand.swift; sourceTree = "<group>"; };
+		0049F69A230FA2D3002877A3 /* WriteUriNdefWithPasswordBytesCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteUriNdefWithPasswordBytesCommand.swift; sourceTree = "<group>"; };
+		0049F69B230FA2D3002877A3 /* WriteUriNdefWithPasswordCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteUriNdefWithPasswordCommand.swift; sourceTree = "<group>"; };
+		0049F69C230FA2D3002877A3 /* GetNtag21xCommandFamilyVersionCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetNtag21xCommandFamilyVersionCommand.swift; sourceTree = "<group>"; };
+		0049F69D230FA2D3002877A3 /* WriteTextNdefWithPasswordCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteTextNdefWithPasswordCommand.swift; sourceTree = "<group>"; };
+		0049F69E230FA2D3002877A3 /* WriteCustomNdefWithPasswordBytesCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteCustomNdefWithPasswordBytesCommand.swift; sourceTree = "<group>"; };
+		0049F69F230FA2D3002877A3 /* WriteNtag21xWithPasswordBytesCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteNtag21xWithPasswordBytesCommand.swift; sourceTree = "<group>"; };
+		0049F6A0230FA2D3002877A3 /* WriteTextNdefWithPasswordBytesCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteTextNdefWithPasswordBytesCommand.swift; sourceTree = "<group>"; };
+		0049F6A1230FA2D3002877A3 /* ReadNdefWithPasswordCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadNdefWithPasswordCommand.swift; sourceTree = "<group>"; };
+		0049F6A2230FA2D3002877A3 /* ReadNdefWithPasswordBytesCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReadNdefWithPasswordBytesCommand.swift; sourceTree = "<group>"; };
+		0049F6AE230FA2DF002877A3 /* Ntag21xPollingTimeoutResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ntag21xPollingTimeoutResponse.swift; sourceTree = "<group>"; };
+		0049F6AF230FA2DF002877A3 /* Ntag21xApplicationErrorResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ntag21xApplicationErrorResponse.swift; sourceTree = "<group>"; };
+		0049F6B0230FA2DF002877A3 /* Ntag21xWriteSuccessResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ntag21xWriteSuccessResponse.swift; sourceTree = "<group>"; };
+		0049F6B1230FA2DF002877A3 /* Ntag21xReadSuccessResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ntag21xReadSuccessResponse.swift; sourceTree = "<group>"; };
+		0049F6B6230FA2E8002877A3 /* GetType4CommandFamilyVersionCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetType4CommandFamilyVersionCommand.swift; sourceTree = "<group>"; };
+		0049F6B7230FA2E8002877A3 /* DetectType4BTagWithAFICommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetectType4BTagWithAFICommand.swift; sourceTree = "<group>"; };
+		0049F6B8230FA2E8002877A3 /* TransceiveAPDUCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransceiveAPDUCommand.swift; sourceTree = "<group>"; };
+		0049F6B9230FA2E8002877A3 /* DetectType4BTagCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetectType4BTagCommand.swift; sourceTree = "<group>"; };
+		0049F6BA230FA2E8002877A3 /* DetectType4ATagCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetectType4ATagCommand.swift; sourceTree = "<group>"; };
+		0049F6C0230FA2F3002877A3 /* Type4BTagDetectedResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Type4BTagDetectedResponse.swift; sourceTree = "<group>"; };
+		0049F6C1230FA2F3002877A3 /* TransceiveAPDUSuccessResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransceiveAPDUSuccessResponse.swift; sourceTree = "<group>"; };
+		0049F6C2230FA2F3002877A3 /* DetectType4TimeoutResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetectType4TimeoutResponse.swift; sourceTree = "<group>"; };
+		0049F6C3230FA2F3002877A3 /* Type4ApplicationErrorResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Type4ApplicationErrorResponse.swift; sourceTree = "<group>"; };
+		0049F6C4230FA2F3002877A3 /* Type4ATagDetectedResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Type4ATagDetectedResponse.swift; sourceTree = "<group>"; };
+		0049F6C5230FA2F3002877A3 /* GetType4CommandFamilyVersionResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetType4CommandFamilyVersionResponse.swift; sourceTree = "<group>"; };
+		0049F6C6230FA2F3002877A3 /* Type4PollingErrorDetectedResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Type4PollingErrorDetectedResponse.swift; sourceTree = "<group>"; };
+		0049F6CE230FA2FD002877A3 /* SetConfigurationCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetConfigurationCommand.swift; sourceTree = "<group>"; };
+		0049F6CF230FA2FD002877A3 /* OutputTestFramesCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutputTestFramesCommand.swift; sourceTree = "<group>"; };
+		0049F6D0230FA2FD002877A3 /* GetFirmwareVersionCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetFirmwareVersionCommand.swift; sourceTree = "<group>"; };
+		0049F6D1230FA2FD002877A3 /* GetHardwareVersionCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetHardwareVersionCommand.swift; sourceTree = "<group>"; };
+		0049F6D2230FA2FD002877A3 /* PingCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PingCommand.swift; sourceTree = "<group>"; };
+		0049F6D3230FA2FE002877A3 /* GetBatteryLevelCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetBatteryLevelCommand.swift; sourceTree = "<group>"; };
+		0049F6DA230FA306002877A3 /* OutputTestFramesResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OutputTestFramesResponse.swift; sourceTree = "<group>"; };
+		0049F6DB230FA306002877A3 /* GetBatteryLevelResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetBatteryLevelResponse.swift; sourceTree = "<group>"; };
+		0049F6DC230FA306002877A3 /* SystemApplicationErrorResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemApplicationErrorResponse.swift; sourceTree = "<group>"; };
+		0049F6DD230FA306002877A3 /* GetFirmwareVersionResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetFirmwareVersionResponse.swift; sourceTree = "<group>"; };
+		0049F6DE230FA306002877A3 /* SystemErrorResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemErrorResponse.swift; sourceTree = "<group>"; };
+		0049F6DF230FA306002877A3 /* SetConfigurationResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetConfigurationResponse.swift; sourceTree = "<group>"; };
+		0049F6E0230FA306002877A3 /* GetHardwareVersionReponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetHardwareVersionReponse.swift; sourceTree = "<group>"; };
+		0049F6E1230FA306002877A3 /* PingResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PingResponse.swift; sourceTree = "<group>"; };
+		0049F6EA230FA311002877A3 /* AutoPollingCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoPollingCommand.swift; sourceTree = "<group>"; };
+		0049F6EB230FA311002877A3 /* EmulateURIRecordCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmulateURIRecordCommand.swift; sourceTree = "<group>"; };
+		0049F6EC230FA312002877A3 /* EmulateTextRecordCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmulateTextRecordCommand.swift; sourceTree = "<group>"; };
+		0049F6ED230FA312002877A3 /* EmulateCustomNDEFRecordCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmulateCustomNDEFRecordCommand.swift; sourceTree = "<group>"; };
+		0049F6F2230FA327002877A3 /* Type4ATagExitResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Type4ATagExitResponse.swift; sourceTree = "<group>"; };
+		0049F6F3230FA327002877A3 /* TypeISO14443BTagEntryResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeISO14443BTagEntryResponse.swift; sourceTree = "<group>"; };
+		0049F6F4230FA327002877A3 /* UnrecognizedTagExitResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnrecognizedTagExitResponse.swift; sourceTree = "<group>"; };
+		0049F6F5230FA327002877A3 /* AutoPollingTypeISO14443BTagResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoPollingTypeISO14443BTagResponse.swift; sourceTree = "<group>"; };
+		0049F6F6230FA327002877A3 /* Type1TagEntryResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Type1TagEntryResponse.swift; sourceTree = "<group>"; };
+		0049F6F7230FA327002877A3 /* FeliCaTagExitResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeliCaTagExitResponse.swift; sourceTree = "<group>"; };
+		0049F6F8230FA328002877A3 /* AutoPollingType2TagResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoPollingType2TagResponse.swift; sourceTree = "<group>"; };
+		0049F6F9230FA328002877A3 /* Type1TagExitResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Type1TagExitResponse.swift; sourceTree = "<group>"; };
+		0049F6FA230FA328002877A3 /* AutoPollingFeliCaTagResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoPollingFeliCaTagResponse.swift; sourceTree = "<group>"; };
+		0049F6FB230FA328002877A3 /* AutoPollingType1TagResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoPollingType1TagResponse.swift; sourceTree = "<group>"; };
+		0049F6FC230FA328002877A3 /* EmulationSuccessResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmulationSuccessResponse.swift; sourceTree = "<group>"; };
+		0049F6FD230FA328002877A3 /* TypeISO14443BTagExitResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypeISO14443BTagExitResponse.swift; sourceTree = "<group>"; };
+		0049F6FE230FA328002877A3 /* Type2TagExitResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Type2TagExitResponse.swift; sourceTree = "<group>"; };
+		0049F6FF230FA328002877A3 /* AutoPollingType4ATagResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AutoPollingType4ATagResponse.swift; sourceTree = "<group>"; };
+		0049F700230FA328002877A3 /* FeliCaTagEntryResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FeliCaTagEntryResponse.swift; sourceTree = "<group>"; };
+		0049F701230FA329002877A3 /* Type4ATagEntryResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Type4ATagEntryResponse.swift; sourceTree = "<group>"; };
+		0049F702230FA329002877A3 /* EmulationStoppedResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmulationStoppedResponse.swift; sourceTree = "<group>"; };
+		0049F703230FA329002877A3 /* UnrecognizedTagEntryResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UnrecognizedTagEntryResponse.swift; sourceTree = "<group>"; };
+		0049F704230FA329002877A3 /* Type2TagEntryResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Type2TagEntryResponse.swift; sourceTree = "<group>"; };
+		0049F718230FA39E002877A3 /* Type4CommandResolver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Type4CommandResolver.swift; sourceTree = "<group>"; };
+		0049F719230FA39E002877A3 /* Type4CommandFamilyConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Type4CommandFamilyConstants.swift; sourceTree = "<group>"; };
+		0049F71C230FA3BA002877A3 /* Ntag21xCommandFamilyConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ntag21xCommandFamilyConstants.swift; sourceTree = "<group>"; };
+		0049F71D230FA3BA002877A3 /* Ntag21xCommandResolver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Ntag21xCommandResolver.swift; sourceTree = "<group>"; };
+		0049F720230FA3C7002877A3 /* SystemCommandFamilyConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemCommandFamilyConstants.swift; sourceTree = "<group>"; };
+		0049F721230FA3C7002877A3 /* SystemCommandResolver.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SystemCommandResolver.swift; sourceTree = "<group>"; };
+		0049F724230FA3D8002877A3 /* BasicNFCCommandFamilyConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BasicNFCCommandFamilyConstants.swift; sourceTree = "<group>"; };
+		0049F726230FA3EB002877A3 /* CommandFamilyConstants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommandFamilyConstants.swift; sourceTree = "<group>"; };
+		0049F727230FA3EB002877A3 /* Util.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Util.swift; sourceTree = "<group>"; };
+		0049F72A230FA56A002877A3 /* GetNtag21xCommandFamilyVersionResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetNtag21xCommandFamilyVersionResponse.swift; sourceTree = "<group>"; };
 		440DBCF722F3483200D1E5EA /* WriteNDEFUriCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteNDEFUriCommand.swift; sourceTree = "<group>"; };
 		440DBCF822F3483200D1E5EA /* WriteCustomNDEFCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteCustomNDEFCommand.swift; sourceTree = "<group>"; };
 		6D009743204F7553002C98D7 /* libTapTrackReader.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTapTrackReader.a; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -150,6 +298,123 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0049F68F230F96F1002877A3 /* SystemCommandFamily */ = {
+			isa = PBXGroup;
+			children = (
+				0049F690230F9F10002877A3 /* Commands */,
+				0049F691230F9F18002877A3 /* Responses */,
+				0049F720230FA3C7002877A3 /* SystemCommandFamilyConstants.swift */,
+				0049F721230FA3C7002877A3 /* SystemCommandResolver.swift */,
+			);
+			path = SystemCommandFamily;
+			sourceTree = "<group>";
+		};
+		0049F690230F9F10002877A3 /* Commands */ = {
+			isa = PBXGroup;
+			children = (
+				0049F6D3230FA2FE002877A3 /* GetBatteryLevelCommand.swift */,
+				0049F6D0230FA2FD002877A3 /* GetFirmwareVersionCommand.swift */,
+				0049F6D1230FA2FD002877A3 /* GetHardwareVersionCommand.swift */,
+				0049F6CF230FA2FD002877A3 /* OutputTestFramesCommand.swift */,
+				0049F6D2230FA2FD002877A3 /* PingCommand.swift */,
+				0049F6CE230FA2FD002877A3 /* SetConfigurationCommand.swift */,
+			);
+			path = Commands;
+			sourceTree = "<group>";
+		};
+		0049F691230F9F18002877A3 /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+				0049F6DB230FA306002877A3 /* GetBatteryLevelResponse.swift */,
+				0049F6DD230FA306002877A3 /* GetFirmwareVersionResponse.swift */,
+				0049F6E0230FA306002877A3 /* GetHardwareVersionReponse.swift */,
+				0049F6DA230FA306002877A3 /* OutputTestFramesResponse.swift */,
+				0049F6E1230FA306002877A3 /* PingResponse.swift */,
+				0049F6DF230FA306002877A3 /* SetConfigurationResponse.swift */,
+				0049F6DC230FA306002877A3 /* SystemApplicationErrorResponse.swift */,
+				0049F6DE230FA306002877A3 /* SystemErrorResponse.swift */,
+			);
+			path = Responses;
+			sourceTree = "<group>";
+		};
+		0049F692230F9F8E002877A3 /* Type4CommandFamily */ = {
+			isa = PBXGroup;
+			children = (
+				0049F695230FA042002877A3 /* Commands */,
+				0049F694230FA038002877A3 /* Responses */,
+				0049F719230FA39E002877A3 /* Type4CommandFamilyConstants.swift */,
+				0049F718230FA39E002877A3 /* Type4CommandResolver.swift */,
+			);
+			path = Type4CommandFamily;
+			sourceTree = "<group>";
+		};
+		0049F693230F9FF7002877A3 /* Ntag21xCommandFamily */ = {
+			isa = PBXGroup;
+			children = (
+				0049F697230FA05A002877A3 /* Commands */,
+				0049F696230FA049002877A3 /* Responses */,
+				0049F71C230FA3BA002877A3 /* Ntag21xCommandFamilyConstants.swift */,
+				0049F71D230FA3BA002877A3 /* Ntag21xCommandResolver.swift */,
+			);
+			path = Ntag21xCommandFamily;
+			sourceTree = "<group>";
+		};
+		0049F694230FA038002877A3 /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+				0049F6C2230FA2F3002877A3 /* DetectType4TimeoutResponse.swift */,
+				0049F6C5230FA2F3002877A3 /* GetType4CommandFamilyVersionResponse.swift */,
+				0049F6C1230FA2F3002877A3 /* TransceiveAPDUSuccessResponse.swift */,
+				0049F6C3230FA2F3002877A3 /* Type4ApplicationErrorResponse.swift */,
+				0049F6C4230FA2F3002877A3 /* Type4ATagDetectedResponse.swift */,
+				0049F6C0230FA2F3002877A3 /* Type4BTagDetectedResponse.swift */,
+				0049F6C6230FA2F3002877A3 /* Type4PollingErrorDetectedResponse.swift */,
+			);
+			path = Responses;
+			sourceTree = "<group>";
+		};
+		0049F695230FA042002877A3 /* Commands */ = {
+			isa = PBXGroup;
+			children = (
+				0049F6BA230FA2E8002877A3 /* DetectType4ATagCommand.swift */,
+				0049F6B9230FA2E8002877A3 /* DetectType4BTagCommand.swift */,
+				0049F6B7230FA2E8002877A3 /* DetectType4BTagWithAFICommand.swift */,
+				0049F6B6230FA2E8002877A3 /* GetType4CommandFamilyVersionCommand.swift */,
+				0049F6B8230FA2E8002877A3 /* TransceiveAPDUCommand.swift */,
+			);
+			path = Commands;
+			sourceTree = "<group>";
+		};
+		0049F696230FA049002877A3 /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+				0049F72A230FA56A002877A3 /* GetNtag21xCommandFamilyVersionResponse.swift */,
+				0049F6AF230FA2DF002877A3 /* Ntag21xApplicationErrorResponse.swift */,
+				0049F6AE230FA2DF002877A3 /* Ntag21xPollingTimeoutResponse.swift */,
+				0049F6B1230FA2DF002877A3 /* Ntag21xReadSuccessResponse.swift */,
+				0049F6B0230FA2DF002877A3 /* Ntag21xWriteSuccessResponse.swift */,
+			);
+			path = Responses;
+			sourceTree = "<group>";
+		};
+		0049F697230FA05A002877A3 /* Commands */ = {
+			isa = PBXGroup;
+			children = (
+				0049F69C230FA2D3002877A3 /* GetNtag21xCommandFamilyVersionCommand.swift */,
+				0049F6A2230FA2D3002877A3 /* ReadNdefWithPasswordBytesCommand.swift */,
+				0049F6A1230FA2D3002877A3 /* ReadNdefWithPasswordCommand.swift */,
+				0049F69E230FA2D3002877A3 /* WriteCustomNdefWithPasswordBytesCommand.swift */,
+				0049F698230FA2D3002877A3 /* WriteCustomNdefWithPasswordCommand.swift */,
+				0049F69F230FA2D3002877A3 /* WriteNtag21xWithPasswordBytesCommand.swift */,
+				0049F699230FA2D3002877A3 /* WriteNtag21xWithPasswordCommand.swift */,
+				0049F6A0230FA2D3002877A3 /* WriteTextNdefWithPasswordBytesCommand.swift */,
+				0049F69D230FA2D3002877A3 /* WriteTextNdefWithPasswordCommand.swift */,
+				0049F69A230FA2D3002877A3 /* WriteUriNdefWithPasswordBytesCommand.swift */,
+				0049F69B230FA2D3002877A3 /* WriteUriNdefWithPasswordCommand.swift */,
+			);
+			path = Commands;
+			sourceTree = "<group>";
+		};
 		1407B012858101F47C82E6CC /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -184,6 +449,9 @@
 		6D009745204F7553002C98D7 /* TCMP */ = {
 			isa = PBXGroup;
 			children = (
+				0049F693230F9FF7002877A3 /* Ntag21xCommandFamily */,
+				0049F692230F9F8E002877A3 /* Type4CommandFamily */,
+				0049F68F230F96F1002877A3 /* SystemCommandFamily */,
 				6D00979520521F35002C98D7 /* BasicNFC-CommandFamily */,
 				6D0097B52052F376002C98D7 /* RawTCMPMessage.swift */,
 				6D0097B7205343BD002C98D7 /* TCMPUtils.swift */,
@@ -194,6 +462,8 @@
 				6D00979E205220BB002C98D7 /* MessageResolver.swift */,
 				6D0097AD205227E3002C98D7 /* ApplicationErrorMessage.swift */,
 				6D0097C520535958002C98D7 /* TagTypes.swift */,
+				0049F726230FA3EB002877A3 /* CommandFamilyConstants.swift */,
+				0049F727230FA3EB002877A3 /* Util.swift */,
 			);
 			path = TCMP;
 			sourceTree = "<group>";
@@ -201,27 +471,51 @@
 		6D00979520521F35002C98D7 /* BasicNFC-CommandFamily */ = {
 			isa = PBXGroup;
 			children = (
-				6D0097A620522774002C98D7 /* commands */,
-				6D0097A520522733002C98D7 /* responses */,
+				6D0097A620522774002C98D7 /* Commands */,
+				6D0097A520522733002C98D7 /* Responses */,
 				6D0097A22052236E002C98D7 /* BasicNFCCommandResolver.swift */,
+				0049F724230FA3D8002877A3 /* BasicNFCCommandFamilyConstants.swift */,
 			);
 			path = "BasicNFC-CommandFamily";
 			sourceTree = "<group>";
 		};
-		6D0097A520522733002C98D7 /* responses */ = {
+		6D0097A520522733002C98D7 /* Responses */ = {
 			isa = PBXGroup;
 			children = (
+				0049F6FA230FA328002877A3 /* AutoPollingFeliCaTagResponse.swift */,
+				0049F6FB230FA328002877A3 /* AutoPollingType1TagResponse.swift */,
+				0049F6F8230FA328002877A3 /* AutoPollingType2TagResponse.swift */,
+				0049F6FF230FA328002877A3 /* AutoPollingType4ATagResponse.swift */,
+				0049F6F5230FA327002877A3 /* AutoPollingTypeISO14443BTagResponse.swift */,
+				0049F702230FA329002877A3 /* EmulationStoppedResponse.swift */,
+				0049F6FC230FA328002877A3 /* EmulationSuccessResponse.swift */,
+				0049F700230FA328002877A3 /* FeliCaTagEntryResponse.swift */,
+				0049F6F7230FA327002877A3 /* FeliCaTagExitResponse.swift */,
+				0049F6F6230FA327002877A3 /* Type1TagEntryResponse.swift */,
+				0049F6F9230FA328002877A3 /* Type1TagExitResponse.swift */,
+				0049F704230FA329002877A3 /* Type2TagEntryResponse.swift */,
+				0049F6FE230FA328002877A3 /* Type2TagExitResponse.swift */,
+				0049F701230FA329002877A3 /* Type4ATagEntryResponse.swift */,
+				0049F6F2230FA327002877A3 /* Type4ATagExitResponse.swift */,
+				0049F6F3230FA327002877A3 /* TypeISO14443BTagEntryResponse.swift */,
+				0049F6FD230FA328002877A3 /* TypeISO14443BTagExitResponse.swift */,
+				0049F703230FA329002877A3 /* UnrecognizedTagEntryResponse.swift */,
+				0049F6F4230FA327002877A3 /* UnrecognizedTagExitResponse.swift */,
 				6D55150F2060753E004E6CBC /* TagWrittenResponse.swift */,
 				6D0097B120523483002C98D7 /* BasicNfcApplicationErrorMessage.swift */,
 				6D0097BF20534796002C98D7 /* NDEFFoundResponse.swift */,
 				6DC95B7E208437C8000B6A20 /* TagFoundResponse.swift */,
 			);
-			path = responses;
+			path = Responses;
 			sourceTree = "<group>";
 		};
-		6D0097A620522774002C98D7 /* commands */ = {
+		6D0097A620522774002C98D7 /* Commands */ = {
 			isa = PBXGroup;
 			children = (
+				0049F6EA230FA311002877A3 /* AutoPollingCommand.swift */,
+				0049F6ED230FA312002877A3 /* EmulateCustomNDEFRecordCommand.swift */,
+				0049F6EC230FA312002877A3 /* EmulateTextRecordCommand.swift */,
+				0049F6EB230FA311002877A3 /* EmulateURIRecordCommand.swift */,
 				6D0097B9205344D5002C98D7 /* WriteNDEFTextCommand.swift */,
 				6D0097A72052279E002C98D7 /* ScanNDEFCommand.swift */,
 				6D0097A92052279E002C98D7 /* StreamNDEFCommand.swift */,
@@ -233,7 +527,7 @@
 				440DBCF822F3483200D1E5EA /* WriteCustomNDEFCommand.swift */,
 				440DBCF722F3483200D1E5EA /* WriteNDEFUriCommand.swift */,
 			);
-			path = commands;
+			path = Commands;
 			sourceTree = "<group>";
 		};
 		6D0097D62054BCF6002C98D7 /* TappyReader */ = {
@@ -356,7 +650,7 @@
 					};
 					6D544AA92056FC720004DE1C = {
 						CreatedOnToolsVersion = 9.2;
-						LastSwiftMigration = 0920;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -367,6 +661,7 @@
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				Base,
 			);
 			mainGroup = 6D00973A204F7553002C98D7;
 			productRefGroup = 6D009744204F7553002C98D7 /* Products */;
@@ -403,39 +698,113 @@
 			buildActionMask = 2147483647;
 			files = (
 				6D0097DE2054C198002C98D7 /* TappyStatus.swift in Sources */,
+				0049F6C9230FA2F3002877A3 /* DetectType4TimeoutResponse.swift in Sources */,
+				0049F711230FA329002877A3 /* Type2TagExitResponse.swift in Sources */,
+				0049F705230FA329002877A3 /* Type4ATagExitResponse.swift in Sources */,
 				6D0097BC205345F6002C98D7 /* LockingModes.swift in Sources */,
+				0049F6D7230FA2FE002877A3 /* GetHardwareVersionCommand.swift in Sources */,
+				0049F6BE230FA2E8002877A3 /* DetectType4BTagCommand.swift in Sources */,
 				6D544AA42056F9CB0004DE1C /* SerialTappy.swift in Sources */,
+				0049F6BD230FA2E8002877A3 /* TransceiveAPDUCommand.swift in Sources */,
 				6D0097A32052236E002C98D7 /* BasicNFCCommandResolver.swift in Sources */,
 				6D6DAF322062EBE50064C8F5 /* TappyBleScanner.swift in Sources */,
 				6D6DAF302062EBE50064C8F5 /* TappyCentralManagerProvider.swift in Sources */,
 				6D0097BA205344D5002C98D7 /* WriteNDEFTextCommand.swift in Sources */,
+				0049F6F1230FA312002877A3 /* EmulateCustomNDEFRecordCommand.swift in Sources */,
+				0049F729230FA3EB002877A3 /* Util.swift in Sources */,
+				0049F706230FA329002877A3 /* TypeISO14443BTagEntryResponse.swift in Sources */,
+				0049F6C7230FA2F3002877A3 /* Type4BTagDetectedResponse.swift in Sources */,
+				0049F6BC230FA2E8002877A3 /* DetectType4BTagWithAFICommand.swift in Sources */,
+				0049F6A9230FA2D4002877A3 /* WriteCustomNdefWithPasswordBytesCommand.swift in Sources */,
+				0049F6A5230FA2D4002877A3 /* WriteUriNdefWithPasswordBytesCommand.swift in Sources */,
+				0049F6A6230FA2D4002877A3 /* WriteUriNdefWithPasswordCommand.swift in Sources */,
+				0049F6A7230FA2D4002877A3 /* GetNtag21xCommandFamilyVersionCommand.swift in Sources */,
 				6D0097AA2052279E002C98D7 /* ScanNDEFCommand.swift in Sources */,
+				0049F6B4230FA2DF002877A3 /* Ntag21xWriteSuccessResponse.swift in Sources */,
+				0049F707230FA329002877A3 /* UnrecognizedTagExitResponse.swift in Sources */,
 				6D0224A92063209A00DAF925 /* TappyBleDevice.swift in Sources */,
+				0049F70C230FA329002877A3 /* Type1TagExitResponse.swift in Sources */,
 				6D544ABB20589BB40004DE1C /* TappyBle.swift in Sources */,
+				0049F722230FA3C7002877A3 /* SystemCommandFamilyConstants.swift in Sources */,
+				0049F70D230FA329002877A3 /* AutoPollingFeliCaTagResponse.swift in Sources */,
+				0049F713230FA329002877A3 /* FeliCaTagEntryResponse.swift in Sources */,
+				0049F6CD230FA2F3002877A3 /* Type4PollingErrorDetectedResponse.swift in Sources */,
+				0049F709230FA329002877A3 /* Type1TagEntryResponse.swift in Sources */,
 				6D0097B62052F376002C98D7 /* RawTCMPMessage.swift in Sources */,
+				0049F72B230FA56A002877A3 /* GetNtag21xCommandFamilyVersionResponse.swift in Sources */,
 				6D544AB9205899C70004DE1C /* TappyBleDeviceDefinition.swift in Sources */,
+				0049F6AA230FA2D4002877A3 /* WriteNtag21xWithPasswordBytesCommand.swift in Sources */,
 				6DC95B7D20843719000B6A20 /* StreamTagCommand.swift in Sources */,
+				0049F6BF230FA2E8002877A3 /* DetectType4ATagCommand.swift in Sources */,
 				6D0C452A205AF8F300F46737 /* TappyBleError.swift in Sources */,
 				6D00979F205220BB002C98D7 /* MessageResolver.swift in Sources */,
 				6D0097B220523483002C98D7 /* BasicNfcApplicationErrorMessage.swift in Sources */,
+				0049F6BB230FA2E8002877A3 /* GetType4CommandFamilyVersionCommand.swift in Sources */,
+				0049F714230FA329002877A3 /* Type4ATagEntryResponse.swift in Sources */,
+				0049F717230FA329002877A3 /* Type2TagEntryResponse.swift in Sources */,
 				6D544ABD20589C6E0004DE1C /* TappyBleCommunicator.swift in Sources */,
 				440DBCFA22F3483200D1E5EA /* WriteCustomNDEFCommand.swift in Sources */,
+				0049F6D8230FA2FE002877A3 /* PingCommand.swift in Sources */,
+				0049F6EF230FA312002877A3 /* EmulateURIRecordCommand.swift in Sources */,
+				0049F6CB230FA2F3002877A3 /* Type4ATagDetectedResponse.swift in Sources */,
+				0049F6A4230FA2D4002877A3 /* WriteNtag21xWithPasswordCommand.swift in Sources */,
 				440DBCF922F3483200D1E5EA /* WriteNDEFUriCommand.swift in Sources */,
+				0049F6AC230FA2D4002877A3 /* ReadNdefWithPasswordCommand.swift in Sources */,
+				0049F6B2230FA2DF002877A3 /* Ntag21xPollingTimeoutResponse.swift in Sources */,
+				0049F6D4230FA2FE002877A3 /* SetConfigurationCommand.swift in Sources */,
 				6D0097D82054BE50002C98D7 /* TappySerialCommunicator.swift in Sources */,
+				0049F710230FA329002877A3 /* TypeISO14443BTagExitResponse.swift in Sources */,
 				6D0097C620535958002C98D7 /* TagTypes.swift in Sources */,
+				0049F6E6230FA306002877A3 /* SystemErrorResponse.swift in Sources */,
+				0049F6B3230FA2DF002877A3 /* Ntag21xApplicationErrorResponse.swift in Sources */,
+				0049F71A230FA39E002877A3 /* Type4CommandResolver.swift in Sources */,
 				6D0097AC2052279E002C98D7 /* StreamNDEFCommand.swift in Sources */,
 				6D6DAF312062EBE50064C8F5 /* TappyBleScannerStatus.swift in Sources */,
+				0049F708230FA329002877A3 /* AutoPollingTypeISO14443BTagResponse.swift in Sources */,
+				0049F712230FA329002877A3 /* AutoPollingType4ATagResponse.swift in Sources */,
 				6D5515102060753E004E6CBC /* TagWrittenResponse.swift in Sources */,
+				0049F71E230FA3BA002877A3 /* Ntag21xCommandFamilyConstants.swift in Sources */,
+				0049F6D9230FA2FE002877A3 /* GetBatteryLevelCommand.swift in Sources */,
 				6DC95B7B208434CD000B6A20 /* ScanTagCommand.swift in Sources */,
+				0049F716230FA329002877A3 /* UnrecognizedTagEntryResponse.swift in Sources */,
+				0049F723230FA3C7002877A3 /* SystemCommandResolver.swift in Sources */,
+				0049F6D5230FA2FE002877A3 /* OutputTestFramesCommand.swift in Sources */,
 				6D0097B8205343BD002C98D7 /* TCMPUtils.swift in Sources */,
 				6DC95B7F208437C8000B6A20 /* TagFoundResponse.swift in Sources */,
+				0049F725230FA3D8002877A3 /* BasicNFCCommandFamilyConstants.swift in Sources */,
+				0049F6B5230FA2DF002877A3 /* Ntag21xReadSuccessResponse.swift in Sources */,
+				0049F6E3230FA306002877A3 /* GetBatteryLevelResponse.swift in Sources */,
+				0049F6E8230FA306002877A3 /* GetHardwareVersionReponse.swift in Sources */,
 				6D009748204F7553002C98D7 /* TCMP.m in Sources */,
+				0049F6E7230FA306002877A3 /* SetConfigurationResponse.swift in Sources */,
 				6D0097B420523D56002C98D7 /* PollingModes.swift in Sources */,
 				6D0097E02054C640002C98D7 /* Tappy.swift in Sources */,
+				0049F71B230FA39E002877A3 /* Type4CommandFamilyConstants.swift in Sources */,
+				0049F6E9230FA306002877A3 /* PingResponse.swift in Sources */,
+				0049F70B230FA329002877A3 /* AutoPollingType2TagResponse.swift in Sources */,
+				0049F6EE230FA312002877A3 /* AutoPollingCommand.swift in Sources */,
+				0049F70E230FA329002877A3 /* AutoPollingType1TagResponse.swift in Sources */,
+				0049F6A3230FA2D4002877A3 /* WriteCustomNdefWithPasswordCommand.swift in Sources */,
+				0049F70F230FA329002877A3 /* EmulationSuccessResponse.swift in Sources */,
 				6D77D59C207C3CCF00EA87D5 /* StopCommand.swift in Sources */,
+				0049F6A8230FA2D4002877A3 /* WriteTextNdefWithPasswordCommand.swift in Sources */,
+				0049F6F0230FA312002877A3 /* EmulateTextRecordCommand.swift in Sources */,
+				0049F71F230FA3BA002877A3 /* Ntag21xCommandResolver.swift in Sources */,
+				0049F6AD230FA2D4002877A3 /* ReadNdefWithPasswordBytesCommand.swift in Sources */,
+				0049F6CC230FA2F3002877A3 /* GetType4CommandFamilyVersionResponse.swift in Sources */,
 				6D0097AE205227E3002C98D7 /* ApplicationErrorMessage.swift in Sources */,
+				0049F715230FA329002877A3 /* EmulationStoppedResponse.swift in Sources */,
+				0049F6C8230FA2F3002877A3 /* TransceiveAPDUSuccessResponse.swift in Sources */,
+				0049F6AB230FA2D4002877A3 /* WriteTextNdefWithPasswordBytesCommand.swift in Sources */,
+				0049F6E2230FA306002877A3 /* OutputTestFramesResponse.swift in Sources */,
+				0049F6D6230FA2FE002877A3 /* GetFirmwareVersionCommand.swift in Sources */,
+				0049F6CA230FA2F3002877A3 /* Type4ApplicationErrorResponse.swift in Sources */,
+				0049F6E5230FA306002877A3 /* GetFirmwareVersionResponse.swift in Sources */,
+				0049F6E4230FA306002877A3 /* SystemApplicationErrorResponse.swift in Sources */,
+				0049F70A230FA329002877A3 /* FeliCaTagExitResponse.swift in Sources */,
 				6D0097C020534796002C98D7 /* NDEFFoundResponse.swift in Sources */,
 				6D0097572051B87B002C98D7 /* TCMPMessage.swift in Sources */,
+				0049F728230FA3EB002877A3 /* CommandFamilyConstants.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -594,7 +963,7 @@
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "TCMP/TCMP-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -611,7 +980,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_OBJC_BRIDGING_HEADER = "TCMP/TCMP-Bridging-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -660,7 +1029,7 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OBJC_BRIDGING_HEADER = "TappyReaderTests/TappyReaderTests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -677,7 +1046,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "TappyReaderTests/TappyReaderTests-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 4.2;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;

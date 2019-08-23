@@ -25,32 +25,33 @@ import Foundation
 
 @objc public class TagFoundResponse : NSObject, TCMPMessage{
     
-    @objc public private(set) var commandCode: UInt8{
-        get{
-            return TagFoundResponse.getCommandCode()
-        }
-        set{}
-    }
+    @objc public let commandFamily: [UInt8] = CommandFamily.basicNFC
     
-    @objc public private(set) var payload: [UInt8]{
-        get{
+    @objc public let commandCode: UInt8 = BasicNFCResponseCode.tagFound.rawValue
+    
+    @objc public var payload: [UInt8] {
+        get {
             
             return [tagType.getTagByteIndicator()] + tagCode
             
         }
-        set{}
     }
-    
-    @objc public private(set) var commandFamily: [UInt8] = [0x00,0x01]
     
     @objc public private(set) var tagType : TagTypes = TagTypes.TAG_UNKNOWN
     
     @objc public private(set) var tagCode : [UInt8] = [0x00,0x00,0x00,0x00,0x00,0x00,0x00]
     
+    @objc public init(payload: [UInt8]) throws {
+        super.init()
+        try parsePayload(payload: payload)
+    }
+    
     @objc public func parsePayload(payload: [UInt8]) throws {
-        if (payload.count < 5){ //Some tags have 4 byte UIDs, so the minimum valid response size is 5 with the tag type indicator byte
+        // Some tags have 4 byte UIDs, so the minimum valid response size is 5
+        // with the tag type indicator byte.
+        if (payload.count < 5) {
             throw TCMPParsingError.payloadTooShort
-        }else{
+        } else {
             tagType = TagTypes.init(tagCodeByteIndicator: payload[0])
             let numTagCodeBytes : UInt8 = (UInt8)(payload.count - 1)
             let tagCodeBytes = payload[1...Int(numTagCodeBytes)]
@@ -58,7 +59,7 @@ import Foundation
         }
     }
     
-    
+    // Deprecated after version 0.1.12. Left here for legacy reasons.
     @objc static func getCommandCode() -> UInt8 {
         return 0x01
     }
