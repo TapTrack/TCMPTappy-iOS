@@ -35,12 +35,12 @@ Create a listener for when the `TappyBleScanner` detects a TappyBLE device.
 func tappyBleFoundListener(tappyBleDevice: TappyBleDevice) {
     scanner.stopScan()
 
-    // The getTappyBle(centralManager:, device:) method does an additional check to ensure that the 
+    // The getTappyBle(centralManager:device:) method does an additional check to ensure that the 
     // detected device is indeed a TappyBLE device and not another device using the same Bluetooth 
     // module. If it finds that the device is not a TappyBLE reader, it will return nil.
     let tappyBle = TappyBle.getTappyBle(centralManager: TappyCentralManagerProvider.shared().centralManager, device: tappyBleDevice)
 
-    // Upwrap the optional value returned by getTappyBle(centralManager:, device:).
+    // Upwrap the optional value returned by getTappyBle(centralManager:device:).
     if let tappyBleFound = tappyBle {
         // You can set TappyBLE status listeners for connection and disconnection events.
         tappyBleFound.setStatusListener(listener: tappyStatusListener)
@@ -69,7 +69,7 @@ To scan for devices, call the scanner's `startScan()` method.
 **Note:** Although it is permitted, scanning for a `TappyBLE` before a `tappyFoundListener` is set accomplishes little since your application would not be alerted to any discovered `TappyBLE` devices.
 
 ```Swift
-// startScan() returns a `Bool` indicating whether the scan started successfully.
+// startScan() returns a Bool indicating whether the scan started successfully.
 let scanStarted: Bool = scanner.startScan()
 
 if !scanStarted {
@@ -81,7 +81,7 @@ You can stop the scan by calling `scanner.stopScan()`. It is recommended that yo
 
 ## Creating and Sending a Command
 
-You can create a TCMP command using the constructors found in the library.
+You can create a TCMP command using the constructors provided by the library.
 
 ```Swift
 // TCMP command for scanning a single NDEF tag. Using the empty constructor sets the default
@@ -104,7 +104,7 @@ tappyBle.sendMessage(message: scanCommand)
 
 ## Receiving a Response
 
-You can resolve a command by calling the correct command family resolver. The example below shows a response listener that uses the `BasicNFCCommandResolver` to resolve the response received from the Tappy. Each command family has its own resolver that is used as required.
+You can resolve a response by calling the correct command family resolver. The example below shows a response listener that uses the `BasicNFCCommandResolver` to resolve the response received from the Tappy. Each command family has its own resolver that is used as required.
 
 Please note that the command/response resolvers throw when unable to resolve a message, so the resolver call must be wrapped in a do-catch block.
 
@@ -152,10 +152,12 @@ tappyBle.setResponseListener(listener: responseListener)
 ## Supported Features
 
 * All framing and de-framing for data sent to and received from the Tappy reader
+
 * TappyBLE support with Core Bluetooth (deployment target set to iOS v 8.0)
     * Scanning for TappyBLE readers
     * Connecting to TappyBLE readers
     * Sending commands and receiving responses in [TCMP format](https://docs.google.com/document/d/1MjHizibAd6Z1PGZAWnbStXnCBVggptx3TIh2HRqEluk/edit?usp=sharing)
+
 * Supported command families
     * Basic NFC Command Family
     * System Command Family
