@@ -12,7 +12,7 @@ import Foundation
     
     @objc private static func assertFamilyMatches(message: TCMPMessage) throws {
         if message.commandFamily != CommandFamily.basicNFC {
-            throw TCMPParsingError.resolverError(errorDescription: "Specified message is for a different command family. Expected Basic NFC command family, got \(message.commandFamily).")
+            throw TCMPParsingError.resolverError(errorDescription: "Specified message is for a different command family. Expected Basic NFC command family, got \(bytesToHexString(message.commandFamily)).")
         }
     }
     
@@ -46,7 +46,7 @@ import Foundation
         case BasicNFCCommandCode.emulateCustomNDEFRecord.rawValue:
             command = try EmulateCustomNDEFRecordCommand(payload: message.payload)
         default:
-            throw TCMPParsingError.resolverError(errorDescription: "Error occured in Basic NFC command resolver. Command code: \(message.commandCode)")
+            throw TCMPParsingError.resolverError(errorDescription: "Command not recognized by Basic NFC command resolver. Command code: \(String(format: "%02X", message.commandCode))")
         }
         
         return command
@@ -74,19 +74,10 @@ import Foundation
         case BasicNFCResponseCode.emulationStopped.rawValue:
             response = try EmulationStoppedResponse(payload: message.payload)
         default:
-            throw TCMPParsingError.resolverError(errorDescription: "Error occured in Basic NFC resolver. Response code: \(message.commandCode)")
+            throw TCMPParsingError.resolverError(errorDescription: "Response not recognized by Basic NFC response resolver. Response code: \(String(format: "%02X", message.commandCode))")
         }
         
         return response
-    }
-    
-    @objc public enum AutoPollingTagType: UInt8 {
-        case type2 = 0x00
-        case type1 = 0x01
-        case typeISO144414B = 0x02
-        case feliCa = 0x03
-        case type4A = 0x04
-        case unrecognized = 0x05
     }
     
     @objc private static func resolveAutoPollingTagEntry(message: TCMPMessage) throws -> TCMPMessage {

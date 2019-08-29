@@ -82,7 +82,7 @@ import Foundation
     case detectAll = 0x05
 }
 
-public enum AutoPollingTagType: UInt8 {
+@objc public enum AutoPollingTagType: UInt8 {
     case type2 = 0x00
     case type1 = 0x01
     case typeISO144414B = 0x02

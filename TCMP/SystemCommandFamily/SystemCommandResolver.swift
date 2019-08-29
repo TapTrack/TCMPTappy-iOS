@@ -12,7 +12,7 @@ import Foundation
     
     @objc private static func assertFamilyMatches(message: TCMPMessage) throws {
         if message.commandFamily != CommandFamily.system {
-            throw TCMPParsingError.resolverError(errorDescription: "Specified message is for a different command family. expected system command family, got \(message.commandFamily)")
+            throw TCMPParsingError.resolverError(errorDescription: "Specified message is for a different command family. Expected system command family, got \(bytesToHexString(message.commandFamily)).")
         }
     }
     
@@ -34,8 +34,7 @@ import Foundation
             case SystemCommandCode.outputTestFrames.rawValue:
                 command = try OutputTestFramesCommand(payload: message.payload)
             default:
-                NSLog("error occured in system command resolver. command code: \(message.commandCode)")
-                throw TCMPParsingError.resolverError(errorDescription: "Unrecognized command code")
+                throw TCMPParsingError.resolverError(errorDescription: "Command not recognized by system command resolver. Command code: \(String(format: "%02X", message.commandCode))")
         }
         
         return command
@@ -69,8 +68,7 @@ import Foundation
             case SystemResponseCode.error.rawValue:
                 response = try SystemApplicationErrorResponse(payload: message.payload)
             default:
-                NSLog("error occured in system response resolver. response code: \(message.commandCode)")
-                throw TCMPParsingError.resolverError(errorDescription: "Unrecognized response code")
+                throw TCMPParsingError.resolverError(errorDescription: "Response not recognized by system response resolver. Response code: \(String(format: "%02X", message.commandCode))")
         }
         
         return response

@@ -65,13 +65,14 @@ public func getUriProtocolFromCode(_ identifierCode: UInt8) -> String {
     return ""
 }
 
+
 // MARK: - Other util functions
 
 public func bytesToHexString(_ bytes: [UInt8]) -> String {
-    var uidString : String = ""
+    var hexString : String = ""
     for byte in bytes {
-        uidString.append(String(format: "%02X", byte))
-        uidString.append(" ")
+        hexString.append(String(format: "%02X", byte))
+        hexString.append(" ")
     }
-    return uidString
+    return hexString
 }

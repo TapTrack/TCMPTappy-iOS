@@ -473,8 +473,8 @@
 			children = (
 				6D0097A620522774002C98D7 /* Commands */,
 				6D0097A520522733002C98D7 /* Responses */,
-				6D0097A22052236E002C98D7 /* BasicNFCCommandResolver.swift */,
 				0049F724230FA3D8002877A3 /* BasicNFCCommandFamilyConstants.swift */,
+				6D0097A22052236E002C98D7 /* BasicNFCCommandResolver.swift */,
 			);
 			path = "BasicNFC-CommandFamily";
 			sourceTree = "<group>";

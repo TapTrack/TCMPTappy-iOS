@@ -52,9 +52,9 @@ import Foundation
     case setRedLedDuration = 0x07
 }
 
+
 // MARK: - System application error codes (for response code 0x7F)
 
-// system application errors (response code 0x7F)
 @objc public enum SystemApplicationErrorCode: UInt8 {
     case invalidParameter = 0x05
     case unsupportedCommandFamily = 0x06

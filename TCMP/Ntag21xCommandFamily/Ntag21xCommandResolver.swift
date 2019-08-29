@@ -12,7 +12,7 @@ import Foundation
     
     @objc private static func assertFamilyMatches(message: TCMPMessage) throws {
         if message.commandFamily != CommandFamily.ntag21x {
-            throw TCMPParsingError.resolverError(errorDescription: "Specified message is for a different command family. expected ntag 21x command family, got \(message.commandFamily)")
+            throw TCMPParsingError.resolverError(errorDescription: "Specified message is for a different command family. Expected NTAG 21x command family, got \(bytesToHexString(message.commandFamily)).")
         }
     }
     
@@ -40,8 +40,7 @@ import Foundation
             case Ntag21xCommandCode.getCommandFamilyVersion.rawValue:
                 command = GetNtag21xCommandFamilyVersionCommand()
             default:
-                NSLog("error occurred in ntag command resolver. command code: \(message.commandCode)")
-                throw TCMPParsingError.resolverError(errorDescription: "Unrecognized command code")
+                throw TCMPParsingError.resolverError(errorDescription: "Command not recognized by NTAG 21x command resolver. Command code: \(String(format: "%02X", message.commandCode))")
         }
         
         return command
@@ -62,10 +61,8 @@ import Foundation
                 response = try Ntag21xWriteSuccessResponse(payload: message.payload)
             case Ntag21xResponseCode.error.rawValue:
                 response = try Ntag21xApplicationErrorResponse(payload: message.payload)
-                //throw TCMPParsingError.resolverError(errorDescription: "ntag error")
             default:
-                NSLog("error occurred in ntag response resolver. response code: \(message.commandCode)")
-                throw TCMPParsingError.resolverError(errorDescription: "Unrecognized response code")
+                throw TCMPParsingError.resolverError(errorDescription: "Response not recognized by NTAG 21x response resolver. Response code: \(String(format: "%02X", message.commandCode))")
         }
         
         return response

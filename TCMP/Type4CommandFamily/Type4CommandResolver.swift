@@ -12,7 +12,7 @@ import Foundation
     
     @objc private static func assertFamilyMatches(message: TCMPMessage) throws {
         if message.commandFamily != CommandFamily.type4 {
-            throw TCMPParsingError.resolverError(errorDescription: "Specified message is for a different command family. expected type 4 command family, got \(message.commandFamily)")
+            throw TCMPParsingError.resolverError(errorDescription: "Specified message is for a different command family. Expected Type 4 command family, got \(bytesToHexString(message.commandFamily)).")
         }
     }
     
@@ -32,8 +32,7 @@ import Foundation
             case Type4CommandCode.getCommandFamilyVersion.rawValue:
                 command = GetType4CommandFamilyVersionCommand()
             default:
-                NSLog("error occurred in type 4 command resolver. command code: \(message.commandCode)")
-                throw TCMPParsingError.resolverError(errorDescription: "Unrecognized command code")
+                throw TCMPParsingError.resolverError(errorDescription: "Command not recognized by Type 4 command resolver. Command code: \(String(format: "%02X", message.commandCode))")
         }
         
         return command
@@ -59,8 +58,7 @@ import Foundation
             case Type4ResponseCode.error.rawValue:
                 response = try Type4ApplicationErrorResponse(payload: message.payload)
             default:
-                NSLog("error occurred in type 4 repsonse resolver. response code: \(message.commandCode)")
-                throw TCMPParsingError.resolverError(errorDescription: "Unrecognized response code")
+                throw TCMPParsingError.resolverError(errorDescription: "Response not recognized by Type 4 response resolver. Response code: \(String(format: "%02X", message.commandCode))")
         }
         
         return response
