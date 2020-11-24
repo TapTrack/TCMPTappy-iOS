@@ -109,9 +109,9 @@ class TestCommunicator : NSObject, TappySerialCommunicator{
     }
     
     @objc func testBasicBufferingAndFrameResolution(){
-        var testCommunicator : TestCommunicator = TestCommunicator.init()
-        var serialTappyUnderTest : SerialTappy = SerialTappy.init(communicator: testCommunicator)
-        var validHDLCFrame : [UInt8] = [0x7E,0x00,0x08,0xF8,0xFA,0x03,0xFE,0x7D,0x5D,0x7D,0x5E,0x33,0xC1,0xEE,0x7E]
+        let testCommunicator : TestCommunicator = TestCommunicator.init()
+        let serialTappyUnderTest : SerialTappy = SerialTappy.init(communicator: testCommunicator)
+        let validHDLCFrame : [UInt8] = [0x7E,0x00,0x08,0xF8,0xFA,0x03,0xFE,0x7D,0x5D,0x7D,0x5E,0x33,0xC1,0xEE,0x7E]
         
         func testResponseListener(message : TCMPMessage){
             XCTAssertEqual(message.commandCode, 0xFE)
@@ -124,9 +124,9 @@ class TestCommunicator : NSObject, TappySerialCommunicator{
     }
     
     @objc func testLongFrame(){
-        var testCommunicator : TestCommunicator = TestCommunicator.init()
-        var serialTappyUnderTest : SerialTappy = SerialTappy.init(communicator: testCommunicator)
-        var longFrame : [UInt8] = [
+        let testCommunicator : TestCommunicator = TestCommunicator.init()
+        let serialTappyUnderTest : SerialTappy = SerialTappy.init(communicator: testCommunicator)
+        let longFrame : [UInt8] = [
             0x7E,0x01,0xC7,0x38,0xFA,0x03,0xFE,0x44,
             0x44,0x44,0x44,0x44,0x44,0x44,0x44,0x44,
             0x44,0x44,0x44,0x44,0x44,0x44,0x44,0x44,
