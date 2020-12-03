@@ -92,7 +92,7 @@ public class TappyBleCommunicator : NSObject, CBPeripheralDelegate, CBCentralMan
                 return
             }
             NSLog("TappyBleCommunicator: CB Central Manager connected to the tappyPeripheral which is a TappyBle, attempting to discover serial service")
-            tappyPeripheral.discoverServices([TappyBleDeviceDefinition.getSerialServiceUuid(), TappyBleDeviceDefinition.getSerialServiceUuidV5()])
+            tappyPeripheral.discoverServices(TappyBleDeviceDefinition.getSerialServiceUuids())
             changeStateAndNotify(newState: TappyStatus.STATUS_CONNECTING)
         }else{
             NSLog("TappyBleCommunicator: CB Central Manager connected to an unrecognized peripheral.")
@@ -123,7 +123,6 @@ public class TappyBleCommunicator : NSObject, CBPeripheralDelegate, CBCentralMan
             
         }
     }
-    
     
     //MARK : CBPeripheralDelegate
     @objc
@@ -354,7 +353,7 @@ public class TappyBleCommunicator : NSObject, CBPeripheralDelegate, CBCentralMan
             state =  TappyStatus.STATUS_NOT_READY_TO_CONNECT
         }else if(centralManager.state == .poweredOn){
             NSLog("TappyBleCommunicator: BLE is powered on")            
-            if centralManager.retrieveConnectedPeripherals(withServices : [TappyBleDeviceDefinition.getSerialServiceUuid(), TappyBleDeviceDefinition.getSerialServiceUuidV5()]).count != 0 {
+            if centralManager.retrieveConnectedPeripherals(withServices : TappyBleDeviceDefinition.getSerialServiceUuids()).count != 0 {
                 state = TappyStatus.STATUS_READY
             }else{
                 state = TappyStatus.STATUS_DISCONNECTED

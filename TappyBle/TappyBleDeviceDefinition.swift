@@ -56,6 +56,18 @@ import CoreBluetooth
         return CHARACTERISTIC_TRUCONNECT_PERIPHERAL_RX_UUID
     }
     
+    @objc static public func getSerialServiceUuids() -> [CBUUID]{
+        return [getSerialServiceUuid(),getSerialServiceUuidV5()]
+    }
+
+    @objc static public func getTxCharacteristicUuids()  -> [CBUUID]{
+        return [getTxCharacteristicUuid(),getTxCharacteristicUuidV5()]
+    }
+    
+    @objc static public func getRxCharacteristicUuids()  -> [CBUUID]{
+        return [getRxCharacteristicUuid(),getRxCharacteristicUuidV5()]
+    }
+    
     @objc static public func isTappyDeviceName(device : CBPeripheral) -> Bool{
         if let peripheralName = device.name{
             let upperPName = peripheralName.uppercased()
