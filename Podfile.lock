@@ -1,0 +1,16 @@
+PODS:
+  - SwiftTLV (0.1.0)
+
+DEPENDENCIES:
+  - SwiftTLV (from `/Users/Shared/Xcode Projects/SwiftTLV`)
+
+EXTERNAL SOURCES:
+  SwiftTLV:
+    :path: "/Users/Shared/Xcode Projects/SwiftTLV"
+
+SPEC CHECKSUMS:
+  SwiftTLV: aaa653477979313db788e04d9b54c97068f35734
+
+PODFILE CHECKSUM: 68ddf341c0c6c0d413701596a77cf6e96fc1e904
+
+COCOAPODS: 1.10.0

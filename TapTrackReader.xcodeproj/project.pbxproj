@@ -81,6 +81,7 @@
 		0049F728230FA3EB002877A3 /* CommandFamilyConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F726230FA3EB002877A3 /* CommandFamilyConstants.swift */; };
 		0049F729230FA3EB002877A3 /* Util.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F727230FA3EB002877A3 /* Util.swift */; };
 		0049F72B230FA56A002877A3 /* GetNtag21xCommandFamilyVersionResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0049F72A230FA56A002877A3 /* GetNtag21xCommandFamilyVersionResponse.swift */; };
+		1F46FF59182BE805700B60C1 /* Pods_TapTrackReader.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA403931590E9D7ACC8E9048 /* Pods_TapTrackReader.framework */; };
 		440DBCF922F3483200D1E5EA /* WriteNDEFUriCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440DBCF722F3483200D1E5EA /* WriteNDEFUriCommand.swift */; };
 		440DBCFA22F3483200D1E5EA /* WriteCustomNDEFCommand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440DBCF822F3483200D1E5EA /* WriteCustomNDEFCommand.swift */; };
 		6D009748204F7553002C98D7 /* TCMP.m in Sources */ = {isa = PBXBuildFile; fileRef = 6D009747204F7553002C98D7 /* TCMP.m */; };
@@ -228,6 +229,7 @@
 		0049F72A230FA56A002877A3 /* GetNtag21xCommandFamilyVersionResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GetNtag21xCommandFamilyVersionResponse.swift; sourceTree = "<group>"; };
 		440DBCF722F3483200D1E5EA /* WriteNDEFUriCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteNDEFUriCommand.swift; sourceTree = "<group>"; };
 		440DBCF822F3483200D1E5EA /* WriteCustomNDEFCommand.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteCustomNDEFCommand.swift; sourceTree = "<group>"; };
+		5422B1960AFDF2BE30391012 /* Pods-TapTrackReader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TapTrackReader.release.xcconfig"; path = "Pods/Target Support Files/Pods-TapTrackReader/Pods-TapTrackReader.release.xcconfig"; sourceTree = "<group>"; };
 		6D009743204F7553002C98D7 /* libTapTrackReader.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libTapTrackReader.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		6D009746204F7553002C98D7 /* TCMP.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = TCMP.h; sourceTree = "<group>"; };
 		6D009747204F7553002C98D7 /* TCMP.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TCMP.m; sourceTree = "<group>"; };
@@ -261,6 +263,7 @@
 		6D544ABA20589BB40004DE1C /* TappyBle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TappyBle.swift; sourceTree = "<group>"; };
 		6D544ABC20589C6E0004DE1C /* TappyBleCommunicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TappyBleCommunicator.swift; sourceTree = "<group>"; };
 		6D55150F2060753E004E6CBC /* TagWrittenResponse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TagWrittenResponse.swift; sourceTree = "<group>"; };
+		6D5B775F266D8C38003B7A66 /* Podfile */ = {isa = PBXFileReference; lastKnownFileType = text; path = Podfile; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
 		6D6DAF272062AE920064C8F5 /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		6D6DAF2C2062EBE50064C8F5 /* TappyCentralManagerProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TappyCentralManagerProvider.swift; sourceTree = "<group>"; };
 		6D6DAF2D2062EBE50064C8F5 /* TappyBleScannerStatus.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TappyBleScannerStatus.swift; sourceTree = "<group>"; };
@@ -269,6 +272,8 @@
 		6DC95B7A208434CD000B6A20 /* ScanTagCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScanTagCommand.swift; sourceTree = "<group>"; };
 		6DC95B7C20843719000B6A20 /* StreamTagCommand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StreamTagCommand.swift; sourceTree = "<group>"; };
 		6DC95B7E208437C8000B6A20 /* TagFoundResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TagFoundResponse.swift; sourceTree = "<group>"; };
+		79BFAEA9DBDC7885DD43C1BD /* Pods-TapTrackReader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-TapTrackReader.debug.xcconfig"; path = "Pods/Target Support Files/Pods-TapTrackReader/Pods-TapTrackReader.debug.xcconfig"; sourceTree = "<group>"; };
+		EA403931590E9D7ACC8E9048 /* Pods_TapTrackReader.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TapTrackReader.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -276,6 +281,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1F46FF59182BE805700B60C1 /* Pods_TapTrackReader.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -418,6 +424,8 @@
 		1407B012858101F47C82E6CC /* Pods */ = {
 			isa = PBXGroup;
 			children = (
+				79BFAEA9DBDC7885DD43C1BD /* Pods-TapTrackReader.debug.xcconfig */,
+				5422B1960AFDF2BE30391012 /* Pods-TapTrackReader.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -425,6 +433,7 @@
 		6D00973A204F7553002C98D7 = {
 			isa = PBXGroup;
 			children = (
+				6D5B775F266D8C38003B7A66 /* Podfile */,
 				6D6DAF272062AE920064C8F5 /* README.md */,
 				6D544AB7205899AA0004DE1C /* TappyBle */,
 				6D0097D62054BCF6002C98D7 /* TappyReader */,
@@ -569,6 +578,7 @@
 		79376A56CCBD185278BFA398 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				EA403931590E9D7ACC8E9048 /* Pods_TapTrackReader.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -580,6 +590,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 6D00974C204F7553002C98D7 /* Build configuration list for PBXNativeTarget "TapTrackReader" */;
 			buildPhases = (
+				E976BD6C326491294BAE5B4E /* [CP] Check Pods Manifest.lock */,
 				6D00973F204F7553002C98D7 /* Sources */,
 				6D009740204F7553002C98D7 /* Frameworks */,
 				6D009741204F7553002C98D7 /* CopyFiles */,
@@ -691,6 +702,31 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		E976BD6C326491294BAE5B4E /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-TapTrackReader-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		6D00973F204F7553002C98D7 /* Sources */ = {
@@ -954,6 +990,7 @@
 		};
 		6D00974D204F7553002C98D7 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 79BFAEA9DBDC7885DD43C1BD /* Pods-TapTrackReader.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -972,6 +1009,7 @@
 		};
 		6D00974E204F7553002C98D7 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5422B1960AFDF2BE30391012 /* Pods-TapTrackReader.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;

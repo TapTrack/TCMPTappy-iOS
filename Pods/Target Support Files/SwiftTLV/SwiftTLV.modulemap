@@ -1,0 +1,6 @@
+framework module SwiftTLV {
+  umbrella header "SwiftTLV-umbrella.h"
+
+  export *
+  module * { export * }
+}
