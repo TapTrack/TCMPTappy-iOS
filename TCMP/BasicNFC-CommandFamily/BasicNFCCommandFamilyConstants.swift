@@ -36,6 +36,8 @@ import Foundation
     case emulateURIRecord = 0x0A
     case emulateTextRecord = 0x09
     case emulateCustomNDEFRecord = 0x0B
+    
+    case initiateTappyTagHandshake = 0x12
 }
 
 @objc public enum BasicNFCResponseCode: UInt8 {
@@ -51,6 +53,9 @@ import Foundation
     
     case emulationSuccess = 0x07
     case emulationStopped = 0x08
+    
+    case tappyTagDataReceived = 0x0F
+    case tappyTagResponseDataTransmitted = 0x10
     
     case error = 0x7F
 }

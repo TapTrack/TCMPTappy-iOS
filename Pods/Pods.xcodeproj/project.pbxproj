@@ -8,16 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		040123C62BDEAABC720C6B278AE08928 /* Pods-TapTrackReader-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 8455D5557EAE4EEB1F2BD490B5C234C1 /* Pods-TapTrackReader-dummy.m */; };
-		3CC8F51EF101B48AE7C8425278AB7674 /* SwiftTLV-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8D6C0C74C6DA34FC5F29DDC127AC0A58 /* SwiftTLV-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		70DDA2A2D5FD869BF748C91923C5D9BA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		0B5C43D2D65212FA3463C32399F8621C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
+		45ACC926C81CB0E2479CD07767D965FA /* SwiftTLV-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 2AF60FD2CA5161DF9EA4999BCFE99D84 /* SwiftTLV-dummy.m */; };
+		6996D66855813240EE17F4C5ED99B314 /* TLV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 88AE4FE74BF12AA176D6E65D26AAB6F9 /* TLV.swift */; };
 		73CE7F001BFB51C632EE9DB359953848 /* Pods-TapTrackReader-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 243FC70CCE922F607EDE09A679E3C4FA /* Pods-TapTrackReader-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		90B758888A566F290AEFEDD30CED69FC /* TLV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3825F8D7D8B3B188208AE95B510F150A /* TLV.swift */; };
-		B157EF5B518EA256539CC0B7E28BDB2F /* SwiftTLV-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 055632373672CCD432674BD201D20EC5 /* SwiftTLV-dummy.m */; };
+		A2C05103152C7F344C80C95433D14B85 /* SwiftTLV-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 8E6614E51046F25F575B41792542B427 /* SwiftTLV-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		B07F6D6207ED0997D2A6AFE33547596B /* ByteUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = EF48C427640E1CF2DA149E341220D747 /* ByteUtils.swift */; };
 		D97C14567FEF0A1FA2CE924B9A30D1BA /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		6EEA616FAB7962E3F5BA69F40980A019 /* PBXContainerItemProxy */ = {
+		B55CA8E8C42AD3C82789C040EA257DEB /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
@@ -27,37 +28,35 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		00C1D1B1FE5D9E86FC60F554252459DD /* SwiftTLV.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftTLV.debug.xcconfig; sourceTree = "<group>"; };
 		03E7D986BEFFB075B60F9D5FA9790FD9 /* Pods-TapTrackReader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TapTrackReader.debug.xcconfig"; sourceTree = "<group>"; };
-		055632373672CCD432674BD201D20EC5 /* SwiftTLV-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftTLV-dummy.m"; sourceTree = "<group>"; };
+		0EC86203B4F9B7EBFA3BEB3D756C4381 /* SwiftTLV.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftTLV.release.xcconfig; sourceTree = "<group>"; };
 		12DD891883D968E798986A2E8838273B /* Pods-TapTrackReader-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-TapTrackReader-Info.plist"; sourceTree = "<group>"; };
-		1B99F07D5C9916351541EED29410F194 /* SwiftTLV.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = SwiftTLV.framework; path = SwiftTLV.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1B99F07D5C9916351541EED29410F194 /* SwiftTLV.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = SwiftTLV.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		243FC70CCE922F607EDE09A679E3C4FA /* Pods-TapTrackReader-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "Pods-TapTrackReader-umbrella.h"; sourceTree = "<group>"; };
+		2AF60FD2CA5161DF9EA4999BCFE99D84 /* SwiftTLV-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "SwiftTLV-dummy.m"; sourceTree = "<group>"; };
 		31A41B0FA3EA44457AD41D3B26622326 /* Pods-TapTrackReader-acknowledgements.markdown */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; path = "Pods-TapTrackReader-acknowledgements.markdown"; sourceTree = "<group>"; };
-		3796659DCE3345E9F7C349B293B5397F /* Pods_TapTrackReader.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; name = Pods_TapTrackReader.framework; path = "Pods-TapTrackReader.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
-		3825F8D7D8B3B188208AE95B510F150A /* TLV.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TLV.swift; path = SwiftTLV/Classes/TLV.swift; sourceTree = "<group>"; };
-		41826DD4AA91491318CD5776DBC10A53 /* SwiftTLV.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftTLV.release.xcconfig; sourceTree = "<group>"; };
+		3796659DCE3345E9F7C349B293B5397F /* Pods_TapTrackReader.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_TapTrackReader.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		451FEA19191753D477DB176AA2D2D9B1 /* Pods-TapTrackReader-acknowledgements.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "Pods-TapTrackReader-acknowledgements.plist"; sourceTree = "<group>"; };
-		724F5B6903378071F092BAFFB6D21158 /* SwiftTLV-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftTLV-prefix.pch"; sourceTree = "<group>"; };
 		73010CC983E3809BECEE5348DA1BB8C6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS14.0.sdk/System/Library/Frameworks/Foundation.framework; sourceTree = DEVELOPER_DIR; };
-		7DE5099CE0A87899BBA0B484CA895A03 /* SwiftTLV-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SwiftTLV-Info.plist"; sourceTree = "<group>"; };
 		8058E3EF270AFF67B93867DDD68208BA /* Pods-TapTrackReader.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = "Pods-TapTrackReader.modulemap"; sourceTree = "<group>"; };
-		815CD78B4BD2A8DD6C1F4583929C0178 /* README.md */ = {isa = PBXFileReference; includeInIndex = 1; path = README.md; sourceTree = "<group>"; };
 		8455D5557EAE4EEB1F2BD490B5C234C1 /* Pods-TapTrackReader-dummy.m */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.objc; path = "Pods-TapTrackReader-dummy.m"; sourceTree = "<group>"; };
-		8C4CCC650296FD4536A4B78F07192000 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; path = LICENSE; sourceTree = "<group>"; };
-		8D6C0C74C6DA34FC5F29DDC127AC0A58 /* SwiftTLV-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftTLV-umbrella.h"; sourceTree = "<group>"; };
-		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
-		A3A14B433ED7F6644E400F1B9139A6E1 /* SwiftTLV.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SwiftTLV.modulemap; sourceTree = "<group>"; };
-		C77F28B91809253560C558D8AD03FCA0 /* SwiftTLV.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = SwiftTLV.debug.xcconfig; sourceTree = "<group>"; };
+		88AE4FE74BF12AA176D6E65D26AAB6F9 /* TLV.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = TLV.swift; path = SwiftTLV/Classes/TLV.swift; sourceTree = "<group>"; };
+		8E6614E51046F25F575B41792542B427 /* SwiftTLV-umbrella.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftTLV-umbrella.h"; sourceTree = "<group>"; };
+		9D940727FF8FB9C785EB98E56350EF41 /* Podfile */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; name = Podfile; path = ../Podfile; sourceTree = SOURCE_ROOT; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		A3477A77DC9BCE43A18E32F7B41A69CC /* SwiftTLV-Info.plist */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.plist.xml; path = "SwiftTLV-Info.plist"; sourceTree = "<group>"; };
 		C7B2E97BF1E0D8F3ECFF327DF4BF40D9 /* Pods-TapTrackReader.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; path = "Pods-TapTrackReader.release.xcconfig"; sourceTree = "<group>"; };
-		FD9DE770A3FEA23CBC9BD54D7E952BE1 /* SwiftTLV.podspec */ = {isa = PBXFileReference; explicitFileType = text.script.ruby; includeInIndex = 1; indentWidth = 2; lastKnownFileType = text; path = SwiftTLV.podspec; sourceTree = "<group>"; tabWidth = 2; xcLanguageSpecificationIdentifier = xcode.lang.ruby; };
+		CB581F48569B011660FC145FBF46AD59 /* SwiftTLV-prefix.pch */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; path = "SwiftTLV-prefix.pch"; sourceTree = "<group>"; };
+		EF48C427640E1CF2DA149E341220D747 /* ByteUtils.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = ByteUtils.swift; path = SwiftTLV/Classes/ByteUtils.swift; sourceTree = "<group>"; };
+		F9F67740F08B856706339EEB50A227CF /* SwiftTLV.modulemap */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.module; path = SwiftTLV.modulemap; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		8668F346524DDD1B37EB3F2A988E686D /* Frameworks */ = {
+		64C6C19CDDEA045566B803CA71A67CF1 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				70DDA2A2D5FD869BF748C91923C5D9BA /* Foundation.framework in Frameworks */,
+				0B5C43D2D65212FA3463C32399F8621C /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,6 +71,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		263E446D8698691CC03FCBCD68D295CD /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				D53667A3C3B778CE79F4CD651AC47BE0 /* SwiftTLV */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		4270C0D83812F20D0A68E7ECEB97B6CB /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -97,17 +104,6 @@
 			path = "Target Support Files/Pods-TapTrackReader";
 			sourceTree = "<group>";
 		};
-		4CC7AFCDC6AD0F5F2106702E4B5EA236 /* SwiftTLV */ = {
-			isa = PBXGroup;
-			children = (
-				3825F8D7D8B3B188208AE95B510F150A /* TLV.swift */,
-				6719601F956D3CDCF6CE74B4ACF876B7 /* Pod */,
-				D6D899820703A8F741B9F5A0861DE741 /* Support Files */,
-			);
-			name = SwiftTLV;
-			path = "/Users/Shared/Xcode Projects/SwiftTLV";
-			sourceTree = "<absolute>";
-		};
 		578452D2E740E91742655AC8F1636D1F /* iOS */ = {
 			isa = PBXGroup;
 			children = (
@@ -116,30 +112,27 @@
 			name = iOS;
 			sourceTree = "<group>";
 		};
-		6719601F956D3CDCF6CE74B4ACF876B7 /* Pod */ = {
+		772D376B91DA8832DBDCEE819A8A309F /* Support Files */ = {
 			isa = PBXGroup;
 			children = (
-				8C4CCC650296FD4536A4B78F07192000 /* LICENSE */,
-				815CD78B4BD2A8DD6C1F4583929C0178 /* README.md */,
-				FD9DE770A3FEA23CBC9BD54D7E952BE1 /* SwiftTLV.podspec */,
+				F9F67740F08B856706339EEB50A227CF /* SwiftTLV.modulemap */,
+				2AF60FD2CA5161DF9EA4999BCFE99D84 /* SwiftTLV-dummy.m */,
+				A3477A77DC9BCE43A18E32F7B41A69CC /* SwiftTLV-Info.plist */,
+				CB581F48569B011660FC145FBF46AD59 /* SwiftTLV-prefix.pch */,
+				8E6614E51046F25F575B41792542B427 /* SwiftTLV-umbrella.h */,
+				00C1D1B1FE5D9E86FC60F554252459DD /* SwiftTLV.debug.xcconfig */,
+				0EC86203B4F9B7EBFA3BEB3D756C4381 /* SwiftTLV.release.xcconfig */,
 			);
-			name = Pod;
-			sourceTree = "<group>";
-		};
-		C0888B60ACE1E8F2DBFF34E964261424 /* Development Pods */ = {
-			isa = PBXGroup;
-			children = (
-				4CC7AFCDC6AD0F5F2106702E4B5EA236 /* SwiftTLV */,
-			);
-			name = "Development Pods";
+			name = "Support Files";
+			path = "../Target Support Files/SwiftTLV";
 			sourceTree = "<group>";
 		};
 		CF1408CF629C7361332E53B88F7BD30C = {
 			isa = PBXGroup;
 			children = (
 				9D940727FF8FB9C785EB98E56350EF41 /* Podfile */,
-				C0888B60ACE1E8F2DBFF34E964261424 /* Development Pods */,
 				D210D550F4EA176C3123ED886F8F87F5 /* Frameworks */,
+				263E446D8698691CC03FCBCD68D295CD /* Pods */,
 				4270C0D83812F20D0A68E7ECEB97B6CB /* Products */,
 				E48231AD150CB90C9463018A47FAFF3A /* Targets Support Files */,
 			);
@@ -153,19 +146,14 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		D6D899820703A8F741B9F5A0861DE741 /* Support Files */ = {
+		D53667A3C3B778CE79F4CD651AC47BE0 /* SwiftTLV */ = {
 			isa = PBXGroup;
 			children = (
-				A3A14B433ED7F6644E400F1B9139A6E1 /* SwiftTLV.modulemap */,
-				055632373672CCD432674BD201D20EC5 /* SwiftTLV-dummy.m */,
-				7DE5099CE0A87899BBA0B484CA895A03 /* SwiftTLV-Info.plist */,
-				724F5B6903378071F092BAFFB6D21158 /* SwiftTLV-prefix.pch */,
-				8D6C0C74C6DA34FC5F29DDC127AC0A58 /* SwiftTLV-umbrella.h */,
-				C77F28B91809253560C558D8AD03FCA0 /* SwiftTLV.debug.xcconfig */,
-				41826DD4AA91491318CD5776DBC10A53 /* SwiftTLV.release.xcconfig */,
+				EF48C427640E1CF2DA149E341220D747 /* ByteUtils.swift */,
+				88AE4FE74BF12AA176D6E65D26AAB6F9 /* TLV.swift */,
+				772D376B91DA8832DBDCEE819A8A309F /* Support Files */,
 			);
-			name = "Support Files";
-			path = "../TCMPTappy-iOS/TCMPTappy-iOS/Pods/Target Support Files/SwiftTLV";
+			path = SwiftTLV;
 			sourceTree = "<group>";
 		};
 		E48231AD150CB90C9463018A47FAFF3A /* Targets Support Files */ = {
@@ -187,11 +175,11 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		EB01ED6F40F20CC3F77F8F721540B49A /* Headers */ = {
+		7070C6121E941127F778447F45666908 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				3CC8F51EF101B48AE7C8425278AB7674 /* SwiftTLV-umbrella.h in Headers */,
+				A2C05103152C7F344C80C95433D14B85 /* SwiftTLV-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,12 +188,12 @@
 /* Begin PBXNativeTarget section */
 		7AD35F0CC95F77488922442710E472E1 /* SwiftTLV */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = FCED8283426DC3F4BC83617FB73EB1DA /* Build configuration list for PBXNativeTarget "SwiftTLV" */;
+			buildConfigurationList = 84D54E05FC559396DEEA9DC87D3B5D2B /* Build configuration list for PBXNativeTarget "SwiftTLV" */;
 			buildPhases = (
-				EB01ED6F40F20CC3F77F8F721540B49A /* Headers */,
-				358D8346460FCABBB4D2B6B79D5BEE67 /* Sources */,
-				8668F346524DDD1B37EB3F2A988E686D /* Frameworks */,
-				5EFE4A968FCB756CE5689ACE9687B036 /* Resources */,
+				7070C6121E941127F778447F45666908 /* Headers */,
+				A9F913B4E8CAD71B1B445D1A017ED85A /* Sources */,
+				64C6C19CDDEA045566B803CA71A67CF1 /* Frameworks */,
+				C93C4B336A879EB7DF0E41949300C386 /* Resources */,
 			);
 			buildRules = (
 			);
@@ -228,7 +216,7 @@
 			buildRules = (
 			);
 			dependencies = (
-				34F11035126CE55560A26806DC67EE75 /* PBXTargetDependency */,
+				E6E30523BF60E027F182DBBAE1E41E7A /* PBXTargetDependency */,
 			);
 			name = "Pods-TapTrackReader";
 			productName = "Pods-TapTrackReader";
@@ -242,7 +230,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 1100;
-				LastUpgradeCheck = 1100;
+				LastUpgradeCheck = 1240;
 			};
 			buildConfigurationList = 4821239608C13582E20E6DA73FD5F1F9 /* Build configuration list for PBXProject "Pods" */;
 			compatibilityVersion = "Xcode 8.0";
@@ -271,7 +259,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		5EFE4A968FCB756CE5689ACE9687B036 /* Resources */ = {
+		C93C4B336A879EB7DF0E41949300C386 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -281,12 +269,13 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		358D8346460FCABBB4D2B6B79D5BEE67 /* Sources */ = {
+		A9F913B4E8CAD71B1B445D1A017ED85A /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B157EF5B518EA256539CC0B7E28BDB2F /* SwiftTLV-dummy.m in Sources */,
-				90B758888A566F290AEFEDD30CED69FC /* TLV.swift in Sources */,
+				B07F6D6207ED0997D2A6AFE33547596B /* ByteUtils.swift in Sources */,
+				45ACC926C81CB0E2479CD07767D965FA /* SwiftTLV-dummy.m in Sources */,
+				6996D66855813240EE17F4C5ED99B314 /* TLV.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -301,20 +290,20 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		34F11035126CE55560A26806DC67EE75 /* PBXTargetDependency */ = {
+		E6E30523BF60E027F182DBBAE1E41E7A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = SwiftTLV;
 			target = 7AD35F0CC95F77488922442710E472E1 /* SwiftTLV */;
-			targetProxy = 6EEA616FAB7962E3F5BA69F40980A019 /* PBXContainerItemProxy */;
+			targetProxy = B55CA8E8C42AD3C82789C040EA257DEB /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
-		01D6440CFA1287FC5B598C7D25958329 /* Debug */ = {
+		15D396DF04B9AB28F88F6401F8C56015 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C77F28B91809253560C558D8AD03FCA0 /* SwiftTLV.debug.xcconfig */;
+			baseConfigurationReference = 00C1D1B1FE5D9E86FC60F554252459DD /* SwiftTLV.debug.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -326,7 +315,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/SwiftTLV/SwiftTLV-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/SwiftTLV/SwiftTLV-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/SwiftTLV/SwiftTLV.modulemap";
 				PRODUCT_MODULE_NAME = SwiftTLV;
@@ -334,7 +323,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VERSIONING_SYSTEM = "apple-generic";
 				VERSION_INFO_PREFIX = "";
@@ -412,7 +401,6 @@
 			baseConfigurationReference = C7B2E97BF1E0D8F3ECFF327DF4BF40D9 /* Pods-TapTrackReader.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -497,18 +485,17 @@
 				MTL_FAST_MATH = YES;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				STRIP_INSTALLED_PRODUCT = NO;
-				SWIFT_COMPILATION_MODE = wholemodule;
-				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				SWIFT_VERSION = 5.0;
 				SYMROOT = "${SRCROOT}/../build";
 			};
 			name = Release;
 		};
-		ECAE4D5A5976BDE7F49C25136BAF1EEF /* Release */ = {
+		F1C81DB834D34C82D1A54F55D69A32F0 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 41826DD4AA91491318CD5776DBC10A53 /* SwiftTLV.release.xcconfig */;
+			baseConfigurationReference = 0EC86203B4F9B7EBFA3BEB3D756C4381 /* SwiftTLV.release.xcconfig */;
 			buildSettings = {
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
@@ -520,7 +507,7 @@
 				GCC_PREFIX_HEADER = "Target Support Files/SwiftTLV/SwiftTLV-prefix.pch";
 				INFOPLIST_FILE = "Target Support Files/SwiftTLV/SwiftTLV-Info.plist";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				MODULEMAP_FILE = "Target Support Files/SwiftTLV/SwiftTLV.modulemap";
 				PRODUCT_MODULE_NAME = SwiftTLV;
@@ -528,7 +515,7 @@
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "$(inherited) ";
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 				VERSIONING_SYSTEM = "apple-generic";
@@ -541,7 +528,6 @@
 			baseConfigurationReference = 03E7D986BEFFB075B60F9D5FA9790FD9 /* Pods-TapTrackReader.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
 				CLANG_ENABLE_OBJC_WEAK = NO;
 				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
@@ -591,11 +577,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		FCED8283426DC3F4BC83617FB73EB1DA /* Build configuration list for PBXNativeTarget "SwiftTLV" */ = {
+		84D54E05FC559396DEEA9DC87D3B5D2B /* Build configuration list for PBXNativeTarget "SwiftTLV" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				01D6440CFA1287FC5B598C7D25958329 /* Debug */,
-				ECAE4D5A5976BDE7F49C25136BAF1EEF /* Release */,
+				15D396DF04B9AB28F88F6401F8C56015 /* Debug */,
+				F1C81DB834D34C82D1A54F55D69A32F0 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

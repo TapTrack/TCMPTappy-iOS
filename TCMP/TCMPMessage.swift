@@ -31,7 +31,12 @@ public enum TCMPParsingError: Error {
     case notAllTagCodeBytesPresent
     case invalidPasswordProtectionMode
     case invalidAutoPollScanMode
+//    case tlvParsingFailed
 }
+
+public enum TCMPCompositionError: Error {
+     case parameterExceedsMaximumSize
+ }
 
 @objc public protocol TCMPMessage {
     var commandFamily: [UInt8] {get}

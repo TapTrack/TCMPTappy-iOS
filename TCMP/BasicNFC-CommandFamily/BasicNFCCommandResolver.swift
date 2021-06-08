@@ -45,6 +45,8 @@ import Foundation
             command = try EmulateTextRecordCommand(payload: message.payload)
         case BasicNFCCommandCode.emulateCustomNDEFRecord.rawValue:
             command = try EmulateCustomNDEFRecordCommand(payload: message.payload)
+        case BasicNFCCommandCode.initiateTappyTagHandshake.rawValue:
+            command = try InitiateTappyTagHandshake(payload: message.payload)
         default:
             throw TCMPParsingError.resolverError(errorDescription: "Command not recognized by Basic NFC command resolver. Command code: \(String(format: "%02X", message.commandCode))")
         }
@@ -73,6 +75,10 @@ import Foundation
             response = EmulationSuccessResponse()
         case BasicNFCResponseCode.emulationStopped.rawValue:
             response = try EmulationStoppedResponse(payload: message.payload)
+        case BasicNFCResponseCode.tappyTagDataReceived.rawValue:
+            response = try TappyTagDataReceivedResponse(payload : message.payload)
+        case BasicNFCResponseCode.tappyTagResponseDataTransmitted.rawValue:
+            response = try TappyTagRespDataTransmittedResponse(payload: message.payload)
         default:
             throw TCMPParsingError.resolverError(errorDescription: "Response not recognized by Basic NFC response resolver. Response code: \(String(format: "%02X", message.commandCode))")
         }
