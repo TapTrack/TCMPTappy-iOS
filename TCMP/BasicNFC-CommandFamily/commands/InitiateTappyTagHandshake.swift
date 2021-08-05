@@ -26,15 +26,15 @@ import SwiftTLV
 
 @objc public class InitiateTappyTagHandshake: NSObject, TCMPMessage {
     
-    @objc var rawTlvs : [UInt8] = []
-    @objc var timeout : UInt8 = 0
-    @objc var responseData : [UInt8] = []
-    @objc var customAid : [UInt8] = []
-    @objc var shouldSwitchToKeyboardMode : Bool = false
+    @objc public private(set) var rawTlvs : [UInt8] = []
+    @objc public private(set) var timeout : UInt8 = 0
+    @objc public private(set) var responseData : [UInt8] = []
+    @objc public private(set) var customAid : [UInt8] = []
+    @objc public private(set) var shouldSwitchToKeyboardMode : Bool = false
     
-    @objc public var commandFamily: [UInt8] = CommandFamily.basicNFC
+    @objc public let commandFamily: [UInt8] = CommandFamily.basicNFC
     
-    @objc public var commandCode: UInt8 = BasicNFCCommandCode.initiateTappyTagHandshake.rawValue
+    @objc public let commandCode: UInt8 = BasicNFCCommandCode.initiateTappyTagHandshake.rawValue
     
     @objc public var payload: [UInt8] {
         get{

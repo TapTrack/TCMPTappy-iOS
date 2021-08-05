@@ -25,12 +25,12 @@ import SwiftTLV
 
 @objc public class TappyTagDataReceivedResponse : NSObject, TCMPMessage {
     
-    @objc var rawTlvs : [UInt8] = []
-    @objc var dataReceived : [UInt8] = []
+    @objc public private(set) var rawTlvs : [UInt8] = []
+    @objc public private(set) var dataReceived : [UInt8] = []
     
-    @objc public var commandFamily: [UInt8] = CommandFamily.basicNFC
+    @objc public let commandFamily: [UInt8] = CommandFamily.basicNFC
     
-    @objc public var commandCode: UInt8 = BasicNFCResponseCode.tappyTagDataReceived.rawValue
+    @objc public let commandCode: UInt8 = BasicNFCResponseCode.tappyTagDataReceived.rawValue
     
     @objc public var payload: [UInt8] {
         get{

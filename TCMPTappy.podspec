@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'TCMPTappy'
-  s.version          = '1.3.0'
+  s.version          = '1.3.1'
   s.summary          = 'SDK for using TapTrack Tappy NFC Readers such as the TappyBLE.'
 
   s.description      = <<-DESC
